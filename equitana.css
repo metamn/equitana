@@ -1,0 +1,23 @@
+
+body {
+
+}
+
+.container {
+  margin: 0 auto;
+  width: 950px;
+  overflow: hidden;  
+}
+
+
+
+/* Header
+*/
+
+#navigation #inner {
+  float: right;
+  margin: 5em .5em 0 0;
+}
+#navigation #inner a {
+  display: inline-block;
+}

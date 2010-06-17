@@ -1,0 +1,19 @@
+/*  
+Theme Name: equitana webshop theme
+Theme URI: http://equitana.ro
+Description: A shop, blog & community theme for WordPress.
+Version: 0.0.1
+Author: clair.ro
+Author URI: http://clair.ro
+Tags: two-columns, flexible-width, grid, ajax, blueprint
+Template: default
+*/
+
+/* Blueprint */
+@import url(css/blueprint/src/reset.css);
+@import url(css/blueprint/src/liquid.css);
+@import url(css/blueprint/src/typography.css);
+@import url(css/blueprint/src/forms.css);
+
+/* Default theme styles */
+@import url(css/blueprint/screen.css );
