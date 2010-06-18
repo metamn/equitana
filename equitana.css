@@ -89,6 +89,23 @@ body {
 */
 
 
+/* Sidebar 
+*/
+
+#sidebar #categories ul {
+  list-style-type: none;
+  margin: 0 0 1em 0;
+}
+#sidebar #categories ul.children {
+  margin-left: 1.5em;
+}
+#sidebar #categories ul.children li {
+  border-bottom: 1px solid #ddd;
+}
+#sidebar #categories ul li a, #sidebar #categories ul li a:visited {
+  color: #000;
+  text-decoration: none;
+}
 
 
 

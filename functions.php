@@ -17,8 +17,7 @@ function get_product_category_ids() {
   $ret[] = PRODUCTS;
   $cats = get_categories('child_of='.PRODUCTS);
   if ($cats) {
-    foreach ($cats as $c) {
-      echo $c->cat_ID . ' * ';
+    foreach ($cats as $c) {      
       $ret[] = $c->cat_ID; 
     }
   }

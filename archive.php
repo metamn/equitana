@@ -15,16 +15,14 @@ get_header();
     include "meta.php";
   } else { ?>
 
-	<div id="content archive" class="column span-24-last">
-	  <h1><?php if(function_exists('bcn_display')) { bcn_display(); } ?></h1>
-	  
+	<div id="content archive" class="column span-24-last">  
 	  <?php 
 	    $has_sidebar = 0;
 	    if (is_category()) {
 	      $products = get_product_category_ids();
 	      if (is_category($products)) { 
 	        $has_sidebar = 1; ?>
-	        <div id="col-1" class="column span-8 last">
+	        <div id="col-1" class="column span-7 last append-1">	          
             <?php get_sidebar(); ?>
           </div>
           <div id="col-2" class="column span-16 last">
@@ -32,23 +30,22 @@ get_header();
       
 		  <?php if (have_posts()) : ?>
 
-   	  <?php $post = $posts[0]; // Hack. Set $post so that the_date() works. ?>
-   	  <?php /* If this is a category archive */ if (is_category()) { ?>
-		  <h2 class="pagetitle">Archive for the &#8216;<?php single_cat_title(); ?>&#8217; Category</h2>
-   	  <?php /* If this is a tag archive */ } elseif( is_tag() ) { ?>
-		  <h2 class="pagetitle">Posts Tagged &#8216;<?php single_tag_title(); ?>&#8217;</h2>
-   	  <?php /* If this is a daily archive */ } elseif (is_day()) { ?>
-		  <h2 class="pagetitle">Archive for <?php the_time('F jS, Y'); ?></h2>
-   	  <?php /* If this is a monthly archive */ } elseif (is_month()) { ?>
-		  <h2 class="pagetitle">Archive for <?php the_time('F, Y'); ?></h2>
-   	  <?php /* If this is a yearly archive */ } elseif (is_year()) { ?>
-		  <h2 class="pagetitle">Archive for <?php the_time('Y'); ?></h2>
-	    <?php /* If this is an author archive */ } elseif (is_author()) { ?>
-		  <h2 class="pagetitle">Author Archive</h2>
-   	  <?php /* If this is a paged archive */ } elseif (isset($_GET['paged']) && !empty($_GET['paged'])) { ?>
-		  <h2 class="pagetitle">Blog Archives</h2>
+   	  <?php 
+   	    if (is_category()) { 
+   	      if ($has_sidebar) { ?>
+   	        <h2><?php if(function_exists('bcn_display')) { bcn_display(); } ?></h2>
+   	      <?php } else { ?> 
+   	        <h2>Articole din categoria &#8216;<?php single_cat_title(); ?>&#8217;</h2>
+   	      <?php }
+		    } elseif( is_tag() ) { ?>
+		      <h2>Articole etichetate cu &#8216;<?php single_tag_title(); ?>&#8217;</h2>   	  
+	      <?php } elseif (is_author()) { ?>
+		      <h2>Articole create de </h2>
+   	    <?php } else { ?>
+		      <h2><?php if(function_exists('bcn_display')) { bcn_display(); } ?></h2>
    	  <?php } ?>
 
+  
 
 		  <div class="navigation">
 			  <div class="alignleft"><?php next_posts_link('&laquo; Older Entries') ?></div>
