@@ -1,8 +1,29 @@
 
+
+/* Colors
+
+logo red = #DE0015
+ . dark red/bordo = #5E1C23
+szurke = #ddd
+
+*/
+a {
+  color: #000;
+}
+a:visited {
+  color: #5E1C23;
+}
+a:hover {
+  color: #DE0015;
+}
+
+
+
+
+
 body {
 
 }
-
 .container {
   margin: 0 auto;
   width: 950px;
@@ -20,4 +41,73 @@ body {
 }
 #navigation #inner a {
   display: inline-block;
+}
+#menu {
+  background: #ddd;
+}
+#menu ul {
+  margin: 0;
+  padding: 0;
+}
+#menu ul li {
+  border-right: 1px solid #fff;
+  padding-left: 0;
+  padding: 1em 1.5em;
+}
+#menu ul li.cat-item-7 {
+  padding-left: .5em;
+}
+#menu ul li.current-cat {
+  background: #DE0015;
+}
+#menu ul li.current-cat a, #menu ul li.current-cat a:visited{
+  color: #fff;
+}
+
+#menu ul li a {
+  text-decoration: none;
+  font-size: larger;
+}
+#menu ul li a, #menu ul li a:visited {
+  color: #000;
+}
+#menu ul li a:hover, #menu ul li a:active {
+  color: #DE0015;
+}
+
+#menu ul li.noncat {
+  float: right;
+}
+#menu ul li.noncat.last {
+  border-left: 1px solid #ddd;
+}
+
+
+
+
+
+/* Common
+*/
+
+ul.inline-list {
+  display: block;
+}
+ul.inline-list li {
+  display: inline;
+  float: left;
+  list-style-type: none;
+  margin-left: 0;
+  white-space: nowarp;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.alignleft {
+  float: left;
+}
+.alignright {
+  float: right;
+}
+.clearfix {
+  clear: both;
 }
