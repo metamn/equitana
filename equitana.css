@@ -44,6 +44,7 @@ body {
 }
 #menu {
   background: #ddd;
+  margin-bottom: 2em;
 }
 #menu ul {
   margin: 0;
@@ -81,6 +82,11 @@ body {
 #menu ul li.noncat.last {
   border-left: 1px solid #ddd;
 }
+
+
+
+/* Startpage
+*/
 
 
 
