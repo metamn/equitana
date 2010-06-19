@@ -92,7 +92,7 @@ body {
 /* Sidebar 
 */
 
-#sidebar #categories ul {
+#sidebar ul {
   list-style-type: none;
   margin: 0 0 1em 0;
 }

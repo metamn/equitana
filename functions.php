@@ -10,6 +10,20 @@ define("NOUTATI", 8);
 define("STIRI", 6);
 
 
+// checks if the current request is for a product category
+// - $is_category = the value of is_category() fucntion
+// - returns a bool
+function is_product_category($is_category) {
+  $ret = false;
+  if ($is_category) {
+    $product_ids = get_product_category_ids();
+	  if (is_category($product_ids)) {
+      $ret = true;
+    }
+  }
+  return $ret;
+}
+
 // get category ids for all product categories and subcategories
 // - returns an array
 function get_product_category_ids() {

@@ -17,22 +17,19 @@ get_header();
 
 	<div id="content archive" class="column span-24-last">  
 	  <?php 
-	    $has_sidebar = 0;
-	    if (is_category()) {
-	      $products = get_product_category_ids();
-	      if (is_category($products)) { 
-	        $has_sidebar = 1; ?>
-	        <div id="col-1" class="column span-7 last append-1">	          
-            <?php get_sidebar(); ?>
-          </div>
-          <div id="col-2" class="column span-16 last">
-      <?php } } ?>
+	    $is_product = is_product_category(is_category());
+	    if ($is_product) { ?>
+        <div id="col-1" class="column span-7 last append-1">	          
+          <?php get_sidebar(); ?>
+        </div>
+        <div id="col-2" class="column span-16 last">
+      <?php } ?>
       
 		  <?php if (have_posts()) : ?>
 
    	  <?php 
    	    if (is_category()) { 
-   	      if ($has_sidebar) { ?>
+   	      if ($is_product) { ?>
    	        <h2><?php if(function_exists('bcn_display')) { bcn_display(); } ?></h2>
    	      <?php } else { ?> 
    	        <h2>Articole din categoria &#8216;<?php single_cat_title(); ?>&#8217;</h2>
