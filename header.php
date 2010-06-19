@@ -57,10 +57,14 @@
               wp_list_categories('current_category=' . PRODUCTS . '&orderby=slug&order=ASC&exclude=' . META . '&include=' . NOUTATI . ',' . PROMO . ',' . TOPSALES . ',' . PRODUCTS . ',' . STIRI . '&title_li='); 	          
 	          } else {
 	            wp_list_categories('orderby=slug&order=ASC&exclude=' . META . '&include=' . NOUTATI . ',' . PROMO . ',' . TOPSALES . ',' . PRODUCTS . ',' . STIRI . '&title_li='); 
-            }	           
+            }	      
+            
+            if (is_home()) {
+              $blog = "current-cat";
+            }     
 	         ?>           
           <li class="noncat first"><a href="<?php bloginfo('home'); ?>/forum" alt="Forumul Equitana" title="Forumul Equitana">Forum</a></li>	        
-          <li class="noncat last"><a href="<?php bloginfo('home'); ?>/blog" alt="Blogul Equitana" title="Blogul Equitana">Blog</a></li>
+          <li class="noncat last <?php echo $blog; ?>"><a href="<?php bloginfo('home'); ?>/blog" alt="Blogul Equitana" title="Blogul Equitana">Blog</a></li>
         </ul>	       
 	    </div>
 	    		  	
