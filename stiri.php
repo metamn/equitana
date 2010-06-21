@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div id="content stiri" class="column span-24 last">
+<div id="content" class="stiri column span-24 last">
     
 </div>
 

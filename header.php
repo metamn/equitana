@@ -62,8 +62,11 @@
             if (is_home()) {
               $blog = "current-cat";
             }     
+            if (is_page('forum')) {
+              $forum = "current-cat";
+            }
 	         ?>           
-          <li class="noncat first"><a href="<?php bloginfo('home'); ?>/forum" alt="Forumul Equitana" title="Forumul Equitana">Forum</a></li>	        
+          <li class="noncat first <?php echo $forum; ?>"><a href="<?php bloginfo('home'); ?>/forum" alt="Forumul Equitana" title="Forumul Equitana">Forum</a></li>	        
           <li class="noncat last <?php echo $blog; ?>"><a href="<?php bloginfo('home'); ?>/blog" alt="Blogul Equitana" title="Blogul Equitana">Blog</a></li>
         </ul>	       
 	    </div>

@@ -27,7 +27,7 @@ body {
 .container {
   margin: 0 auto;
   width: 950px;
-  overflow: hidden;  
+  overflow: visible;  
 }
 
 
@@ -44,7 +44,6 @@ body {
 }
 #menu {
   background: #ddd;
-  margin-bottom: 2em;
 }
 #menu ul {
   margin: 0;
@@ -84,6 +83,11 @@ body {
 }
 
 
+#content {
+  padding-top: 2em;
+  background: #f9f9f9;
+  width: 100%;
+}
 
 /* Startpage
 */
@@ -92,22 +96,38 @@ body {
 /* Sidebar 
 */
 
+
+#sidebar {
+  left: -3em;
+  position: relative;
+  background: #A2A3A3;
+  margin-bottom: 3em;
+}
 #sidebar ul {
   list-style-type: none;
   margin: 0 0 1em 0;
 }
-#sidebar #categories ul.children {
-  margin-left: 1.5em;
+#sidebar li.widget_collapscat {  
+  font-size: larger;
+  padding: 1em;
 }
-#sidebar #categories ul.children li {
-  border-bottom: 1px solid #ddd;
-}
-#sidebar #categories ul li a, #sidebar #categories ul li a:visited {
+#sidebar li.widget_collapscat a, #sidebar li.widget_collapscat a:visited {
   color: #000;
   text-decoration: none;
 }
+#sidebar li.collapsing.categories.item a.self {
+  font-weight: normal !important;
+}
 
-
+.triangle {
+  border-color: transparent #616366 transparent transparent;
+  border-style: solid;
+	border-width: 3em;
+	position: relative;
+	left: -260px;
+	top: -72px;
+	z-index: -1; 	
+}
 
 /* Common
 */
