@@ -14,8 +14,7 @@ function highlight_active_sidebar_links() {
     if (self_href == current_href) {
       $(this).addClass("current-cat");
       $(this).prev().children().addClass("current-span");
-      $(this).before("<span class='highlight-cat'>&nbsp;</span>");
-      $(this).after("<div class='triangle-left'></div><div class='triangle-right'></div>")          
+      $(this).before("<span class='highlight-cat'>&nbsp;</span>");                
     }
   });
 }

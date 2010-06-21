@@ -19,7 +19,7 @@ get_header();
 	  <?php 
 	    $is_product = is_product_category(is_category());
 	    if ($is_product) { ?>
-        <div id="col-1" class="column span-7 last append-1">	          
+        <div id="col-1" class="column span-8 last">	          
           <?php get_sidebar(); ?>
         </div>
         <div id="col-2" class="column span-16 last">
@@ -30,7 +30,7 @@ get_header();
      	  <?php 
      	    if (is_category()) { 
      	      if ($is_product) { ?>
-     	        <h2><?php if(function_exists('bcn_display')) { bcn_display(); } ?></h2>
+     	        <!-- <h2><?php if(function_exists('bcn_display')) { bcn_display(); } ?></h2> -->
      	      <?php } else { ?> 
      	        <h2>Articole din categoria &#8216;<?php single_cat_title(); ?>&#8217;</h2>
      	      <?php }
