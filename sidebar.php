@@ -1,6 +1,7 @@
 <div id="sidebar">
   <ul>
-    <li id="collapscat-3" class="widget widget_collapscat">      
+    <li id="collapscat-3" class="widget widget_collapscat">   
+      <h3>Categorii produse</h3>   
       <ul id="widget-collapscat-3-top" class="collapsing categories list">
       <?php
         $options = array(
@@ -10,7 +11,9 @@
           'showPosts' => false,
           'expand' => '0',
           'animate' => true,
-          'showTopLevel' => false
+          'showTopLevel' => false,
+          'expandCatPost' => false,
+          'debug' => '0'
         ); 
         collapsCat($options); 
       ?>

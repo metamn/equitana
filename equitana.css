@@ -100,8 +100,9 @@ body {
 #sidebar {
   left: -3em;
   position: relative;
-  background: #A2A3A3;
+  background: #ccc;
   margin-bottom: 3em;
+  overflow: visible;
 }
 #sidebar ul {
   list-style-type: none;
@@ -109,7 +110,7 @@ body {
 }
 #sidebar li.widget_collapscat {  
   font-size: larger;
-  padding: 1em;
+  padding: .5em 1em 1em 2.3em;
 }
 #sidebar li.widget_collapscat a, #sidebar li.widget_collapscat a:visited {
   color: #000;
@@ -118,7 +119,39 @@ body {
 #sidebar li.collapsing.categories.item a.self {
   font-weight: normal !important;
 }
-
+#sidebar li.widget_collapscat a.current-cat {
+  position: absolute;
+  padding-left: .3em;
+}
+.highlight-cat {
+  background: #DE0015;  
+  width: 275px;
+  left: -1em;
+  position: absolute;
+  padding: .2em 0 0;
+}
+.current-span {
+  position: relative;
+  z-index: 2;
+  margin-right: .5em;
+}
+.triangle-left {
+   border-color: transparent #616366 transparent transparent;
+  border-style: solid;
+	border-width: 1em;
+	position: relative;
+	left: -245px;
+	top: -15px;
+	z-index: -1;
+}
+.triangle-right {
+  border-color: transparent transparent transparent #DA0015;
+  border-style: solid;
+	border-width: .9em;
+	position: relative;
+	left: 195px;
+	top: -57px;
+}
 .triangle {
   border-color: transparent #616366 transparent transparent;
   border-style: solid;
