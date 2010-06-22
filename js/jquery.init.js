@@ -1,12 +1,20 @@
 $(document).ready(function() { 
 
-  // highlights the current product category  
+  // highlighting the current product category  
   highlight_active_sidebar_links();
+  
+  // highlighting the current post 
+  $('.post').mouseover(function() {
+    $(this).addClass('post-active');
+  }).mouseout(function(){
+    $(this).removeClass('post-active');
+  });
+
   
 }); 
 
 
-// highlights the current product category  
+// highlighting the current product category  
 function highlight_active_sidebar_links() {
   var current_href = window.location.href;
   $("#sidebar a.self").each(function(){

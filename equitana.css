@@ -3,7 +3,7 @@
 /* Colors
 
 logo red = #DE0015
-  .brown/red = #5E0008;
+  .brown/red = #9E000F;
     .for triangle = #450006
     .for shadow = #6B2105
   .brown = #5E0008
@@ -20,7 +20,7 @@ a {
   color: #000;
 }
 a:visited {
-  color: #5E0008;
+  color: #9E000F;
 }
 a:hover {
   color: #DE0015;
@@ -105,10 +105,49 @@ body {
 /* Products 
 */
 
-#content.archive #col-2 {
-  margin-top: 1em;
+p.breadcrumb {
+  background: #ddd;
+  padding: .5em;
+}
+.navigation {
+  margin: .5em 0 !important;
 }
 
+
+.post {
+  margin: 2em 0 5em !important;
+  padding: 1em;
+}
+.post-active {
+  background: #eee;
+  border: 1px solid #ddd;
+  -moz-box-shadow: 0px 0px 8px #999;
+  -khtml-box-shadow: 0px 0px 8px #999;
+  -webkit-box-shadow: 0px 0px 8px #999;
+}
+.post .entry, .post .postmetadata {
+  margin-left: 1em;
+}
+.post img {
+  border: 1px solid #ddd;
+  padding: 1em;
+  -moz-box-shadow: 0px 0px 8px #999;
+  -khtml-box-shadow: 0px 0px 8px #999;
+  -webkit-box-shadow: 0px 0px 8px #999;
+}
+.post p.wp-caption-text {
+  visibility: hidden;
+}
+.post .entry p {
+  background: #f6f6f6;
+  font-style: italic;
+  font-size: larger;
+  margin: 0 0 0 1em;
+  padding: .5em 1em;
+}
+.post .postmetadata {
+  margin-top: 2em;
+}
 
 /* Sidebar 
 */
@@ -117,7 +156,7 @@ body {
 #sidebar {
   left: -3em;
   position: relative;
-  background: #5E0008;
+  background: #9E000F;
   margin-bottom: 3em;
   overflow: visible;
   color: #f4f4f4;
