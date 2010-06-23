@@ -114,6 +114,43 @@ p.breadcrumb {
 }
 
 
+/* wp-e-commerce overwrites */
+#shopping .productdisplay {
+  clear: none !important;
+  margin-bottom: 0 !important;  
+}
+#shopping .productdisplay .textcol {
+  margin-left: 0 !important;
+  float: none !important;
+}
+#shopping .productdisplay .textcol .imagecol {
+  margin-left: 0 !important;
+  position: relative !important;
+}
+#shopping .productdisplay .textcol .producttext .product_form {
+  padding: 1em 0;
+}
+#shopping .productdisplay .textcol .producttext .product_form .wpsc_variation_forms label {
+  padding-right: 1em;
+}
+#shopping .productdisplay .textcol .producttext .product_form .wpsc_product_price {
+  font-weight: bold;
+  padding: .5em 0;
+}
+#shopping .productdisplay .textcol .producttext .product_form .wpsc_product_price .oldprice {
+  color: #de0015;
+}
+#shopping .wpsc_loading_animation {
+  clear: both;
+}
+#shopping .checkout {
+  clear: both;
+}
+#shopping input.wpsc_buy_button, #shopping input.checkout-button {
+  font-size: small;
+  width: 128px;
+}
+
 
 .post {
   margin: 2em 0 5em !important;

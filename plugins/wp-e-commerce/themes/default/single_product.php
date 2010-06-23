@@ -1,30 +1,17 @@
 <?php
-global $wpsc_query, $wpdb;
-$image_width = get_option('single_view_image_width');
-$image_height = get_option('single_view_image_height');
+  global $wpsc_query, $wpdb;
+  $image_width = get_option('single_view_image_width');
+  $image_height = get_option('single_view_image_height');
 ?>
-<div id='products_page_container' class="wrap wpsc_container">
-	
-	<?php if(wpsc_has_breadcrumbs()) :?>
-		<div class='breadcrumb'>
-			<a href='<?php echo get_option('product_list_url'); ?>'><?php echo get_option('blogname'); ?></a> &raquo;
-			<?php while (wpsc_have_breadcrumbs()) : wpsc_the_breadcrumb(); ?>
-				<?php if(wpsc_breadcrumb_url()) :?> 	   
-					<a href='<?php echo wpsc_breadcrumb_url(); ?>'><?php echo wpsc_breadcrumb_name(); ?></a> &raquo;
-				<?php else: ?> 
-					<?php echo wpsc_breadcrumb_name(); ?>
-				<?php endif; ?> 
-			<?php endwhile; ?>
-		</div>
-	<?php endif; ?>
-	
+
+<div id='products_page_container' class="wrap wpsc_container">		
 	<?php do_action('wpsc_top_of_products_page'); // Plugin hook for adding things to the top of the products page, like the live search ?>
 	
 	<div class="productdisplay">
-	<?php /** start the product loop here, this is single products view, so there should be only one */?>
-		<?php while (wpsc_have_products()) :  wpsc_the_product(); ?>
-			<div class="single_product_display product_view_<?php echo wpsc_the_product_id(); ?>">
-				<div class="textcol">
+	  <?php /** start the product loop here, this is single products view, so there should be only one */?>
+		  <?php while (wpsc_have_products()) :  wpsc_the_product(); ?>
+			  <div class="single_product_display product_view_<?php echo wpsc_the_product_id(); ?>">
+				  <div class="textcol">
 					<?php if(get_option('show_thumbnails')) :?>
 					<div class="imagecol">
 						<?php if(wpsc_the_product_thumbnail()) :?>
@@ -41,8 +28,7 @@ $image_height = get_option('single_view_image_height');
 					</div>
 					<?php endif; ?> 
 		
-					<div class="producttext">
-						<h2 class="prodtitles"><span><?php echo wpsc_the_product_title(); ?></span><?php echo wpsc_edit_the_product_link(); ?></h2>
+					<div class="producttext">						
 							<?php				
 								do_action('wpsc_product_before_description', wpsc_the_product_id(), $wpsc_query->product);
 							?>
@@ -111,7 +97,7 @@ $image_height = get_option('single_view_image_height');
 					<?php /** the variation group HTML and loop */?>
 					<div class="wpsc_variation_forms">
 						<?php while (wpsc_have_variation_groups()) : wpsc_the_variation_group(); ?>
-							<p>
+							
 								<label for="<?php echo wpsc_vargrp_form_id(); ?>"><?php echo wpsc_the_vargrp_name(); ?>:</label>
 								<?php /** the variation HTML and loop */?>
 								<select class='wpsc_select_variation' name="variation[<?php echo wpsc_vargrp_id(); ?>]" id="<?php echo wpsc_vargrp_form_id(); ?>">
@@ -119,7 +105,7 @@ $image_height = get_option('single_view_image_height');
 									<option value="<?php echo wpsc_the_variation_id(); ?>" <?php echo wpsc_the_variation_out_of_stock(); ?>><?php echo wpsc_the_variation_name(); ?></option>
 								<?php endwhile; ?>
 								</select> 
-							</p>
+							
 						<?php endwhile; ?>
 					</div>
 					<?php /** the variation group HTML and loop ends here */?>
@@ -127,13 +113,13 @@ $image_height = get_option('single_view_image_height');
 					
 					<!-- THIS IS THE QUANTITY OPTION MUST BE ENABLED FROM ADMIN SETTINGS -->
 					<?php if(wpsc_has_multi_adding()): ?>
-						<fieldset>
-						<label class='wpsc_quantity_update' for='wpsc_quantity_update[<?php echo wpsc_the_product_id(); ?>]'><?php echo __('Quantity', 'wpsc'); ?>:</label>
+						
+						<label class='wpsc_quantity_update' for='wpsc_quantity_update[<?php echo wpsc_the_product_id(); ?>]'>Cantitate:</label>
 						
 						<input type="text" id='wpsc_quantity_update' name="wpsc_quantity_update[<?php echo wpsc_the_product_id(); ?>]" size="2" value="1"/>
 						<input type="hidden" name="key" value="<?php echo wpsc_the_cart_item_key(); ?>"/>
 						<input type="hidden" name="wpsc_update_quantity" value="true"/>
-						</fieldset>
+						
 					<?php endif ;?>
 					
 						<div class="wpsc_product_price">
@@ -145,9 +131,11 @@ $image_height = get_option('single_view_image_height');
 							
 							<?php else : ?>
 								<?php if(wpsc_product_on_special()) : ?>
-									<span class='oldprice'><?php echo __('Price', 'wpsc'); ?>: <?php echo wpsc_product_normal_price(); ?></span><br />
+									<span class='oldprice'>Pret vechi: <?php echo wpsc_product_normal_price(); ?></span><br />
 								<?php endif; ?>
-								<span id="product_price_<?php echo wpsc_the_product_id(); ?>" class="pricedisplay"><?php echo wpsc_the_product_price(); ?></span><?php echo __('Price', 'wpsc'); ?>:  <br/>
+								<span id="product_price_<?php echo wpsc_the_product_id(); ?>" class="pricedisplay"><?php echo wpsc_the_product_price(); ?></span>
+								Pret:
+								<br/>
 								<!-- multi currency code -->
 								<?php if(wpsc_product_has_multicurrency()) : ?>
 								<?php echo wpsc_display_product_multicurrency(); ?>
@@ -174,15 +162,20 @@ $image_height = get_option('single_view_image_height');
 					<?php if((get_option('hide_addtocart_button') == 0) && (get_option('addtocart_or_buynow') !='1')) : ?>
 						<?php if(wpsc_product_has_stock()) : ?>
 							<?php if(wpsc_product_external_link(wpsc_the_product_id()) != '') : ?>
-										<?php	$action =  wpsc_product_external_link(wpsc_the_product_id()); ?>
-										<input class="wpsc_buy_button" type='button' value='<?php echo __('Buy Now', 'wpsc'); ?>' onclick='gotoexternallink("<?php echo $action; ?>")'>
-										<?php else: ?>
-									<input type="submit" value="<?php echo __('Add To Cart', 'wpsc'); ?>" name="Buy" class="wpsc_buy_button" id="product_<?php echo wpsc_the_product_id(); ?>_submit_button"/>
-										<?php endif; ?>
-							
+								<?php	$action =  wpsc_product_external_link(wpsc_the_product_id()); ?>
+								<input class="wpsc_buy_button" type='button' value='<?php echo __('Buy Now', 'wpsc'); ?>' onclick='gotoexternallink("<?php echo $action; ?>")'>
+							<?php else: ?>
+								<input type="submit" value="Adauga la cos" name="Buy" class="wpsc_buy_button" id="product_<?php echo wpsc_the_product_id(); ?>_submit_button"/>
+							<?php endif; ?>							  		
+							<br/>
+							<div class='checkout'>
+							  <FORM>
+                  <INPUT TYPE="BUTTON" class='checkout-button' VALUE="Cos cumparaturi" ONCLICK='gotoexternallink("<?php echo bloginfo(home) ?>/cos-cumparaturi")'>
+                </FORM>
+							</div>
 							<div class='wpsc_loading_animation'>
 								<img title="Loading" alt="Loading" src="<?php echo WPSC_URL ;?>/images/indicator.gif" class="loadingimage" />
-								<?php echo __('Updating cart...', 'wpsc'); ?>
+								Actualizare cos...
 							</div>
 							
 						<?php else : ?>
