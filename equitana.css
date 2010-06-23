@@ -102,7 +102,7 @@ body {
 */
 
 
-/* Products 
+/* Product list 
 */
 
 p.breadcrumb {
@@ -163,9 +163,7 @@ p.breadcrumb {
   -khtml-box-shadow: 0px 0px 8px #999;
   -webkit-box-shadow: 0px 0px 8px #999;
 }
-.post .entry, .post .postmetadata {
-  margin-left: 1em;
-}
+
 .post img {
   border: 1px solid #ddd;
   padding: 1em;
@@ -191,11 +189,28 @@ p.breadcrumb {
 
 /* Single
 */
+
+#content.single .navigation {
+  background: #ddd;
+  padding: .5em 0;
+}
+#content.single #shopping .imagecol {
+  display: none
+}
+#content.single #shopping .producttext {
+  margin-top: 3em !important;
+}
 #respond {
   margin-left: 1em;
 }
 
-
+/* Related products */
+#content.single #recommended #shopping .imagecol {
+  display: block;
+}
+#content.single #recommended #shopping .producttext {
+  margin-top: 0 !important;
+}
 
 
 
