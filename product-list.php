@@ -6,6 +6,16 @@
   <div class="entry">
     <?php the_content('Detalii &rarr;') ?>
   </div>
+  
+  <div class="shopping">
+    <?php 
+      $product_id = get_post_meta($post->ID, 'product_id', single);
+      echo "product_id = " . $product_id . '<br/>';
+      if ($product_id) {        
+        echo wpsc_display_products_page('product_id='.$product_id);         
+      }      
+    ?>
+  </div>
 
   <p class="postmetadata">
     Publicat <?php the_time('l, j F, Y') ?>  
