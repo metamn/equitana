@@ -29,6 +29,10 @@ function post_id($product_id) {
 }
 
 
+
+// Product navigation
+// ------------------
+
 // checks if the current request is for a product category
 // - $is_category = the value of is_category() fucntion
 // - returns a bool
@@ -57,5 +61,40 @@ function get_product_category_ids() {
   return $ret;
 }
 
+
+// Common wordpress
+// ----------------
+
+// Styling comments
+// - documentation @ http://codex.wordpress.org/Template_Tags/wp_list_comments
+function styled_comments($comment, $args, $depth){
+  $GLOBALS['comment'] = $comment; ?>
+  
+  <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
+    <div id="comment-<?php comment_ID(); ?>" class="block">
+      <div class="comment-author vcard column span-4 last">
+         <?php echo get_avatar($comment, $size='96',$default='<path_to_url>' ); ?>
+         <br/>
+         <?php printf(__('<cite class="fn">%s</cite>'), get_comment_author_link()) ?>
+      </div>
+      <div class="column last">
+        <?php if ($comment->comment_approved == '0') : ?>
+          <em><?php _e('Your comment is awaiting moderation.') ?></em>
+          <br />
+        <?php endif; ?>
+        
+        <div class="comment-body">
+          <?php comment_text() ?>
+        </div>
+        
+        <div class="comment-meta commentmetadata">
+          <a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php printf(__('%1$s la %2$s'), get_comment_date(),  get_comment_time()) ?></a>
+          <?php edit_comment_link(__('(Modificare)'),'  ','') ?>
+          <?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
+        </div>        
+      </div>
+    </div>
+<?php  
+}
 
 ?>
