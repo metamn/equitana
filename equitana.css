@@ -102,6 +102,7 @@ body {
 */
 
 
+
 /* Product list 
 */
 
@@ -112,34 +113,8 @@ p.breadcrumb {
 .navigation {
   margin: .5em 0 !important;
 }
-
-
-/* wp-e-commerce overwrites */
-
-#shopping .productdisplay .textcol {
-  margin-left: 0 !important;
-  float: none !important;
-}
-#shopping .productdisplay .textcol .imagecol {
-  margin-left: 0 !important;
-  position: relative !important;
-}
-#shopping .productdisplay .textcol .producttext .product_form {
-  padding: 1em 0;
-}
-#shopping .oldprice {
-  color: #de0015;
-}
-#shopping span.pricedisplay {
-  float: none !important;
-  width: 100% important;
-}
-#shopping input.wpsc_buy_button, #shopping input.checkout-button {
-  font-size: small;
-  width: 100%;
-}
-table td.right {
-  text-align: right;
+#content.archive #shopping table {
+  width: 180px;
 }
 
 
@@ -151,6 +126,9 @@ table td.right {
 }
 #content.meta table {
   width: 50%;
+}
+#content.meta table tr.variation, #content.meta table tr.quantity, #content.meta table tr.oldprice, #content.meta table tr.checkout {
+  display: none;
 }
 
 
@@ -168,7 +146,7 @@ table td.right {
 
 .post img {
   border: 1px solid #ddd;
-  padding: 1em;
+  padding: 1.6em;
   -moz-box-shadow: 0px 0px 8px #999;
   -khtml-box-shadow: 0px 0px 8px #999;
   -webkit-box-shadow: 0px 0px 8px #999;
@@ -202,6 +180,10 @@ table td.right {
 #content.single #shopping .producttext {
   margin-top: 3em !important;
 }
+#content.single #shopping table {
+  width: 180px;
+}
+
 #respond {
   margin-left: 1em;
 }
@@ -292,6 +274,41 @@ table td.right {
 	left: 195px;
 	top: -57px;
 }
+
+
+
+/* WP-e-commerce overwrites 
+*/
+
+
+#shopping .productdisplay .textcol {
+  margin-left: 0 !important;
+  float: none !important;
+}
+#shopping .productdisplay .textcol .imagecol {
+  margin-left: 0 !important;
+  position: relative !important;
+}
+#shopping .productdisplay .textcol .producttext .product_form {
+  padding: 1em 0;
+}
+#shopping .oldprice {
+  color: #de0015;
+}
+#shopping span.pricedisplay {
+  float: none !important;
+  width: 100% !important;
+}
+#shopping input.wpsc_buy_button, #shopping input.checkout-button {
+  font-size: small;
+  width: 100%;
+}
+table td.right {
+  text-align: right;
+}
+
+
+
 
 /* Common
 */

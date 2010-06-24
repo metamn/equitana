@@ -28,14 +28,13 @@
 					</div>
 					<?php endif; ?> 
 		
-					<div class="producttext">	
-					  <table>  
+					<div class="producttext">						  
 					    <form class='product_form' enctype="multipart/form-data" action="<?php echo wpsc_this_page_url(); ?>" method="post" name="1" id="product_<?php echo wpsc_the_product_id(); ?>">
-					      
+					     <table> 
 					      <?php /** the variation group HTML and loop */?>
 					      <div class="wpsc_variation_forms">
 						      <?php while (wpsc_have_variation_groups()) : wpsc_the_variation_group(); ?>
-							      <tr>
+							      <tr class='variation'>
 							        <td>
 								        <label for="<?php echo wpsc_vargrp_form_id(); ?>"><?php echo wpsc_the_vargrp_name(); ?>:</label>
 								      </td>
@@ -54,7 +53,7 @@
 								
 			          <!-- THIS IS THE QUANTITY OPTION MUST BE ENABLED FROM ADMIN SETTINGS -->
 			          <?php if(wpsc_has_multi_adding()): ?>
-				          <tr><td>
+				          <tr class='quantity'><td>
 				            <label class='wpsc_quantity_update' for='wpsc_quantity_update[<?php echo wpsc_the_product_id(); ?>]'>Cantitate:</label>
 				          </td><td class='right'>
 				            <input type="text" id='wpsc_quantity_update' name="wpsc_quantity_update[<?php echo wpsc_the_product_id(); ?>]" size="2" value="1"/>
@@ -70,13 +69,13 @@
 								    <br />													
 							    <?php else : ?>
 								    <?php if(wpsc_product_on_special()) : ?>
-								      <tr><td>
+								      <tr class='oldprice'><td>
 									      <label><span class='oldprice'>Pret vechi:</span></label> 
 									    </td><td class='right'>
 									      <span class='oldprice'><?php echo wpsc_product_normal_price(); ?></span>
 									    </td></tr>
 								    <?php endif; ?>
-								      <tr><td>
+								      <tr class='price'><td>
 								        <label>Pret:</label>
 								      </td><td class='right'>
 								        <span id="product_price_<?php echo wpsc_the_product_id(); ?>" class="pricedisplay"><?php echo wpsc_the_product_price(); ?></span>
@@ -112,28 +111,29 @@
 								      <?php	$action =  wpsc_product_external_link(wpsc_the_product_id()); ?>
 								      <input class="wpsc_buy_button" type='button' value='<?php echo __('Buy Now', 'wpsc'); ?>' onclick='gotoexternallink("<?php echo $action; ?>")'>
 							      <?php else: ?>
-							        <tr><td colspan=2>
+							        <tr class='submit'><td colspan=2>
 								      <input type="submit" value="Adauga la cos" name="Buy" class="wpsc_buy_button" id="product_<?php echo wpsc_the_product_id(); ?>_submit_button"/>
 							      <?php endif; ?>							  		
 							      </td><tr>
-							      <tr><td colspan=2>
+							      <tr class='checkout'><td colspan=2>
 							        <FORM>
                         <INPUT TYPE="BUTTON" class='checkout-button' VALUE="Cos cumparaturi" ONCLICK='gotoexternallink("<?php echo bloginfo(home) ?>/cos-cumparaturi")'>
                       </FORM>							        
 							      </td></tr> 
-							      <tr><td colspan=2>
+							      <tr class='animation'><td colspan=2>
 							        <div class='wpsc_loading_animation'>
 								        <img title="Loading" alt="Loading" src="<?php echo WPSC_URL ;?>/images/indicator.gif" class="loadingimage" />
 								          Actualizare cos...
 							        </div>
-							       </td></tr>
-							      </table>
+							       </td></tr>							      
 							      							
 						      <?php else : ?>
 							      <p class='soldout'><?php echo __('This product has sold out.', 'wpsc'); ?></p>
 						      <?php endif ; ?>
 					      <?php endif ; ?>
+					  </table>
 					</form>
+					
 					
 					<?php if((get_option('hide_addtocart_button') == 0) && (get_option('addtocart_or_buynow')=='1')) : ?>
 						<?php echo wpsc_buy_now_button(wpsc_the_product_id()); ?>
