@@ -18,13 +18,13 @@ get_header();
 
 		<div <?php post_class() ?> id="post-<?php the_ID(); ?>">
 		  <div class='block'>
-		    <div id="info" class="column span-14 last">
+		    <div id="info" class="column span-18 last">
 		      <h1><?php the_title(); ?></h1>
 		      <div class='entry'>
             <?php the_content(); ?>
           </div> 
 		    </div>
-		    <div id="shopping" class="column span-9 last">
+		    <div id="shopping" class="column span-5 last">
 		      <?php 
             $product_id = get_post_meta($post->ID, 'product_id', single);
             if ($product_id) {        

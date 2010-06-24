@@ -28,160 +28,111 @@
 					</div>
 					<?php endif; ?> 
 		
-					<div class="producttext">						
-							<?php				
-								do_action('wpsc_product_before_description', wpsc_the_product_id(), $wpsc_query->product);
-							?>
-						<div class="wpsc_description"><?php echo wpsc_the_product_description(); ?></div>
-		
-						<?php
-							do_action('wpsc_product_addons', wpsc_the_product_id());
-						?>
-						<?php if(wpsc_the_product_additional_description()) : ?>
-						<div class="single_additional_description">
-            <?php
-							$value = '';
-							$the_addl_desc = wpsc_the_product_additional_description();
-							if( is_serialized($the_addl_desc) ) {
-								$addl_descriptions = @unserialize($the_addl_desc);
-							} else {
-								$addl_descriptions = array('addl_desc', $the_addl_desc);
-							}
-							
-							if( isset($addl_descriptions['addl_desc']) ) {
-								$value = $addl_descriptions['addl_desc'];
-							}
-
-            	if( function_exists('wpsc_addl_desc_show') ) {
-            		echo wpsc_addl_desc_show( $addl_descriptions );
-            	} else {
-								echo stripslashes( wpautop($the_addl_desc, $br=1));
-            	}
-            ?>
-						</div>
-					<?php endif; ?>
-				
-					<?php do_action('wpsc_product_addon_after_descr', wpsc_the_product_id()); ?>
-
-					<?php /** the custom meta HTML and loop */ ?>
-					<div class="custom_meta">
-						<?php while (wpsc_have_custom_meta()) : wpsc_the_custom_meta(); 	
-								if (stripos(wpsc_custom_meta_name(),'g:') !== FALSE){
-									continue;
-								}
-							?>
-							<strong><?php echo wpsc_custom_meta_name(); ?>: </strong><?php echo wpsc_custom_meta_value(); ?><br />
-						<?php endwhile; ?>
-					</div>
-					<?php /** the custom meta HTML and loop ends here */?>
+					<div class="producttext">	
+					  <table>  
+					    <form class='product_form' enctype="multipart/form-data" action="<?php echo wpsc_this_page_url(); ?>" method="post" name="1" id="product_<?php echo wpsc_the_product_id(); ?>">
+					      
+					      <?php /** the variation group HTML and loop */?>
+					      <div class="wpsc_variation_forms">
+						      <?php while (wpsc_have_variation_groups()) : wpsc_the_variation_group(); ?>
+							      <tr>
+							        <td>
+								        <label for="<?php echo wpsc_vargrp_form_id(); ?>"><?php echo wpsc_the_vargrp_name(); ?>:</label>
+								      </td>
+								      <td class='right'>
+								        <?php /** the variation HTML and loop */?>
+								        <select class='wpsc_select_variation' name="variation[<?php echo wpsc_vargrp_id(); ?>]" id="<?php echo wpsc_vargrp_form_id(); ?>">
+								        <?php while (wpsc_have_variations()) : wpsc_the_variation(); ?>
+									        <option value="<?php echo wpsc_the_variation_id(); ?>" <?php echo wpsc_the_variation_out_of_stock(); ?>><?php echo wpsc_the_variation_name(); ?></option>
+								        <?php endwhile; ?>
+								        </select> 
+							        </td>
+							        </tr>
+						      <?php endwhile; ?>
+					      </div>
+					      <?php /** the variation group HTML and loop ends here */?>
+								
+			          <!-- THIS IS THE QUANTITY OPTION MUST BE ENABLED FROM ADMIN SETTINGS -->
+			          <?php if(wpsc_has_multi_adding()): ?>
+				          <tr><td>
+				            <label class='wpsc_quantity_update' for='wpsc_quantity_update[<?php echo wpsc_the_product_id(); ?>]'>Cantitate:</label>
+				          </td><td class='right'>
+				            <input type="text" id='wpsc_quantity_update' name="wpsc_quantity_update[<?php echo wpsc_the_product_id(); ?>]" size="2" value="1"/>
+				            <input type="hidden" name="key" value="<?php echo wpsc_the_cart_item_key(); ?>"/>
+				            <input type="hidden" name="wpsc_update_quantity" value="true"/>
+				          </td></tr>
+			          <?php endif ;?>
 					
-					
-					<form class='product_form' enctype="multipart/form-data" action="<?php echo wpsc_this_page_url(); ?>" method="post" name="1" id="product_<?php echo wpsc_the_product_id(); ?>">
-					<?php if(wpsc_product_has_personal_text()) : ?>
-						<div class='custom_text'>
-							<h4><?php echo __('Personalize your product', 'wpsc'); ?></h4>
-							<?php echo __('Complete this form to include a personalized message with your purchase.', 'wpsc'); ?><br />
-							<input type='text' name='custom_text' value=''  />
-						</div>
-					<?php endif; ?>
-					
-					<?php if(wpsc_product_has_supplied_file()) : ?>
-						<div class='custom_file'>
-							<h4><?php echo __('Upload a File', 'wpsc'); ?></h4>
-							<?php echo __('Select a file from your computer to include with this purchase.  ', 'wpsc'); ?><br />
-							<input type='file' name='custom_file' value=''  />
-						</div>
-					<?php endif; ?>
-					
-					
-					<?php /** the variation group HTML and loop */?>
-					<div class="wpsc_variation_forms">
-						<?php while (wpsc_have_variation_groups()) : wpsc_the_variation_group(); ?>
-							
-								<label for="<?php echo wpsc_vargrp_form_id(); ?>"><?php echo wpsc_the_vargrp_name(); ?>:</label>
-								<?php /** the variation HTML and loop */?>
-								<select class='wpsc_select_variation' name="variation[<?php echo wpsc_vargrp_id(); ?>]" id="<?php echo wpsc_vargrp_form_id(); ?>">
-								<?php while (wpsc_have_variations()) : wpsc_the_variation(); ?>
-									<option value="<?php echo wpsc_the_variation_id(); ?>" <?php echo wpsc_the_variation_out_of_stock(); ?>><?php echo wpsc_the_variation_name(); ?></option>
-								<?php endwhile; ?>
-								</select> 
-							
-						<?php endwhile; ?>
-					</div>
-					<?php /** the variation group HTML and loop ends here */?>
-									
-					
-					<!-- THIS IS THE QUANTITY OPTION MUST BE ENABLED FROM ADMIN SETTINGS -->
-					<?php if(wpsc_has_multi_adding()): ?>
+						    <div class="wpsc_product_price">
+							    <?php if(wpsc_product_is_donation()) : ?>
+								    <label for='donation_price_<?php echo wpsc_the_product_id(); ?>'><?php echo __('Donation', 'wpsc'); ?>:</label>
+								    <input type='text' id='donation_price_<?php echo wpsc_the_product_id(); ?>' name='donation_price' value='<?php echo $wpsc_query->product['price']; ?>' size='6' />
+								    <br />													
+							    <?php else : ?>
+								    <?php if(wpsc_product_on_special()) : ?>
+								      <tr><td>
+									      <label><span class='oldprice'>Pret vechi:</span></label> 
+									    </td><td class='right'>
+									      <span class='oldprice'><?php echo wpsc_product_normal_price(); ?></span>
+									    </td></tr>
+								    <?php endif; ?>
+								      <tr><td>
+								        <label>Pret:</label>
+								      </td><td class='right'>
+								        <span id="product_price_<?php echo wpsc_the_product_id(); ?>" class="pricedisplay"><?php echo wpsc_the_product_price(); ?></span>
+								      </td></tr>  
+								      <!-- multi currency code -->
+								      <?php if(wpsc_product_has_multicurrency()) : ?>
+								      <?php echo wpsc_display_product_multicurrency(); ?>
+								      <?php endif; ?>
+								      <!-- end multi currency code -->
+								      <?php if(get_option('display_pnp') == 1) : ?>
+									      <span class="pricedisplay"><?php echo wpsc_product_postage_and_packaging(); ?></span><?php echo __('P&amp;P', 'wpsc'); ?>:  <br />
+								      <?php endif; ?>							
+							      <?php endif; ?>
+						    </div>
+					      
+					      <?php if(function_exists('wpsc_akst_share_link') && (get_option('wpsc_share_this') == 1)) {
+						      echo wpsc_akst_share_link('return');
+					      } ?>
+					      
 						
-						<label class='wpsc_quantity_update' for='wpsc_quantity_update[<?php echo wpsc_the_product_id(); ?>]'>Cantitate:</label>
-						
-						<input type="text" id='wpsc_quantity_update' name="wpsc_quantity_update[<?php echo wpsc_the_product_id(); ?>]" size="2" value="1"/>
-						<input type="hidden" name="key" value="<?php echo wpsc_the_cart_item_key(); ?>"/>
-						<input type="hidden" name="wpsc_update_quantity" value="true"/>
-						
-					<?php endif ;?>
-					
-						<div class="wpsc_product_price">
-							<?php if(wpsc_product_is_donation()) : ?>
-								<label for='donation_price_<?php echo wpsc_the_product_id(); ?>'><?php echo __('Donation', 'wpsc'); ?>:</label>
-								<input type='text' id='donation_price_<?php echo wpsc_the_product_id(); ?>' name='donation_price' value='<?php echo $wpsc_query->product['price']; ?>' size='6' />
-								<br />
+					      <input type="hidden" value="add_to_cart" name="wpsc_ajax_action"/>
+					      <input type="hidden" value="<?php echo wpsc_the_product_id(); ?>" name="product_id"/>
 							
-							
-							<?php else : ?>
-								<?php if(wpsc_product_on_special()) : ?>
-									<span class='oldprice'>Pret vechi: <?php echo wpsc_product_normal_price(); ?></span><br />
-								<?php endif; ?>
-								<span id="product_price_<?php echo wpsc_the_product_id(); ?>" class="pricedisplay"><?php echo wpsc_the_product_price(); ?></span>
-								Pret:
-								<br/>
-								<!-- multi currency code -->
-								<?php if(wpsc_product_has_multicurrency()) : ?>
-								<?php echo wpsc_display_product_multicurrency(); ?>
-								<?php endif; ?>
-								<!-- end multi currency code -->
-								<?php if(get_option('display_pnp') == 1) : ?>
-									<span class="pricedisplay"><?php echo wpsc_product_postage_and_packaging(); ?></span><?php echo __('P&amp;P', 'wpsc'); ?>:  <br />
-								<?php endif; ?>							
-							<?php endif; ?>
-						</div>
-					<?php if(function_exists('wpsc_akst_share_link') && (get_option('wpsc_share_this') == 1)) {
-						echo wpsc_akst_share_link('return');
-					} ?>
-						
-					<input type="hidden" value="add_to_cart" name="wpsc_ajax_action"/>
-					<input type="hidden" value="<?php echo wpsc_the_product_id(); ?>" name="product_id"/>
-							
-					<?php if(wpsc_product_is_customisable()) : ?>				
-						<input type="hidden" value="true" name="is_customisable"/>
-					<?php endif; ?>
-					
-					
-					<!-- END OF QUANTITY OPTION -->
-					<?php if((get_option('hide_addtocart_button') == 0) && (get_option('addtocart_or_buynow') !='1')) : ?>
-						<?php if(wpsc_product_has_stock()) : ?>
-							<?php if(wpsc_product_external_link(wpsc_the_product_id()) != '') : ?>
-								<?php	$action =  wpsc_product_external_link(wpsc_the_product_id()); ?>
-								<input class="wpsc_buy_button" type='button' value='<?php echo __('Buy Now', 'wpsc'); ?>' onclick='gotoexternallink("<?php echo $action; ?>")'>
-							<?php else: ?>
-								<input type="submit" value="Adauga la cos" name="Buy" class="wpsc_buy_button" id="product_<?php echo wpsc_the_product_id(); ?>_submit_button"/>
-							<?php endif; ?>							  		
-							<br/>
-							<div class='checkout'>
-							  <FORM>
-                  <INPUT TYPE="BUTTON" class='checkout-button' VALUE="Cos cumparaturi" ONCLICK='gotoexternallink("<?php echo bloginfo(home) ?>/cos-cumparaturi")'>
-                </FORM>
-							</div>
-							<div class='wpsc_loading_animation'>
-								<img title="Loading" alt="Loading" src="<?php echo WPSC_URL ;?>/images/indicator.gif" class="loadingimage" />
-								Actualizare cos...
-							</div>
-							
-						<?php else : ?>
-							<p class='soldout'><?php echo __('This product has sold out.', 'wpsc'); ?></p>
-						<?php endif ; ?>
-					<?php endif ; ?>
+					      <?php if(wpsc_product_is_customisable()) : ?>				
+						      <input type="hidden" value="true" name="is_customisable"/>
+					      <?php endif; ?>
+										
+					      <!-- END OF QUANTITY OPTION -->
+					      
+					      <?php if((get_option('hide_addtocart_button') == 0) && (get_option('addtocart_or_buynow') !='1')) : ?>
+						      <?php if(wpsc_product_has_stock()) : ?>
+							      <?php if(wpsc_product_external_link(wpsc_the_product_id()) != '') : ?>
+								      <?php	$action =  wpsc_product_external_link(wpsc_the_product_id()); ?>
+								      <input class="wpsc_buy_button" type='button' value='<?php echo __('Buy Now', 'wpsc'); ?>' onclick='gotoexternallink("<?php echo $action; ?>")'>
+							      <?php else: ?>
+							        <tr><td colspan=2>
+								      <input type="submit" value="Adauga la cos" name="Buy" class="wpsc_buy_button" id="product_<?php echo wpsc_the_product_id(); ?>_submit_button"/>
+							      <?php endif; ?>							  		
+							      </td><tr>
+							      <tr><td colspan=2>
+							        <FORM>
+                        <INPUT TYPE="BUTTON" class='checkout-button' VALUE="Cos cumparaturi" ONCLICK='gotoexternallink("<?php echo bloginfo(home) ?>/cos-cumparaturi")'>
+                      </FORM>							        
+							      </td></tr> 
+							      <tr><td colspan=2>
+							        <div class='wpsc_loading_animation'>
+								        <img title="Loading" alt="Loading" src="<?php echo WPSC_URL ;?>/images/indicator.gif" class="loadingimage" />
+								          Actualizare cos...
+							        </div>
+							       </td></tr>
+							      </table>
+							      							
+						      <?php else : ?>
+							      <p class='soldout'><?php echo __('This product has sold out.', 'wpsc'); ?></p>
+						      <?php endif ; ?>
+					      <?php endif ; ?>
 					</form>
 					
 					<?php if((get_option('hide_addtocart_button') == 0) && (get_option('addtocart_or_buynow')=='1')) : ?>
@@ -197,7 +148,7 @@
 						endif;
 
 						echo wpsc_also_bought(wpsc_the_product_id());
-					?>
+					?>					
 					</div>
 		
 					<form onsubmit="submitform(this);return false;" action="<?php echo wpsc_this_page_url(); ?>" method="post" name="product_<?php echo wpsc_the_product_id(); ?>" id="product_extra_<?php echo wpsc_the_product_id(); ?>">

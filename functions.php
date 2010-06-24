@@ -28,6 +28,19 @@ function post_id($product_id) {
   return $id;
 }
 
+// Get post attachements
+function post_attachements($post_id) {  
+  $args = array(
+	  'post_type' => 'attachment',
+	  'numberposts' => null,
+	  'post_status' => null,
+	  'post_parent' => $post_id,
+	  'orderby' => 'date',
+	  'order' => 'ASC'
+  ); 
+  $attachments = get_posts($args);
+  return $attachments;
+}
 
 
 // Product navigation

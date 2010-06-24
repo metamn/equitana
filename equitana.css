@@ -115,10 +115,7 @@ p.breadcrumb {
 
 
 /* wp-e-commerce overwrites */
-#shopping .productdisplay {
-  clear: none !important;
-  margin-bottom: 0 !important;  
-}
+
 #shopping .productdisplay .textcol {
   margin-left: 0 !important;
   float: none !important;
@@ -130,25 +127,30 @@ p.breadcrumb {
 #shopping .productdisplay .textcol .producttext .product_form {
   padding: 1em 0;
 }
-#shopping .productdisplay .textcol .producttext .product_form .wpsc_variation_forms label {
-  padding-right: 1em;
-}
-#shopping .productdisplay .textcol .producttext .product_form .wpsc_product_price {
-  font-weight: bold;
-  padding: .5em 0;
-}
-#shopping .productdisplay .textcol .producttext .product_form .wpsc_product_price .oldprice {
+#shopping .oldprice {
   color: #de0015;
 }
-#shopping .wpsc_loading_animation {
-  clear: both;
-}
-#shopping .checkout {
-  clear: both;
+#shopping span.pricedisplay {
+  float: none !important;
+  width: 100% important;
 }
 #shopping input.wpsc_buy_button, #shopping input.checkout-button {
   font-size: small;
-  width: 128px;
+  width: 100%;
+}
+table td.right {
+  text-align: right;
+}
+
+
+/* Promo, Top Sales, ...
+*/
+
+#content.meta #product #shopping .imagecol {
+  display: none;
+}
+#content.meta table {
+  width: 50%;
 }
 
 
@@ -195,7 +197,7 @@ p.breadcrumb {
   padding: .5em 0;
 }
 #content.single #shopping .imagecol {
-  display: none
+  display: none;
 }
 #content.single #shopping .producttext {
   margin-top: 3em !important;
