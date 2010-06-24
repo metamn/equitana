@@ -226,29 +226,44 @@
 
 	 <?php if(!is_user_logged_in() && get_option('users_can_register') && get_option('require_register')) :
 			 global $current_user;
-    		 get_currentuserinfo();	  ?>
-		<h2><?php _e('Not yet a member?');?></h2>
-		<p><?php _e('In order to buy from us, you\'ll need an account. Joining is free and easy. All you need is a username, password and valid email address.');?></p>
-		<?php	if(count($_SESSION['wpsc_checkout_user_error_messages']) > 0) : ?>
-			<div class="login_error"> 
-				<?php		  
-				foreach($_SESSION['wpsc_checkout_user_error_messages'] as $user_error ) {
-				  echo $user_error."<br />\n";
-				}
-				$_SESSION['wpsc_checkout_user_error_messages'] = array();
-				?>			
-		  </div>
-		<?php endif; ?>
+			 get_currentuserinfo();	  ?>
 		
+		  <h2><?php _e('Not yet a member?');?></h2>
+		  <p><?php _e('In order to buy from us, you\'ll need an account. Joining is free and easy. All you need is a username, password and valid email address.');?></p>
 		
-	  <fieldset class='wpsc_registration_form'>
-			<label><?php _e('Username'); ?>:</label><input type="text" name="log" id="log" value="" size="20"/>
-			<label><?php _e('Password'); ?>:</label><input type="password" name="pwd" id="pwd" value="" size="20" />
-			<label><?php _e('E-mail'); ?>:</label><input type="text" name="user_email" id="user_email" value="<?php echo attribute_escape(stripslashes($user_email)); ?>" size="20" />
-		</fieldset>
+	    <?php	if(count($_SESSION['wpsc_checkout_user_error_messages']) > 0) : ?>
+		    <div class="login_error"> 
+			    <?php		  
+			    foreach($_SESSION['wpsc_checkout_user_error_messages'] as $user_error ) {
+			      echo $user_error."<br />\n";
+			    }
+			    $_SESSION['wpsc_checkout_user_error_messages'] = array();
+			    ?>			
+	      </div>
+	    <?php endif; ?>		
+		
+      <fieldset class='wpsc_registration_form'>
+		    <label><?php _e('Username'); ?>:</label><input type="text" name="log" id="log" value="" size="20"/>
+		    <label><?php _e('Password'); ?>:</label><input type="password" name="pwd" id="pwd" value="" size="20" />
+		    <label><?php _e('E-mail'); ?>:</label><input type="text" name="user_email" id="user_email" value="<?php echo attribute_escape(stripslashes($user_email)); ?>" size="20" />
+	    </fieldset>
 	<?php endif; ?>
 	
-	
+	<?php 
+	  if (is_user_logged_in()) {
+	    $current_user = wp_get_current_user();
+	    if ( !($current_user instanceof WP_User) )
+        return;
+      
+      echo 'Username: ' . $current_user->user_login . '<br />';
+      echo 'User email: ' . $current_user->user_email . '<br />';
+      echo 'User level: ' . $current_user->user_level . '<br />';
+      echo 'User first name: ' . $current_user->user_firstname . '<br />';
+      echo 'User last name: ' . $current_user->user_lastname . '<br />';
+      echo 'User display name: ' . $current_user->display_name . '<br />';
+      echo 'User ID: ' . $current_user->ID . '<br />';
+	  }
+	?>
 
 	<h2>Va rugam completati formularul de mai jos</h2>	
 	Campurile marcate cu * sunt obligatorii.

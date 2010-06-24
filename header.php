@@ -41,11 +41,26 @@
 	      
 	      <div id="navigation" class="column span-12 last">
 	        <div id="inner">
-	          <a href="<?php bloginfo('home'); ?>/#info" alt="Informatii" title="Informatii"><span class="ui-icon ui-icon-info"/></span></a> 
-		        &nbsp;
-		        <a href="<?php bloginfo('home'); ?>/cos-cumparaturi" alt="Cos cumparaturi" title="Cos cumparaturi"><span class="ui-icon ui-icon-cart"/></span></a>
-		        &nbsp;
+	          <ul class="inline-list">
+	          <li>
+	            <a href="<?php bloginfo('home'); ?>/#info" alt="Informatii" title="Informatii"><span class="ui-icon ui-icon-info"/></span></a> 
+	          </li>
+		        <li>
 		        <a href="<?php bloginfo('home'); ?>/#wptouch-search" alt="Cautare" title="Cautare"><span class="ui-icon ui-icon-search"/></span></a>
+		        </li>
+		        <li>		        
+		        <a href="<?php bloginfo('home'); ?>/cos-cumparaturi" alt="Cos cumparaturi" title="Cos cumparaturi"><span class="ui-icon ui-icon-cart"/></span></a>
+            <span class="cart-content">(<?php echo wpsc_cart_item_count() ?>)</span>
+		        </li>
+		        <?php if (is_user_logged_in()) {
+		          $current_user = wp_get_current_user();
+	            if (($current_user instanceof WP_User)) { ?>
+	              <li>
+	              <span class="ui-icon ui-icon-person"/></span>
+	              <a class="user" href="<?php bloginfo('home'); ?>/cont-cumparaturi" alt="Cont cumparaturi" title="Cont cumparaturi">(<?php echo $current_user->display_name; ?>)</a>
+	              </li>
+		        <?php } } ?>
+		        </ul>  
 	        </div>
 	      </div>
 	    </div>	

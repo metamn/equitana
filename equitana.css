@@ -48,9 +48,24 @@ body {
   float: right;
   margin: 5em .5em 0 0;
 }
-#navigation #inner a {
+#navigation #inner ul {
+  margin: 0;
+}
+#navigation #inner .ui-icon-person, #navigation #inner .ui-icon-cart {
   display: inline-block;
 }
+#navigation #inner a.user, #navigation #inner .cart-content {
+  top: -.3em;
+  position: relative;
+}
+#navigation #inner a:visited {
+  color: #000;
+  text-decoration: none;
+}
+#navigation #inner a:active, #navigation #inner a:hover {
+  text-decoration: underline;
+}
+
 #menu {
   background: #ddd;
 }

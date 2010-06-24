@@ -15,6 +15,12 @@ define("STIRI", 6);
 // Shopping cart
 // -------------
 
+
+// Get shopping cart contents 
+function get_cart_info() {
+
+}
+
 // Get the post ID from the product ID
 function post_id($product_id) {
   $posts = get_posts("posts_per_page=1&meta_key=product_id&meta_value=" . $product_id);
@@ -41,6 +47,7 @@ function post_attachements($post_id) {
   $attachments = get_posts($args);
   return $attachments;
 }
+
 
 
 // Product navigation
@@ -73,6 +80,9 @@ function get_product_category_ids() {
   }
   return $ret;
 }
+
+
+
 
 
 // Common wordpress
