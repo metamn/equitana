@@ -51,15 +51,19 @@
 		        <li>		        
 		        <a href="<?php bloginfo('home'); ?>/cos-cumparaturi" alt="Cos cumparaturi" title="Cos cumparaturi"><span class="ui-icon ui-icon-cart"/></span></a>
             <span class="cart-content">(<?php echo wpsc_cart_item_count() ?>)</span>
-		        </li>
-		        <?php if (is_user_logged_in()) {
-		          $current_user = wp_get_current_user();
-	            if (($current_user instanceof WP_User)) { ?>
-	              <li>
-	              <span class="ui-icon ui-icon-person"/></span>
-	              <a class="user" href="<?php bloginfo('home'); ?>/cont-cumparaturi" alt="Cont cumparaturi" title="Cont cumparaturi">(<?php echo $current_user->display_name; ?>)</a>
-	              </li>
-		        <?php } } ?>
+		        </li>	
+		        <li>	        
+	            <?php if (is_user_logged_in()) {
+	              $current_user = wp_get_current_user();
+                if (($current_user instanceof WP_User)) { ?>	                                
+	                <span class="ui-icon ui-icon-person"/></span>
+                  <a class="user" href="<?php bloginfo('home'); ?>/cont-cumparaturi" alt="Cont cumparaturi" title="Cont cumparaturi">(<?php echo $current_user->display_name; ?>)</a>                  
+	            <?php } } else { ?>
+	              <a href="<?php echo wp_login_url(get_bloginfo('url'))?>" alt="Intrare / inregistrare cont" title="Intrare / inregistrare cont">
+	                <span class="ui-icon ui-icon-person"/></span>
+	              </a>
+	            <?php } ?>
+	           </li>
 		        </ul>  
 	        </div>
 	      </div>

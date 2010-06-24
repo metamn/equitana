@@ -39,6 +39,8 @@ $date_list[0]['end'] = $end_timestamp;
        | 
       <a href="<?php bloginfo('home') ?>/cont-cumparaturi/?edit_profile=true">Detalii facturare/livrare</a>
        | 
+      <a href="<?php echo wp_logout_url(get_bloginfo('url')); ?>">Iesire din cont</a>
+       |    
       <a href="<?php bloginfo('home') ?>/wp-admin/profile.php">Modificare cont utilizator</a> 
     </div>
     <br/>
