@@ -223,181 +223,192 @@
 	    * Both the registration forms and the checkout details forms must be in the same form element as they are submitted together, you cannot have two form elements submit together without the use of JavaScript.
 	   */
 	   ?>
+	   
+	   
+	   
+	   
+	   
+	   
 
-	 <?php if(!is_user_logged_in() && get_option('users_can_register') && get_option('require_register')) :
+	 <?php if(!is_user_logged_in() && get_option('users_can_register') && get_option('require_register')) {
 			 global $current_user;
 			 get_currentuserinfo();	  ?>
 		
-		  <h2><?php _e('Not yet a member?');?></h2>
-		  <p><?php _e('In order to buy from us, you\'ll need an account. Joining is free and easy. All you need is a username, password and valid email address.');?></p>
-		
-	    <?php	if(count($_SESSION['wpsc_checkout_user_error_messages']) > 0) : ?>
-		    <div class="login_error"> 
-			    <?php		  
-			    foreach($_SESSION['wpsc_checkout_user_error_messages'] as $user_error ) {
-			      echo $user_error."<br />\n";
-			    }
-			    $_SESSION['wpsc_checkout_user_error_messages'] = array();
-			    ?>			
-	      </div>
-	    <?php endif; ?>		
-		
-      <fieldset class='wpsc_registration_form'>
-		    <label><?php _e('Username'); ?>:</label><input type="text" name="log" id="log" value="" size="20"/>
-		    <label><?php _e('Password'); ?>:</label><input type="password" name="pwd" id="pwd" value="" size="20" />
-		    <label><?php _e('E-mail'); ?>:</label><input type="text" name="user_email" id="user_email" value="<?php echo attribute_escape(stripslashes($user_email)); ?>" size="20" />
-	    </fieldset>
-	<?php endif; ?>
+		  <h2>Inca nu aveti cont?</h2>
+		  <p>
+		    Trebuie sa va inregistrati mai intai pentru a cumpara de la noi.
+		    <br/>
+		    Procedura de inregistrare este foarte simpla, aveti nevoie numai de o adresa e-mail.
+		  </p>		
+		  
+		  <a href="<?php echo wp_login_url(get_option('shopping_cart_url'))?>" alt="Intrare / inregistrare cont" title="Intrare / inregistrare cont">
+		    Intrare in cont / inregistrare cont
+		  </a>
+
+	    
+	<?php } else { ?>
 	
-	<?php 
-	  if (is_user_logged_in()) {
-	    $current_user = wp_get_current_user();
-	    if ( !($current_user instanceof WP_User) )
-        return;
-      
-      echo 'Username: ' . $current_user->user_login . '<br />';
-      echo 'User email: ' . $current_user->user_email . '<br />';
-      echo 'User level: ' . $current_user->user_level . '<br />';
-      echo 'User first name: ' . $current_user->user_firstname . '<br />';
-      echo 'User last name: ' . $current_user->user_lastname . '<br />';
-      echo 'User display name: ' . $current_user->display_name . '<br />';
-      echo 'User ID: ' . $current_user->ID . '<br />';
-	  }
-	?>
+	    <?php 
+	      if (is_user_logged_in()) {
+	        $current_user = wp_get_current_user();
+	        if ( !($current_user instanceof WP_User) )
+            return; ?>
+          
+          <h2>Cont cumparaturi</h2>
+          <ul>
+            <li>Nume utilizator: <?php echo $current_user->display_name ?></li>
+            <li>Adresa email: <?php echo $current_user->user_email ?></li>
+          </ul>
+          <div class='user-profile-links'>
+            <a href="<?php bloginfo('home') ?>/cont-cumparaturi/">Istoric comenzi</a>
+            | 
+            <a href="<?php bloginfo('home') ?>/cont-cumparaturi/?edit_profile=true">Detalii facturare/livrare</a>
+            | 
+            <a href="<?php echo wp_logout_url(get_bloginfo('url')); ?>">Iesire din cont</a>
+            | 
+            <a href="<?php bloginfo('home') ?>/wp-admin/profile.php">Modificare cont utilizator</a> 
+          </div>  
+          <br/><br/>   
+      <?php } ?>
+	    
+	    <h3>Va rugam verificati daca datele sunt corecte in formularul de mai jos</h3>	
+	    <p>Campurile marcate cu * sunt obligatorii.</p>
+	    
+	    <p>
+	      <input type='submit' value="Datele sunt corecte, trimit imediat comanda" name='submit' class='make_purchase' />
+	    </p>
+	    
+	    <?php
+	      if(count($_SESSION['wpsc_checkout_misc_error_messages']) > 0) {
+			    echo "<div class='login_error'>\n\r";
+			    foreach((array)$_SESSION['wpsc_checkout_misc_error_messages'] as $user_error ) {
+				    echo $user_error."<br />\n";
+			    }
+			    echo "</div>\n\r";
+		    }
+		    $_SESSION['wpsc_checkout_misc_error_messages'] =array();
+	    ?>
+	    <table class='wpsc_checkout_table'>
+		    <?php while (wpsc_have_checkout_items()) : wpsc_the_checkout_item(); ?>
+			    <?php if(wpsc_is_shipping_details()) : ?>
+					    <tr>
+						    <td colspan ='2'>
+							    <br/><br/>
+							    <input type='checkbox' value='true' name='shippingSameBilling' id='shippingSameBilling' />
+							    <label for='shippingSameBilling'>Adresa de livrare este acelasi ca adresa de facturare?</label>						
+							    <br/><br/>
+						    </td>
+					    </tr>
+			    <?php endif; ?>
 
-	<h2>Va rugam completati formularul de mai jos</h2>	
-	Campurile marcate cu * sunt obligatorii.
-	<?php
-	  if(count($_SESSION['wpsc_checkout_misc_error_messages']) > 0) {
-			echo "<div class='login_error'>\n\r";
-			foreach((array)$_SESSION['wpsc_checkout_misc_error_messages'] as $user_error ) {
-				echo $user_error."<br />\n";
-			}
-			echo "</div>\n\r";
-		}
-		$_SESSION['wpsc_checkout_misc_error_messages'] =array();
-	?>
-	<table class='wpsc_checkout_table'>
-		<?php while (wpsc_have_checkout_items()) : wpsc_the_checkout_item(); ?>
-			<?php if(wpsc_is_shipping_details()) : ?>
-					<tr>
-						<td colspan ='2'>
-							<br/><br/>
-							<input type='checkbox' value='true' name='shippingSameBilling' id='shippingSameBilling' />
-							<label for='shippingSameBilling'>Adresa de livrare este acelasi ca adresa de facturare?</label>						
-							<br/><br/>
-						</td>
-					</tr>
-			<?php endif; ?>
-
-		  <?php if(wpsc_checkout_form_is_header() == true) : ?>
-		  		<tr <?php echo wpsc_the_checkout_item_error_class();?>>
-			<td <?php if(wpsc_is_shipping_details()) echo "class='wpsc_shipping_forms'"; ?> colspan='2'>
-				<h3>
-					<?php echo wpsc_checkout_form_name();?>
-				</h3>
-			</td>
-				</tr>
-		  <?php else: ?>
-		  <?php if((!wpsc_uses_shipping()) && $wpsc_checkout->checkout_item->unique_name == 'shippingstate'): ?>
-		  <?php else : ?>
-		  		<tr <?php echo wpsc_the_checkout_item_error_class();?>>
-			<td>
-				<label for='<?php echo wpsc_checkout_form_element_id(); ?>'>
-				<?php echo wpsc_checkout_form_name();?>
-				</label>
-			</td>
-			<td>
-				<?php echo wpsc_checkout_form_field();?>
-				
-		    <?php if(wpsc_the_checkout_item_error() != ''): ?>
-		    <p class='validation-error'><?php echo wpsc_the_checkout_item_error(); ?></p>
-		    
-			<?php endif; ?>
-			</td>
-			</tr>
-			<?php endif; ?>
+		      <?php if(wpsc_checkout_form_is_header() == true) : ?>
+		      		<tr <?php echo wpsc_the_checkout_item_error_class();?>>
+			          <td <?php if(wpsc_is_shipping_details()) echo "class='wpsc_shipping_forms'"; ?> colspan='2'>
+				          <h3>
+					          <?php echo wpsc_checkout_form_name();?>
+				          </h3>
+			          </td>
+				    </tr>
+		      <?php else: ?>
+		      <?php if((!wpsc_uses_shipping()) && $wpsc_checkout->checkout_item->unique_name == 'shippingstate'): ?>
+		      <?php else : ?>
+		      		<tr <?php echo wpsc_the_checkout_item_error_class();?>>
+			        <td>
+				        <label for='<?php echo wpsc_checkout_form_element_id(); ?>'>
+				        <?php echo wpsc_checkout_form_name();?>
+				        </label>
+			        </td>
+			        <td>
+				        <?php echo wpsc_checkout_form_field();?>				
+		            <?php if(wpsc_the_checkout_item_error() != ''): ?>
+		              <p class='validation-error'><?php echo wpsc_the_checkout_item_error(); ?></p>		    
+			          <?php endif; ?>
+		          </td>
+		          </tr>
+			    <?php endif; ?>		
+			    <?php endif; ?>		
+		    <?php endwhile; ?>
 		
-			<?php endif; ?>
 		
-		<?php endwhile; ?>
-		
-		<?php if (get_option('display_find_us') == '1') : ?>
-		<tr>
-			<td>How did you find us:</td>
-			<td>
-				<select name='how_find_us'>
-					<option value='Word of Mouth'>Word of mouth</option>
-					<option value='Advertisement'>Advertising</option>
-					<option value='Internet'>Internet</option>
-					<option value='Customer'>Existing Customer</option>
-				</select>
-			</td>
-		</tr>
-		<?php endif; ?>		
-		<tr>
-			<td colspan='2' class='wpsc_gateway_container'>
+		    <?php if (get_option('display_find_us') == '1') : ?>
+		    <tr>
+			    <td>How did you find us:</td>
+			    <td>
+				    <select name='how_find_us'>
+					    <option value='Word of Mouth'>Word of mouth</option>
+					    <option value='Advertisement'>Advertising</option>
+					    <option value='Internet'>Internet</option>
+					    <option value='Customer'>Existing Customer</option>
+				    </select>
+			    </td>
+		    </tr>
+		    <?php endif; ?>		
+		    <tr>
+			    <td colspan='2' class='wpsc_gateway_container'>
 			
-			<?php  //this HTML displays activated payment gateways?>
-			  
-				<?php if(wpsc_gateway_count() > 1): // if we have more than one gateway enabled, offer the user a choice ?>
-					<h3><?php echo __('Select a payment gateway', 'wpsc');?></h3>
-					<?php while (wpsc_have_gateways()) : wpsc_the_gateway(); ?>
-						<div class="custom_gateway">
-							<?php if(wpsc_gateway_internal_name() == 'noca'){ ?>
-								<label><input type="radio" id='noca_gateway' value="<?php echo wpsc_gateway_internal_name();?>" <?php echo wpsc_gateway_is_checked(); ?> name="custom_gateway" class="custom_gateway"/><?php echo wpsc_gateway_name();?></label>
-							<?php }else{ ?>
-								<label><input type="radio" value="<?php echo wpsc_gateway_internal_name();?>" <?php echo wpsc_gateway_is_checked(); ?> name="custom_gateway" class="custom_gateway"/><?php echo wpsc_gateway_name();?></label>
-							<?php } ?>
+			    <?php  //this HTML displays activated payment gateways?>
+			      
+				    <?php if(wpsc_gateway_count() > 1): // if we have more than one gateway enabled, offer the user a choice ?>
+					    <h3><?php echo __('Select a payment gateway', 'wpsc');?></h3>
+					    <?php while (wpsc_have_gateways()) : wpsc_the_gateway(); ?>
+						    <div class="custom_gateway">
+							    <?php if(wpsc_gateway_internal_name() == 'noca'){ ?>
+								    <label><input type="radio" id='noca_gateway' value="<?php echo wpsc_gateway_internal_name();?>" <?php echo wpsc_gateway_is_checked(); ?> name="custom_gateway" class="custom_gateway"/><?php echo wpsc_gateway_name();?></label>
+							    <?php }else{ ?>
+								    <label><input type="radio" value="<?php echo wpsc_gateway_internal_name();?>" <?php echo wpsc_gateway_is_checked(); ?> name="custom_gateway" class="custom_gateway"/><?php echo wpsc_gateway_name();?></label>
+							    <?php } ?>
 
 							
-							<?php if(wpsc_gateway_form_fields()): ?> 
-								<table class='<?php echo wpsc_gateway_form_field_style();?>'>
-									<?php echo wpsc_gateway_form_fields();?> 
-								</table>		
-							<?php endif; ?>			
-						</div>
-					<?php endwhile; ?>
-				<?php else: // otherwise, there is no choice, stick in a hidden form ?>
-					<?php while (wpsc_have_gateways()) : wpsc_the_gateway(); ?>
-						<input name='custom_gateway' value='<?php echo wpsc_gateway_internal_name();?>' type='hidden' />
+							    <?php if(wpsc_gateway_form_fields()): ?> 
+								    <table class='<?php echo wpsc_gateway_form_field_style();?>'>
+									    <?php echo wpsc_gateway_form_fields();?> 
+								    </table>		
+							    <?php endif; ?>			
+						    </div>
+					    <?php endwhile; ?>
+				    <?php else: // otherwise, there is no choice, stick in a hidden form ?>
+					    <?php while (wpsc_have_gateways()) : wpsc_the_gateway(); ?>
+						    <input name='custom_gateway' value='<?php echo wpsc_gateway_internal_name();?>' type='hidden' />
 						
-							<?php if(wpsc_gateway_form_fields()): ?> 
-								<table>
-									<?php echo wpsc_gateway_form_fields();?> 
-								</table>		
-							<?php endif; ?>	
-					<?php endwhile; ?>				
-				<?php endif; ?>				
+							    <?php if(wpsc_gateway_form_fields()): ?> 
+								    <table>
+									    <?php echo wpsc_gateway_form_fields();?> 
+								    </table>		
+							    <?php endif; ?>	
+					    <?php endwhile; ?>				
+				    <?php endif; ?>				
 				
-			</td>
-		</tr>
-		<?php if(get_option('terms_and_conditions') != '') : ?>
-		<tr>
-			<td colspan='2'>
-     			 <input type='checkbox' value='yes' name='agree' /> <?php echo __('I agree to The ', 'wpsc');?><a class='thickbox' target='_blank' href='<?php
-      echo site_url('?termsandconds=true&amp;width=360&amp;height=400'); ?>' class='termsandconds'><?php echo __('Terms and Conditions', 'wpsc');?></a>
-   		   </td>
- 	   </tr>
-		<?php endif; ?>	
-		<tr>
-			<td colspan='2'>
-				<?php if(get_option('terms_and_conditions') == '') : ?>
-					<input type='hidden' value='yes' name='agree' />
-				<?php endif; ?>	
-				<?php //exit('<pre>'.print_r($wpsc_gateway->wpsc_gateways[0]['name'], true).'</pre>');
-				 if(count($wpsc_gateway->wpsc_gateways) == 1 && $wpsc_gateway->wpsc_gateways[0]['name'] == 'Noca'){}else{?>
-					<input type='hidden' value='submit_checkout' name='wpsc_action' />
-					<input type='submit' value='Trimitere comanda' name='submit' class='make_purchase' />
-				<?php }/* else: ?>
+			    </td>
+		    </tr>
+		    <?php if(get_option('terms_and_conditions') != '') : ?>
+		    <tr>
+			    <td colspan='2'>
+         			 <input type='checkbox' value='yes' name='agree' /> <?php echo __('I agree to The ', 'wpsc');?><a class='thickbox' target='_blank' href='<?php
+          echo site_url('?termsandconds=true&amp;width=360&amp;height=400'); ?>' class='termsandconds'><?php echo __('Terms and Conditions', 'wpsc');?></a>
+       		   </td>
+     	   </tr>
+		    <?php endif; ?>	
+		    <tr>
+			    <td colspan='2'>
+				    <?php if(get_option('terms_and_conditions') == '') : ?>
+					    <input type='hidden' value='yes' name='agree' />
+				    <?php endif; ?>	
+				    <?php //exit('<pre>'.print_r($wpsc_gateway->wpsc_gateways[0]['name'], true).'</pre>');
+				     if(count($wpsc_gateway->wpsc_gateways) == 1 && $wpsc_gateway->wpsc_gateways[0]['name'] == 'Noca'){}else{?>
+					    <input type='hidden' value='submit_checkout' name='wpsc_action' />
+					    <input type='submit' value='Trimitere comanda' name='submit' class='make_purchase' />
+				    <?php }/* else: ?>
 				
-				<br /><strong><?php echo __('Please login or signup above to make your purchase', 'wpsc');?></strong><br />
-				<?php echo __('If you have just registered, please check your email and login before you make your purchase', 'wpsc');?>
-				</td>
-				<?php endif;  */?>				
-			</td>
-		</tr>
-	</table>
+				    <br /><strong><?php echo __('Please login or signup above to make your purchase', 'wpsc');?></strong><br />
+				    <?php echo __('If you have just registered, please check your email and login before you make your purchase', 'wpsc');?>
+				    </td>
+				    <?php endif;  */?>				
+			    </td>
+		    </tr>
+	    </table>
+	
+	<?php } ?> ,<!-- end for logged in or not-->    
+	    
 </form>
 </div>
 <?php
