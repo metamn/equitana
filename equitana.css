@@ -44,27 +44,34 @@ body {
 /* Header
 */
 
-#navigation #inner {
+#navigation .inner {
   float: right;
-  margin: 5em .5em 0 0;
+  margin-right: 0em;
 }
-#navigation #inner ul {
+
+#navigation #icons {  
+  margin-top: 2em;
+  float: right;
+}
+#navigation #icons ul {
   margin: 0;
 }
-#navigation #inner .ui-icon-person, #navigation #inner .ui-icon-cart {
+#navigation #icons .ui-icon-person, #navigation #icons .ui-icon-cart {
   display: inline-block;
 }
-#navigation #inner a.user, #navigation #inner .cart-content {
+#navigation #icons a.user, #navigation #icons .cart-content {
   top: -.3em;
   position: relative;
 }
-#navigation #inner a:visited {
+#navigation #icons a:visited {
   color: #000;
   text-decoration: none;
 }
-#navigation #inner a:active, #navigation #inner a:hover {
+#navigation #icons a:active, #navigation #icons a:hover {
   text-decoration: underline;
 }
+
+
 
 #menu {
   background: #ddd;
