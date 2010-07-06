@@ -48,30 +48,19 @@ body {
   float: right;
   margin-right: 0em;
 }
-
-#navigation #icons {  
-  margin-top: 2em;
+#navigation #languages {
   float: right;
 }
-#navigation #icons ul {
-  margin: 0;
+#navigation #search {
+  margin-top: 4em;
 }
-#navigation #icons .ui-icon-person, #navigation #icons .ui-icon-cart {
-  display: inline-block;
+#navigation #search input {
+  font-size: small;
+  border: 1px solid #cdcdcd;
+  padding: .3em .5em;
+  width: 10.4em;
+  float: right;
 }
-#navigation #icons a.user, #navigation #icons .cart-content {
-  top: -.3em;
-  position: relative;
-}
-#navigation #icons a:visited {
-  color: #000;
-  text-decoration: none;
-}
-#navigation #icons a:active, #navigation #icons a:hover {
-  text-decoration: underline;
-}
-
-
 
 #menu {
   background: #ddd;
@@ -94,7 +83,6 @@ body {
 #menu ul li.current-cat a, #menu ul li.current-cat a:visited{
   color: #fff;
 }
-
 #menu ul li a {
   text-decoration: none;
   font-size: larger;
@@ -105,13 +93,25 @@ body {
 #menu ul li a:hover, #menu ul li a:active {
   color: #DE0015;
 }
-
 #menu ul li.noncat {
   float: right;
+  border-right: none;
+  padding: 1.3em .5em 0;
 }
 #menu ul li.noncat.last {
-  border-left: 1px solid #ddd;
+  margin-right: 1em;
 }
+#menu .ui-icon-person, #menu .ui-icon-cart {
+  display: inline-block;
+}
+#menu a.user, #menu .cart-content {
+  top: -.3em;
+  position: relative;
+}
+#menu ul li a.user {
+  font-size: small;
+}
+
 
 
 #content {

@@ -46,30 +46,9 @@
 	            <?php do_action('icl_language_selector'); ?>
 	          </div>
 	          
-	          <div id="icons">
-	            <ul class="inline-list">
-	              <li>
-	                <a href="<?php bloginfo('home'); ?>/#info" alt="Informatii" title="Informatii"><span class="ui-icon ui-icon-info"/></span></a> 
-	              </li>
-		            <li>		        
-		            <a href="<?php bloginfo('home'); ?>/cos-cumparaturi" alt="Cos cumparaturi" title="Cos cumparaturi"><span class="ui-icon ui-icon-cart"/></span></a>
-                <span class="cart-content">(<?php echo wpsc_cart_item_count() ?>)</span>
-		            </li>	
-		            <li>	        
-	                <?php if (is_user_logged_in()) {
-	                  $current_user = wp_get_current_user();
-                    if (($current_user instanceof WP_User)) { ?>	                                
-	                    <span class="ui-icon ui-icon-person"/></span>
-                      <a class="user" href="<?php bloginfo('home'); ?>/cont-cumparaturi" alt="Cont cumparaturi" title="Cont cumparaturi">(<?php echo $current_user->display_name; ?>)</a>                  
-	                <?php } } else { ?>
-	                  <a href="<?php echo wp_login_url(get_bloginfo('url'))?>" alt="Intrare / inregistrare cont" title="Intrare / inregistrare cont">
-	                    <span class="ui-icon ui-icon-person"/></span>
-	                  </a>
-	                <?php } ?>
-	               </li>
-		          </ul>  
-	          </div>
-	                    
+	          <div id="search">
+	            <?php get_search_form(); ?>
+	          </div>	                    
 	        </div>
 	      </div>
 	    </div>	
@@ -92,7 +71,26 @@
 	         ?>           
           <li class="<?php echo $forum; ?>"><a href="<?php bloginfo('home'); ?>/forum" alt="Forumul Equitana" title="Forumul Equitana">Forum</a></li>	        
           <li class="<?php echo $blog; ?>"><a href="<?php bloginfo('home'); ?>/blog" alt="Blogul Equitana" title="Blogul Equitana">Blog</a></li>
-          <li class="noncat search"><?php get_search_form(); ?></li>
+          
+          <li class="noncat last user">
+            <?php if (is_user_logged_in()) {
+              $current_user = wp_get_current_user();
+              if (($current_user instanceof WP_User)) { ?>	                                
+                <span class="ui-icon ui-icon-person"/></span>
+                <a class="user" href="<?php bloginfo('home'); ?>/cont-cumparaturi" alt="Cont cumparaturi" title="Cont cumparaturi">(<?php echo $current_user->display_name; ?>)</a>                  
+            <?php } } else { ?>
+              <a href="<?php echo wp_login_url(get_bloginfo('url'))?>" alt="Intrare / inregistrare cont" title="Intrare / inregistrare cont">
+                <span class="ui-icon ui-icon-person"/></span>
+              </a>
+            <?php } ?>
+          </li>
+          <li class="noncat cart">
+            <a href="<?php bloginfo('home'); ?>/cos-cumparaturi" alt="Cos cumparaturi" title="Cos cumparaturi"><span class="ui-icon ui-icon-cart"/></span></a>
+            <span class="cart-content">(<?php echo wpsc_cart_item_count() ?>)</span>
+          </li>          
+          <li class="noncat info">
+            <a href="<?php bloginfo('home'); ?>/#info" alt="Informatii" title="Informatii"><span class="ui-icon ui-icon-info"/></span></a> 
+          </li>
         </ul>	       
 	    </div>
 	    		  	
