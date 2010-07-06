@@ -14,7 +14,7 @@
  * @package WordPress
  */
 
-
+# define('ICL_DEBUG_MODE', true);
 define('WP_MEMORY_LIMIT', '64M');
 
 

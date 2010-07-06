@@ -50,6 +50,7 @@ body {
 }
 #navigation #languages {
   float: right;
+  margin-top: .3em;
 }
 #navigation #search {
   margin-top: 4em;
