@@ -232,6 +232,7 @@ p.breadcrumb {
   margin-bottom: 3em;
   overflow: visible;
   color: #f4f4f4;
+  padding: 1em;
   -moz-box-shadow: 0px 0px 4px #6B2105;
   -khtml-box-shadow: 0px 0px 4px #6B2105;
   -webkit-box-shadow: 0px 0px 4px #6B2105;  
@@ -245,8 +246,11 @@ p.breadcrumb {
 	top: -72px;
 	z-index: -1;	 	
 }
-
-#sidebar h4 {
+#sidebar ul.root {
+  font-size: larger;
+  margin-bottom: 3em;
+}
+#sidebar h3 {
   color: #f4f4f4;
 }
 #sidebar a, #sidebar a:visited {
@@ -257,45 +261,17 @@ p.breadcrumb {
   list-style-type: none;
   margin: 0 0 1em 0;
 }
-#sidebar li.widget_collapscat {  
-  font-size: larger;
-  padding: 1em 1em 1em 2.3em;
+#sidebar ul li {
+  margin-bottom: 1em;
 }
-#sidebar li.collapsing.categories.item a.self {
-  font-weight: normal !important;
+#sidebar ul.children li {
+  margin-bottom: 0;
 }
-#sidebar li.widget_collapscat a.current-cat {
-  position: absolute;
-  padding-left: .3em;
+#sidebar li ul {
+  margin: 0 1.5em;
 }
-.highlight-cat {
-  background: #DE0015;  
-  width: 98%;
-  left: 1%;
-  position: absolute;
-  padding: .2em 0 0;
-}
-.current-span {
-  position: relative;
-  z-index: 2;
-  margin-right: .5em;
-}
-.triangle-left {
-   border-color: transparent #616366 transparent transparent;
-  border-style: solid;
-	border-width: 1em;
-	position: relative;
-	left: -245px;
-	top: -15px;
-	z-index: -1;
-}
-.triangle-right {
-  border-color: transparent transparent transparent #DA0015;
-  border-style: solid;
-	border-width: .9em;
-	position: relative;
-	left: 195px;
-	top: -57px;
+#sidebar li.current-cat {
+  background: #DE0015;    
 }
 
 

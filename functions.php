@@ -9,7 +9,7 @@ define("TOPSALES", 4);
 define("PROMO", 5);
 define("NOUTATI", 8);
 define("STIRI", 6);
-
+define("BRANDURI", 24);
 
 
 // Shopping cart
@@ -71,8 +71,17 @@ function is_product_category($is_category) {
 // - returns an array
 function get_product_category_ids() {
   $ret = array();
+  
   $ret[] = PRODUCTS;
   $cats = get_categories('child_of='.PRODUCTS);
+  if ($cats) {
+    foreach ($cats as $c) {      
+      $ret[] = $c->cat_ID; 
+    }
+  }
+  
+  $ret[] = BRANDURI;
+  $cats = get_categories('child_of='.BRANDURI);
   if ($cats) {
     foreach ($cats as $c) {      
       $ret[] = $c->cat_ID; 

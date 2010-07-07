@@ -1,39 +1,22 @@
 <div id="sidebar">
+
+  <h3>Categorii produse</h3>
+  <ul class="categories root">
+    <?php wp_list_categories("child_of=".PRODUCTS."&title_li="); ?>
+  </ul>  
   
-  
-<?php  
-echo '<ul>';
-foreach(get_categories("orderby=name&order=ASC") as $category) {
-  // Get the icon in a variable
-  $my_icon = get_cat_icon('echo=false&cat='.$category->cat_ID);
-  // Display a list with icons and the category names
-  echo '<li>'.$my_icon.' '.$category->cat_name.'<i><font color="#AAA">'.$category->description.'</font></i></li>';
-}
-echo '</ul>';
-?>
-  
-  <ul>
-    <li id="collapscat-3" class="widget widget_collapscat">   
-      <h4>Categorii produse</h4>   
-      <ul id="widget-collapscat-3-top" class="collapsing categories list">
-      <?php
-        $options = array(
-          'showPostCount' => false,
-          'inExclude' => 'include',
-          'inExcludeCats' => PRODUCTS,
-          'showPosts' => false,
-          'expand' => '0',
-          'animate' => true,
-          'showTopLevel' => false,
-          'expandCatPost' => false,
-          'debug' => '0'
-        ); 
-        collapsCat($options); 
-      ?>
-      </ul>
-    </li>
-  </ul> 
-       
+  <h3>Distribuim marcile</h3>
+  <ul class="branduri root">
+    <?php 
+      $cats = get_categories("child_of".BRANDURI);
+      if ($cats) {
+        foreach ($cats as $c) {
+          $logo = get_cat_icon('echo=false&cat='.$c->cat_ID); 
+          echo '<li>'.$logo.'</li>';
+        }
+      }
+    ?>
+  </ul>        
 </div>
 <div class='triangle'></div> 
 
