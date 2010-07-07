@@ -92,6 +92,74 @@ function get_product_category_ids() {
 
 
 
+// Common wordpress
+// ----------------
+
+
+// Used in advanced search
+function create_radio_button_for_category($cat_id, $name) {
+  $ret = "";
+  $cats = get_categories('child_of='.$cat_id);
+  foreach ($cats as $cat) {
+    $ret .= '<input type="radio" name="' . $name . '" value="' . $cat->cat_ID . '"/>';
+    $ret .= $cat->name;
+    $ret .= '<br/>';
+  }
+  return $ret;
+}
+function create_check_box_for_category($cat_id, $name) {
+  $ret = "";
+  $cats = get_categories('child_of='.$cat_id);
+  foreach ($cats as $cat) {
+    $ret .= '<input type="checkbox" name="' . $name . '" value="' . $cat->cat_ID . '"/>';
+    $ret .= $cat->name;
+    $ret .= '<br/>';
+  }
+  return $ret;
+}
+
+// Checks if search results fit advanced search parameters
+function advanced_search($post, $price, $categories) {  
+  // Category checking first
+  if ($categories) {
+    if (in_category($categories, $post)) {
+      $ret = true;
+    } else {
+      $ret = false;
+    }    
+  } else {
+    $ret = true;
+  }
+  
+  // Price checking
+  if ($ret) {
+    if ($price) {
+      $product_price = product_price($post->ID);
+      if ($product_price) {
+        // splitting $price
+        $tmp = explode('-', $price);
+        $lower = (int)$tmp[0];
+        if (!$tmp[1]) {
+          $tmp[1] = 10000;
+        }
+        $higher = (int)$tmp[1];
+         
+        if ($product_price >= $lower && $product_price <= $higher) {
+          $ret = true;
+        } else {
+          $ret = false;
+        }       
+      } else {
+        $ret = false;
+      }      
+    } else {
+      $ret = true;
+    }
+  }  
+  return $ret;
+}
+
+
 
 
 // Common wordpress
