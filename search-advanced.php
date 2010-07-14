@@ -35,13 +35,13 @@ get_header();
           <input type="hidden" name="is-search" value="1" />
                            
           <dt><label for="term">Categorii produse:</label></dt>
-          <dd><?php echo create_check_box_for_category(PRODUCTS, "category[]")?></dd>
+          <dd><?php echo create_check_box_for_category(wpml_id(PRODUCTS), "category[]")?></dd>
                     
           <dt><label for="term">Cautare dupa branduri:</label></dt>
-          <dd><?php echo create_check_box_for_category(BRANDURI, "category-brand[]")?></dd>
+          <dd><?php echo create_check_box_for_category(wpml_id(BRANDURI), "category-brand[]")?></dd>
           
           <dt><label for="term">Produse promotionale si populare</label></dt>
-          <dd><?php echo create_check_box_for_category(META, "category-promo[]")?></dd>
+          <dd><?php echo create_check_box_for_category(wpml_id(META), "category-promo[]")?></dd>
         </dl>
         <input type="submit" id="searchsubmit" value="Cautare" />
       </div>

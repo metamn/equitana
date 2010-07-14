@@ -72,22 +72,36 @@ function is_product_category($is_category) {
 function get_product_category_ids() {
   $ret = array();
   
-  $ret[] = PRODUCTS;
-  $cats = get_categories('child_of='.PRODUCTS);
+  $prod = wpml_id(PRODUCTS);
+  $brands = wpml_id(BRANDURI);
+    
+  $ret[] = $prod;
+  $cats = get_categories('child_of='.$prod);
   if ($cats) {
     foreach ($cats as $c) {      
       $ret[] = $c->cat_ID; 
     }
   }
   
-  $ret[] = BRANDURI;
-  $cats = get_categories('child_of='.BRANDURI);
+  $ret[] = $brands;
+  $cats = get_categories('child_of='.$brands);
   if ($cats) {
     foreach ($cats as $c) {      
       $ret[] = $c->cat_ID; 
     }
   }
   return $ret;
+}
+
+
+// Getting the ID of an internationalized post, page, category or tag
+function wpml_id($id) {
+  if (function_exists('icl_object_id')) {
+    return icl_object_id($id, 'category', true);
+  }
+  else {
+    return $id;
+  }
 }
 
 

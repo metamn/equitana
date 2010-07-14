@@ -9,9 +9,9 @@ get_header();
 
 <?php 
   
-  if (is_category(STIRI)) {
+  if (is_category(wpml_id(STIRI))) {
     include "stiri.php";
-  } elseif (is_category(PROMO) || is_category(TOPSALES) || is_category(NOUTATI)) {
+  } elseif (is_category(wpml_id(PROMO)) || is_category(wpml_id(TOPSALES)) || is_category(wpml_id(NOUTATI))) {
     include "meta.php";
   } else { ?>
     
