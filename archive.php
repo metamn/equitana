@@ -38,12 +38,15 @@ get_header();
      	          </div>
      	        </div>
      	      <?php } else { ?> 
-     	        <h2>Articole din categoria &#8216;<?php single_cat_title(); ?>&#8217;</h2>
+     	        <h2><?php printf(__("You are currently browsing the archives for the %s category."), single_cat_title() ); ?></h2>
      	      <?php }
 		      } elseif( is_tag() ) { ?>
-		        <h2>Articole etichetate cu &#8216;<?php single_tag_title(); ?>&#8217;</h2>   	  
-	        <?php } elseif (is_author()) { ?>
-		        <h2>Articole create de </h2>
+		        <h2><?php echo __("Archives") . " > " . single_cat_title(); ?></h2>   	  
+	        <?php } elseif (is_author()) { 
+	          $userdata = get_userdatabylogin(get_query_var('author_name')); ?>
+		        <h2><?php _e("View posts by this author"); ?> 
+		          <?php echo $userdata->display_name; ?>
+		        </h2>
      	    <?php } else { ?>
 		        <h2><?php if(function_exists('bcn_display')) { bcn_display(); } ?></h2>
      	  <?php } ?>

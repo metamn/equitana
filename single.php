@@ -35,14 +35,14 @@ get_header();
 		  </div>
 			
 			<div class='postmetadata'>
-			  Publicat <?php the_time('l, j F, Y') ?>  
+			  <?php _e('Published on:') . the_time('l, j F, Y'); ?>
         <br/>
-        <?php the_tags('Etichete: ', ', ', '<br />'); ?> 
-        Categorii <?php the_category(', ') ?> 
-        <br/>
-        Adresa <a href="<?php trackback_url(); ?>" rel="trackback">trackback</a> |
-        Adresa <?php post_comments_feed_link('RSS 2.0'); ?> pentru comentarii
-        <?php edit_post_link('Modificare articol',' | ','.')?>
+        <?php the_tags(__('Tags') . ': ', ', ', '<br />'); ?> 
+        <?php _e("Categories") . ': ' . the_category(', ') ?> |			  
+			  <br/>
+        <?php _e("Send trackbacks to:")?> <a href="<?php trackback_url(); ?>" rel="trackback"><?php trackback_url(); ?></a> |
+        <?php post_comments_feed_link(__('Comments (RSS)')); ?>
+        <?php edit_post_link(__('Edit'),' | ','.')?>
 			</div>			
 		</div>
 
