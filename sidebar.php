@@ -5,6 +5,9 @@
     <?php wp_list_categories("child_of=".PRODUCTS."&title_li="); ?>
   </ul>  
   
+  <h3>Cautare avansata</h3>
+  <p>Puteti folosi cautarea avansata ...........<p>
+  
   <h3>Distribuim marcile</h3>
   <ul class="branduri root">
     <?php 

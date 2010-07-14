@@ -62,6 +62,9 @@ body {
   width: 10.4em;
   float: right;
 }
+#navigation #search span {
+  margin-left: .5em;
+}
 
 #menu {
   background: #ddd;
@@ -102,10 +105,10 @@ body {
 #menu ul li.noncat.last {
   margin-right: 1em;
 }
-#menu .ui-icon-person, #menu .ui-icon-cart {
+.ui-icon-person, .ui-icon-cart, .ui-icon-search {
   display: inline-block;
 }
-#menu a.user, #menu .cart-content {
+#menu a.user, #menu .cart-content, a.advanced-search {
   top: -.3em;
   position: relative;
 }
@@ -129,7 +132,7 @@ body {
 /* Product list 
 */
 
-p.breadcrumb {
+.breadcrumb {
   background: #ddd;
   padding: .5em;
 }

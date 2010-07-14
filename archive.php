@@ -30,7 +30,13 @@ get_header();
      	  <?php 
      	    if (is_category()) { 
      	      if ($is_product) { ?>
-     	        <p class="breadcrumb"><?php if(function_exists('bcn_display')) { bcn_display(); } ?></p>
+     	        <div class="breadcrumb">
+     	          <?php if(function_exists('bcn_display')) { bcn_display(); } ?>
+     	          <div class="alignright">
+     	            <span class='ui-icon ui-icon-search'/></span>
+                  <a class="advanced-search" href="<?php bloginfo('home'); ?>/cautare-avansata">Cautare avansata</a> 
+     	          </div>
+     	        </div>
      	      <?php } else { ?> 
      	        <h2>Articole din categoria &#8216;<?php single_cat_title(); ?>&#8217;</h2>
      	      <?php }
@@ -56,7 +62,13 @@ get_header();
 	    endif; ?>
 	    
 	   <?php if ($is_product) { ?> 
-	      <p class="breadcrumb"><?php if(function_exists('bcn_display')) { bcn_display(); } ?></p>
+	      <div class="breadcrumb">
+          <?php if(function_exists('bcn_display')) { bcn_display(); } ?>
+          <div class="alignright">
+            <span class='ui-icon ui-icon-search'/></span>
+            <a class="advanced-search" href="<?php bloginfo('home'); ?>/cautare-avansata">Cautare avansata</a> 
+          </div>
+        </div>
 	    </div>
 	   <?php } ?>
   </div>

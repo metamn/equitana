@@ -33,13 +33,13 @@
 	  <div class="container"> <!-- closed in footer -->
 	    
 	    <div id="header" class="column span-24 last">
-	      <div id="logo" class="column span-12 last">
+	      <div id="logo" class="column span-18 last">
 	        <a href="<?php bloginfo('home') ?>" alt="<?php bloginfo('name') ?> &mdash; <?php bloginfo('description') ?>" title="<?php bloginfo('name') ?> &mdash; <?php bloginfo('description') ?>">
 	          <img src="<?php bloginfo('stylesheet_directory') ?>/img/logo.gif" alt="<?php bloginfo('name') ?> &mdash; <?php bloginfo('description') ?>" />
 	        </a>
 	      </div>
 	      
-	      <div id="navigation" class="column span-12 last">
+	      <div id="navigation" class="column span-6 last">
 	        <div class="inner">
 	          
 	          <div id="languages">
@@ -54,44 +54,50 @@
 	    </div>	
 	    
 	    <div id="menu" class="column span-24 last">
-	      <ul class="inline-list">
-	        <?php 	          
-	          if (is_product_category(is_category())) {
-              wp_list_categories('current_category=' . PRODUCTS . '&orderby=slug&order=ASC&exclude=' . META . '&include=' . NOUTATI . ',' . PROMO . ',' . TOPSALES . ',' . PRODUCTS . ',' . STIRI . '&title_li='); 	          
-	          } else {
-	            wp_list_categories('orderby=slug&order=ASC&exclude=' . META . '&include=' . NOUTATI . ',' . PROMO . ',' . TOPSALES . ',' . PRODUCTS . ',' . STIRI . '&title_li='); 
-            }	      
-            
-            if (is_home()) {
-              $blog = "current-cat";
-            }     
-            if (is_page('forum')) {
-              $forum = "current-cat";
-            }
-	         ?>           
-          <li class="<?php echo $forum; ?>"><a href="<?php bloginfo('home'); ?>/forum" alt="Forumul Equitana" title="Forumul Equitana">Forum</a></li>	        
-          <li class="<?php echo $blog; ?>"><a href="<?php bloginfo('home'); ?>/blog" alt="Blogul Equitana" title="Blogul Equitana">Blog</a></li>
-          
-          <li class="noncat last user">
-            <?php if (is_user_logged_in()) {
-              $current_user = wp_get_current_user();
-              if (($current_user instanceof WP_User)) { ?>	                                
-                <span class="ui-icon ui-icon-person"/></span>
-                <a class="user" href="<?php bloginfo('home'); ?>/cont-cumparaturi" alt="Cont cumparaturi" title="Cont cumparaturi"><?php echo $current_user->display_name; ?></a>                  
-            <?php } } else { ?>
-              <a href="<?php echo wp_login_url(get_bloginfo('url'))?>" alt="Intrare / inregistrare cont" title="Intrare / inregistrare cont">
-                <span class="ui-icon ui-icon-person"/></span>
-              </a>
-            <?php } ?>
-          </li>
-          <li class="noncat cart">
-            <a href="<?php bloginfo('home'); ?>/cos-cumparaturi" alt="Cos cumparaturi" title="Cos cumparaturi"><span class="ui-icon ui-icon-cart"/></span></a>
-            <span class="cart-content">(<?php echo wpsc_cart_item_count() ?>)</span>
-          </li>          
-          <li class="noncat info">
-            <a href="<?php bloginfo('home'); ?>/#info" alt="Informatii" title="Informatii"><span class="ui-icon ui-icon-info"/></span></a> 
-          </li>
-        </ul>	       
+	      <div id="items" class="column span-18 last">
+	        <ul class="inline-list">
+	          <?php 	          
+	            if (is_product_category(is_category())) {
+                wp_list_categories('current_category=' . PRODUCTS . '&orderby=slug&order=ASC&exclude=' . META . '&include=' . NOUTATI . ',' . PROMO . ',' . TOPSALES . ',' . PRODUCTS . ',' . STIRI . '&title_li='); 	          
+	            } else {
+	              wp_list_categories('orderby=slug&order=ASC&exclude=' . META . '&include=' . NOUTATI . ',' . PROMO . ',' . TOPSALES . ',' . PRODUCTS . ',' . STIRI . '&title_li='); 
+              }	      
+              
+              if (is_home()) {
+                $blog = "current-cat";
+              }     
+              if (is_page('forum')) {
+                $forum = "current-cat";
+              }
+	           ?>           
+            <li class="<?php echo $forum; ?>"><a href="<?php bloginfo('home'); ?>/forum" alt="Forumul Equitana" title="Forumul Equitana">Forum</a></li>	        
+            <li class="<?php echo $blog; ?>"><a href="<?php bloginfo('home'); ?>/blog" alt="Blogul Equitana" title="Blogul Equitana">Blog</a></li>
+          </ul>
+        </div>          
+        
+        <div id="icons" class="column span-6 last">
+          <ul class="inline-list">
+            <li class="noncat last user">
+              <?php if (is_user_logged_in()) {
+                $current_user = wp_get_current_user();
+                if (($current_user instanceof WP_User)) { ?>	                                
+                  <span class="ui-icon ui-icon-person"/></span>
+                  <a class="user" href="<?php bloginfo('home'); ?>/cont-cumparaturi" alt="Cont cumparaturi" title="Cont cumparaturi"><?php echo $current_user->display_name; ?></a>                  
+              <?php } } else { ?>
+                <a href="<?php echo wp_login_url(get_bloginfo('url'))?>" alt="Intrare / inregistrare cont" title="Intrare / inregistrare cont">
+                  <span class="ui-icon ui-icon-person"/></span>
+                </a>
+              <?php } ?>
+            </li>
+            <li class="noncat cart">
+              <a href="<?php bloginfo('home'); ?>/cos-cumparaturi" alt="Cos cumparaturi" title="Cos cumparaturi"><span class="ui-icon ui-icon-cart"/></span></a>
+              <span class="cart-content">(<?php echo wpsc_cart_item_count() ?>)</span>
+            </li>          
+            <li class="noncat info">
+              <a href="<?php bloginfo('home'); ?>/#info" alt="Informatii" title="Informatii"><span class="ui-icon ui-icon-info"/></span></a> 
+            </li>
+          </ul>
+        </div>	       
 	    </div>
 	    		  	
 	    
