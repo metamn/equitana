@@ -1,5 +1,6 @@
 <?php 
 
+
 // Constants
 // ---------
 
@@ -12,9 +13,11 @@ define("STIRI", 6);
 define("BRANDURI", 24);
 
 
+
+
+
 // Shopping cart
 // -------------
-
 
 // Get shopping cart contents 
 function get_cart_info() {

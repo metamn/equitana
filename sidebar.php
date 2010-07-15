@@ -9,8 +9,6 @@
     <?php wp_list_categories("child_of=".$cat."&title_li="); ?>
   </ul>  
   
-  <h3>Cautare avansata</h3>
-  <p>Puteti folosi cautarea avansata ...........<p>
   
   <?php 
     $cat = wpml_id(BRANDURI);

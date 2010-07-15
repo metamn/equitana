@@ -10,12 +10,12 @@
 <table class="productcart">
 	<tr class="firstrow">
 		<td class='firstcol'></td>
-		<td>Produs</td>
-		<td>Cantitate</td>
+		<td><?php echo __('Produs'); ?></td>
+		<td><?php echo __('Cantitate'); ?></td>
 		<?php if(wpsc_uses_shipping()): ?>
-			<td>Livrare</td>
+			<td><?php echo __('Livrare'); ?></td>
 		<?php endif; ?>
-		<td>Pret</td>
+		<td><?php echo __('Price'); ?></td>
 		<td></td>
 	</tr>
 	<?php while (wpsc_have_cart_items()) : wpsc_the_cart_item(); ?>
@@ -39,7 +39,7 @@
 					<input type="text" name="quantity" size="2" value="<?php echo wpsc_cart_item_quantity(); ?>" />
 					<input type="hidden" name="key" value="<?php echo wpsc_the_cart_item_key(); ?>" />
 					<input type="hidden" name="wpsc_update_quantity" value="true" />
-					<input type="submit" value="Actualizare" name="submit" />
+					<input type="submit" value="<?php echo __('Actualizare', 'wpsc'); ?>" name="submit" />
 				</form>
 			</td>
 			<?php if(wpsc_uses_shipping()): ?>
@@ -52,7 +52,7 @@
 					<input type="hidden" name="quantity" value="0" />
 					<input type="hidden" name="key" value="<?php echo wpsc_the_cart_item_key(); ?>" />
 					<input type="hidden" name="wpsc_update_quantity" value="true" />
-					<button class='remove_button' type="submit"><span>Renunta</span></button>
+					<button class='remove_button' type="submit"><span><?php echo __('Renunta'); ?></span></button>
 				</form>
 			</td>
 		</tr>
@@ -61,14 +61,14 @@
 	<?php if(wpsc_uses_coupons()): ?>
 		
 		<?php if(wpsc_coupons_error()): ?>
-			<tr><td>Cod cupon eronat.</td></tr>
+			<tr><td><?php echo __('Cuponul nu este valid'); ?></td></tr>
 		<?php endif; ?>
 		<tr>
-			<td colspan="2">Cod cupon reduceri :</td>
+			<td colspan="2"><?php _e('Introduceti codul cuponului'); ?></td>
 			<td  colspan="3" align='left'>
 				<form  method='post' action="<?php echo get_option('shopping_cart_url'); ?>">
 					<input type='text' name='coupon_num' id='coupon_num' value='<?php echo $wpsc_cart->coupons_name; ?>' />
-					<input type='submit' value='Actualizare' />
+					<input type='submit' value="<?php echo __('Actualizare') ?>" />
 				</form>
 			</td>
 		</tr>
