@@ -28,21 +28,27 @@ a:hover {
 
 
 
-
-
 body {
-
+  background: #f7f7f7 url(img/background.jpg);
 }
+
 .container {
   margin: 0 auto;
   width: 950px;
   overflow: visible;  
+  background: #f7f7f7 url(img/lovak.jpg) no-repeat center 0;
+  min-height: 960px;
 }
+
 
 
 
 /* Header
 */
+
+#logo img {
+  margin: 1em 0;
+}
 
 #navigation .inner {
   float: right;
@@ -120,9 +126,11 @@ body {
 
 #content {
   padding-top: 2em;
-  background: #f4f4f4;
+  background: transparent;
   width: 100%;
 }
+
+
 
 /* Startpage
 */
@@ -143,6 +151,10 @@ body {
   width: 180px;
 }
 
+#col-2 {
+  opacity: .9;
+}
+
 
 /* Promo, Top Sales, ...
 */
@@ -161,6 +173,7 @@ body {
 .post {
   margin: 2em 0 5em !important;
   padding: 1em;
+  background: #f7f7f7;
 }
 .archive .post-active {
   background: #eee;
@@ -229,7 +242,7 @@ body {
 
 
 #sidebar {
-  left: -3em;
+  left: -2em;
   position: relative;
   background: #9E000F;
   margin-bottom: 3em;
@@ -239,13 +252,14 @@ body {
   -moz-box-shadow: 0px 0px 4px #6B2105;
   -khtml-box-shadow: 0px 0px 4px #6B2105;
   -webkit-box-shadow: 0px 0px 4px #6B2105;  
+  opacity: .8;
 }
 .triangle {
   border-color: transparent #45261B transparent transparent;
   border-style: solid;
 	border-width: 3em;
 	position: relative;
-	left: -300px;
+	left: -288px;
 	top: -72px;
 	z-index: -1;	 	
 }

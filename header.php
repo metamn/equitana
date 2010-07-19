@@ -35,7 +35,7 @@
 	    <div id="header" class="column span-24 last">
 	      <div id="logo" class="column span-18 last">
 	        <a href="<?php bloginfo('home') ?>" alt="<?php bloginfo('name') ?> &mdash; <?php bloginfo('description') ?>" title="<?php bloginfo('name') ?> &mdash; <?php bloginfo('description') ?>">
-	          <img src="<?php bloginfo('stylesheet_directory') ?>/img/logo.gif" alt="<?php bloginfo('name') ?> &mdash; <?php bloginfo('description') ?>" />
+	          <img src="<?php bloginfo('stylesheet_directory') ?>/img/logo.png" alt="<?php bloginfo('name') ?> &mdash; <?php bloginfo('description') ?>" />
 	        </a>
 	      </div>
 	      
