@@ -1,14 +1,6 @@
 <div <?php post_class() ?>>
   <div class='block'>
-    <div id='shopping' class='column span-5 last'>
-      <?php 
-        $product_id = get_post_meta($post->ID, 'product_id', single);
-        if ($product_id) {        
-          echo wpsc_display_products_page('product_id='.$product_id);         
-        }      
-      ?>
-    </div>
-    <div id="info" class='column span-10 last'>
+    <div id="info" class='column span-9 append-1 last'>
       <h1 id="post-<?php the_ID(); ?>">
         <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
       </h1>
@@ -23,6 +15,14 @@
         <?php comments_popup_link(__('No Comments'), __('1 Comment'), __('% Comments')); ?>
       </p>    
     </div>
+    <div id='shopping' class='column span-5 last'>
+      <?php 
+        $product_id = get_post_meta($post->ID, 'product_id', single);
+        if ($product_id) {        
+          echo wpsc_display_products_page('product_id='.$product_id);         
+        }      
+      ?>
+    </div>    
   </div>
   <hr/>  
 </div>
