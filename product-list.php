@@ -9,19 +9,17 @@
       ?>
     </div>
     <div id="info" class='column span-10 last'>
-      <h4 id="post-<?php the_ID(); ?>">
+      <h1 id="post-<?php the_ID(); ?>">
         <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
-      </h4>
+      </h1>
       <div class='excerpt'>
         <?php the_excerpt(); ?>
       </div>    
       <p class="postmetadata">
-        <?php _e('Published on:') . the_time('l, j F, Y'); ?>
-
-        <br/>
-        <?php the_tags(__('Tags') . ': ', ', ', '<br />'); ?> 
-        <?php _e("Categories") . ': ' . the_category(', ') ?> | 
-        <?php edit_post_link(__('Edit'), '', ' | '); ?>  
+        <?php the_time('l, j F, Y'); ?> &bull; 
+        <?php the_tags(__('Tags') . ': ', ', ', ' &bull; '); ?> 
+        <?php the_category(', ') ?> &bull; 
+        <?php edit_post_link(__('Edit'), '', ' &bull; '); ?>  
         <?php comments_popup_link(__('No Comments'), __('1 Comment'), __('% Comments')); ?>
       </p>    
     </div>

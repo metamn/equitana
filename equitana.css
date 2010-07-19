@@ -17,7 +17,7 @@ gray
 */
 
 a {
-  color: #000;
+  color: #3D3A30;
 }
 a:visited {
   color: #9E000F;
@@ -26,19 +26,66 @@ a:hover {
   color: #DE0015;
 }
 
+#menu {
+  background: #BDB294;
+}
+#menu ul li {
+  border-right: 1px solid #CABE9E; 
+}
+#menu ul li.current-cat {
+  background: #70674D;
+}
+#menu ul li.current-cat a, #menu ul li.current-cat a:visited{
+  color: #FFF7E1;
+}
+#menu ul li a, #menu ul li a:visited {
+  color: #3D3A30;
+}
+#menu ul li a:hover, #menu ul li a:active {
+  color: #FFF7E1;
+}
 
+#content {
+  background: #f7f7f7;
+}
+
+.breadcrumb {
+  background: #ddd;
+}  
+
+#sidebar {
+  background: #70674D;
+  color: #FFF7E1;
+  -moz-box-shadow: 0px 0px 4px #6B2105;
+  -khtml-box-shadow: 0px 0px 4px #6B2105;
+  -webkit-box-shadow: 0px 0px 4px #6B2105;    
+}
+.triangle {
+  border-color: transparent #372F18 transparent transparent;
+}
+#sidebar a {
+  color: #FFF7E1;
+}
+#sidebar li.current-cat {
+  border-bottom: 1px solid;    
+}
+#sidebar h3 {
+  background: #7D7457;
+  color: #FFF7E1;
+  padding: .5em;
+}
 
 body {
-  background: #f7f7f7 url(img/background.jpg);
+  background: url(img/background.jpg);
 }
 
 .container {
   margin: 0 auto;
   width: 950px;
-  overflow: visible;  
-  background: #f7f7f7 url(img/lovak.jpg) no-repeat center 0;
+  overflow: visible;    
   min-height: 960px;
 }
+
 
 
 
@@ -72,36 +119,21 @@ body {
   margin-left: .5em;
 }
 
-#menu {
-  background: #ddd;
-}
+
 #menu ul {
   margin: 0;
   padding: 0;
 }
-#menu ul li {
-  border-right: 1px solid #fff;
+#menu ul li {  
   padding-left: 0;
   padding: 1em 1.5em;
 }
 #menu ul li.cat-item-7 {
   padding-left: .5em;
 }
-#menu ul li.current-cat {
-  background: #DE0015;
-}
-#menu ul li.current-cat a, #menu ul li.current-cat a:visited{
-  color: #fff;
-}
 #menu ul li a {
   text-decoration: none;
   font-size: larger;
-}
-#menu ul li a, #menu ul li a:visited {
-  color: #000;
-}
-#menu ul li a:hover, #menu ul li a:active {
-  color: #DE0015;
 }
 #menu ul li.noncat {
   float: right;
@@ -124,35 +156,39 @@ body {
 
 
 
+
+/* Content
+*/
+
 #content {
-  padding-top: 2em;
-  background: transparent;
+  padding-top: 2em;  
   width: 100%;
 }
-
 
 
 /* Startpage
 */
 
+#content.startpage {
+  padding: 0;
+}
+.startpage img {
+  width: 100%;
+}
 
 
 /* Product list 
 */
 
-.breadcrumb {
-  background: #ddd;
-  padding: .5em;
+.breadcrumb {  
+  padding: .8em;
+  margin: 1em 0 !important;
 }
 .navigation {
   margin: .5em 0 !important;
 }
 #content.archive #shopping table {
   width: 180px;
-}
-
-#col-2 {
-  opacity: .9;
 }
 
 
@@ -172,8 +208,7 @@ body {
 
 .post {
   margin: 2em 0 5em !important;
-  padding: 1em;
-  background: #f7f7f7;
+  padding: 1em;  
 }
 .archive .post-active {
   background: #eee;
@@ -182,13 +217,17 @@ body {
   -khtml-box-shadow: 0px 0px 8px #999;
   -webkit-box-shadow: 0px 0px 8px #999;
 }
-
+.post h1 {
+}
 .post img {
   border: 1px solid #ddd;
   padding: 1.6em;
   -moz-box-shadow: 0px 0px 8px #999;
   -khtml-box-shadow: 0px 0px 8px #999;
   -webkit-box-shadow: 0px 0px 8px #999;
+}
+.post img.loadingimage {
+  padding: 0;
 }
 .post p.wp-caption-text {
   visibility: hidden;
@@ -200,10 +239,21 @@ body {
   margin: 0 0 0 1em;
   padding: .5em 1em;
 }
-.post .postmetadata {
-  margin-top: 2em;
+.post .excerpt {
+  font-style: italic;
+  margin: 3em 0 1em 0;
 }
-
+.post .postmetadata {
+  border-top: 1px solid #ddd;
+  color: #777;
+}
+.post .postmetadata a, .post .postmetadata a:visited {
+  color: #777;  
+  text-decoration: none;
+}
+.post .postmetadata a:hover {
+  text-decoration: underline;
+}
 
 
 /* Single
@@ -244,18 +294,11 @@ body {
 #sidebar {
   left: -2em;
   position: relative;
-  background: #9E000F;
   margin-bottom: 3em;
   overflow: visible;
-  color: #f4f4f4;
   padding: 1em;
-  -moz-box-shadow: 0px 0px 4px #6B2105;
-  -khtml-box-shadow: 0px 0px 4px #6B2105;
-  -webkit-box-shadow: 0px 0px 4px #6B2105;  
-  opacity: .8;
 }
 .triangle {
-  border-color: transparent #45261B transparent transparent;
   border-style: solid;
 	border-width: 3em;
 	position: relative;
@@ -267,11 +310,7 @@ body {
   font-size: larger;
   margin-bottom: 3em;
 }
-#sidebar h3 {
-  color: #f4f4f4;
-}
 #sidebar a, #sidebar a:visited {
-  color: #f4f4f4;
   text-decoration: none;
 }
 #sidebar ul {
@@ -286,9 +325,6 @@ body {
 }
 #sidebar li ul {
   margin: 0 1.5em;
-}
-#sidebar li.current-cat {
-  background: #DE0015;    
 }
 
 
