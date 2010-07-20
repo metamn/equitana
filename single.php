@@ -19,10 +19,10 @@ get_header();
 		<div <?php post_class() ?> id="post-<?php the_ID(); ?>">
 		  <h1><?php the_title(); ?></h1>		  
 		  <div class='block'>
-		    <div id="images" class="column span-18">		      
+		    <div id="images" class="column span-17">		      
 		      images here .... 
 		    </div>
-		    <div id="shopping" class="column span-5 last">
+		    <div id="shopping" class="column span-6 last">
 		      <?php 
             $product_id = get_post_meta($post->ID, 'product_id', single);
             if ($product_id) {        
@@ -33,11 +33,11 @@ get_header();
 		  </div>
 			
 			<div class="block">
-			  <div id="info" class="column span-18">
+			  <div id="info" class="column span-17">
 			    <?php the_content(); ?>
 			    <?php comments_template(); ?>
 			  </div>		   
-			  <div id="meta" class="column span-5 last">
+			  <div id="meta" class="column span-6 last">
 			    <ul class="postmeta">
 			      <li><?php _e('Published on:') . the_time('l, j F, Y'); ?></li>
 			      <li><?php the_tags(__('Tags') . ': ', ', ', ''); ?></li>   
@@ -53,9 +53,11 @@ get_header();
               if ($related_posts) { ?>        
                 <h3>Produse similare</h3>
                 <?php foreach ($related_posts as $post) {
-                  setup_postdata($post);            
-                  include "product-list.php";
-                }
+                  setup_postdata($post); ?>
+                  <div id="product" class="thumb">            
+                    <?php include "product-single.php"; ?>
+                  </div>
+                <?php }
               } 
           ?>
           </div>
