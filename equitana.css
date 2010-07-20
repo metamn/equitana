@@ -34,7 +34,7 @@ a:hover {
 #menu ul li {
   border-right: 1px solid #CABE9E; 
 }
-#menu ul li.current-cat {
+#menu ul li.current-cat  {
   background: #70674D;
 }
 #menu ul li.current-cat a, #menu ul li.current-cat a:visited{
@@ -54,7 +54,7 @@ a:hover {
 .breadcrumb {
   background: #f7edd0;
 }  
-.post {
+.archive .post {
   background: #eaddb6;
   border: 1px solid #e7d7a9;
   -moz-box-shadow: 0px 0px 1px #e7d7a9;
@@ -86,11 +86,28 @@ hr {
   background: #BCAE82;
   color: #BCAE82;
 }
-.post a, .post a:visited {
+.post a, .post a:visited, .post h1 {
   text-decoration: none;
   font-family: 'Trebuchet MS', Verdana, Sans-Serif;
 }
 
+.single #shopping, .single #recommended {
+  background: #EADDB6;
+  border: 1px solid #E7D7A9;
+}
+.single #meta ul.postmeta {
+  list-style-type: none;
+}
+.single #meta ul.postmeta li {
+  border-bottom: 1px solid #e7d7a9;
+  color: #7C7356;
+}
+.single #meta ul.postmeta li a, .single #meta ul.postmeta li a:visited {
+  color: #7C7356;
+}
+.single #meta ul.postmeta li a:hover {
+  text-decoration: underline;
+}
 #sidebar {
   background: #70674D;
   color: #FFF7E1;
@@ -104,8 +121,13 @@ hr {
 #sidebar a {
   color: #FFF7E1;
 }
-#sidebar li.current-cat {
-  border-bottom: 1px solid;    
+#sidebar li.current-cat a {
+  background: #7D7457;
+  padding: .2em 1em .2em .1em;    
+}
+#sidebar li.current-cat ul.children li a {
+  background: none;
+  padding: none;
 }
 #sidebar h3 {
   background: #7D7457;
@@ -233,39 +255,20 @@ body {
 }
 
 
-/* Promo, Top Sales, ...
+/* Post
 */
-
-#content.meta #product #shopping .imagecol {
-  display: none;
-}
-#content.meta table {
-  width: 50%;
-}
-#content.meta table tr.variation, #content.meta table tr.quantity, #content.meta table tr.oldprice, #content.meta table tr.checkout {
-  display: none;
-}
-
 
 .post {
   margin: 2em 0 5em !important;
   padding: 1em;  
 }
-
 .post img.loadingimage {
   padding: 0;
 }
 .post p.wp-caption-text {
   visibility: hidden;
 }
-.post .entry p {
-  background: #f6f6f6;
-  font-style: italic;
-  font-size: larger;
-  margin: 0 0 0 1em;
-  padding: .5em 1em;
-}
-.post .excerpt {
+.post .entry p, .post .excerpt {
   font-style: italic;
   margin: 3em 0 1em 0;
 }
@@ -281,29 +284,57 @@ body {
 */
 
 #content.single .navigation {
-  background: #ddd;
-  padding: .5em 0;
+  padding: .5em;
 }
 #content.single #shopping .imagecol {
   display: none;
 }
-#content.single #shopping .producttext {
-  margin-top: 3em !important;
-}
 #content.single #shopping table {
   width: 180px;
 }
-
+.single #shopping, .single #recommended {
+  margin-bottom: 2em;
+}
+.single #recommended {
+  margin-right: 0;
+}
+.single #meta ul.postmeta {
+  margin: 0 0 2em 0;
+}
+.single #meta ul.postmeta li {
+  margin-bottom: 1em;
+  padding-left: .7em;
+}
+.single #shopping .wpsc_container, .single #meta #recommended {
+  padding: 1em;
+}
 #respond {
   margin-left: 1em;
 }
 
-/* Related products */
+/* Related products 
+*/
+
 #content.single #recommended #shopping .imagecol {
   display: block;
 }
 #content.single #recommended #shopping .producttext {
   margin-top: 0 !important;
+}
+
+
+
+/* Promo, Top Sales, ...
+*/
+
+#content.meta #product #shopping .imagecol {
+  display: none;
+}
+#content.meta table {
+  width: 50%;
+}
+#content.meta table tr.variation, #content.meta table tr.quantity, #content.meta table tr.oldprice, #content.meta table tr.checkout {
+  display: none;
 }
 
 
@@ -330,6 +361,7 @@ body {
 #sidebar ul.root {
   font-size: larger;
   margin-bottom: 3em;
+  margin-left: .5em;
 }
 #sidebar a, #sidebar a:visited {
   text-decoration: none;

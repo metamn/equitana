@@ -17,12 +17,10 @@ get_header();
 		</div>
 
 		<div <?php post_class() ?> id="post-<?php the_ID(); ?>">
+		  <h1><?php the_title(); ?></h1>		  
 		  <div class='block'>
-		    <div id="info" class="column span-18 last">
-		      <h1><?php the_title(); ?></h1>
-		      <div class='entry'>
-            <?php the_content(); ?>
-          </div> 
+		    <div id="images" class="column span-18">		      
+		      images here .... 
 		    </div>
 		    <div id="shopping" class="column span-5 last">
 		      <?php 
@@ -34,34 +32,40 @@ get_header();
 		    </div>
 		  </div>
 			
-			<div class='postmetadata'>
-			  <?php _e('Published on:') . the_time('l, j F, Y'); ?>
-        <br/>
-        <?php the_tags(__('Tags') . ': ', ', ', '<br />'); ?> 
-        <?php _e("Categories") . ': ' . the_category(', ') ?> |			  
-			  <br/>
-        <?php _e("Send trackbacks to:")?> <a href="<?php trackback_url(); ?>" rel="trackback"><?php trackback_url(); ?></a> |
-        <?php post_comments_feed_link(__('Comments (RSS)')); ?>
-        <?php edit_post_link(__('Edit'),' | ','.')?>
-			</div>			
+			<div class="block">
+			  <div id="info" class="column span-18">
+			    <?php the_content(); ?>
+			    <?php comments_template(); ?>
+			  </div>		   
+			  <div id="meta" class="column span-5 last">
+			    <ul class="postmeta">
+			      <li><?php _e('Published on:') . the_time('l, j F, Y'); ?></li>
+			      <li><?php the_tags(__('Tags') . ': ', ', ', ''); ?></li>   
+			      <li><?php _e("Categories") . ': ' . the_category(', ') ?></li>
+			      <li><?php _e("Send trackbacks to:")?> <a href="<?php trackback_url(); ?>" rel="trackback">Trackback URL</a></li>
+			      <li><?php post_comments_feed_link(__('Comments (RSS)')); ?></li>
+			      <li><?php edit_post_link(__('Edit'),'','')?></li>
+			    </ul>
+		      
+          <div id="recommended">    
+          <?php
+              $related_posts = MRP_get_related_posts($post->ID, true);
+              if ($related_posts) { ?>        
+                <h3>Produse similare</h3>
+                <?php foreach ($related_posts as $post) {
+                  setup_postdata($post);            
+                  include "product-list.php";
+                }
+              } 
+          ?>
+          </div>
+          <div class='clearfix'></div>				
+			  </div>   
+			</div>				  
+		  
 		</div>
 
-    <div id="recommended">    
-     <?php
-        $related_posts = MRP_get_related_posts($post->ID, true);
-        if ($related_posts) { ?>        
-          <h3>Produse similare</h3>
-          <?php foreach ($related_posts as $post) {
-            setup_postdata($post);            
-            include "product-list.php";
-          }
-        } 
-      ?>
-    </div>
-    <div class='clearfix'></div>
-
-	  <?php comments_template(); ?>
-
+    
 	<?php endwhile; else: ?>
 
 		<p>Sorry, no posts matched your criteria.</p>
