@@ -4,15 +4,17 @@
 
 logo red = #DE0015
   .brown/red = #9E000F;
-    .for triangle = #450006
-    .for shadow = #6B2105
-  .brown = #5E0008
-    .dark brown for triangle: #45261B
-    .light brown for shadow: #C49888
- 
-gray
-  .content = #f4f4f4
-  
+    
+menu brown = #BDB294
+  .color = #FFF7E1
+  .menu highlight = #70674D
+  .sidebar = #70674D
+  .sidebar title background = #7D7457
+
+content background = #eee3c3 // substract using 0to255.com
+  .breadcrumb, post highlight = #f7edd0
+  .post background = #EADDB6
+  .post border = #e7d7a9  
 
 */
 
@@ -46,21 +48,21 @@ a:hover {
 }
 
 #content {
-  background: #E2D19C;
+  background: #eee3c3;
 }
 
 .breadcrumb {
-  background: #EFDDA5;
+  background: #f7edd0;
 }  
 .post {
-  background: #EFDDA5;
-  border: 1px solid #D5C593;
-  -moz-box-shadow: 0px 0px 1px #D5C593;
-  -khtml-box-shadow: 0px 0px 1px #D5C593;
-  -webkit-box-shadow: 0px 0px 1px #D5C593;
+  background: #eaddb6;
+  border: 1px solid #e7d7a9;
+  -moz-box-shadow: 0px 0px 1px #e7d7a9;
+  -khtml-box-shadow: 0px 0px 1px #e7d7a9;
+  -webkit-box-shadow: 0px 0px 1px #e7d7a9;
 }
 .archive .post-active {
-  background: #FCE9AE;
+  background: #f7edd0;
   border: 1px solid #BCAE82;
   -moz-box-shadow: 0px 0px 8px #7C7356;
   -khtml-box-shadow: 0px 0px 8px #7C7356;
@@ -83,6 +85,10 @@ a:hover {
 hr {
   background: #BCAE82;
   color: #BCAE82;
+}
+.post a, .post a:visited {
+  text-decoration: none;
+  font-family: 'Trebuchet MS', Verdana, Sans-Serif;
 }
 
 #sidebar {
