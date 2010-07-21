@@ -347,6 +347,19 @@ body {
 /* Product thumbs for Meta, Recommended, ...
 */
 
+#content.meta h1 {
+  margin-left: .3em;
+  margin-bottom: 1em;
+}
+#content.meta hr {
+  width: 80%;
+  margin: 0 7.5% 5em;
+  background: #E7D7A9;
+  color: #E7D7A9;
+}
+#content.meta .navigation {
+  padding: 1em;
+}
 #product.thumb #image, #product.thumb #title, #product.thumb #shopping {
   margin-left: 1em;
 }
@@ -361,11 +374,9 @@ body {
   display: none;
 }
 #product.thumb table {
-  width: 50%;
+  width: 66%;
 }
-#product.thumb table tr.variation, #product.thumb table tr.quantity, #product.thumb table tr.oldprice, #product.thumb table tr.checkout {
-  display: none;
-}
+
 
 
 
