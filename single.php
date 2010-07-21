@@ -19,26 +19,23 @@ get_header();
 		<div <?php post_class() ?> id="post-<?php the_ID(); ?>">
 		  <h1><?php the_title(); ?></h1>		  
 		  <div class='block'>
-		    <div id="images" class="column span-17">		      
-		      images here .... 
+		    <div id="info" class="column span-17">		
+		      <div id="thecontent">      
+		        <?php the_content(); ?>
+		      </div>
+		      <div id="thecomments">
+			      <?php comments_template(); ?>
+			     </div>
 		    </div>
-		    <div id="shopping" class="column span-6 last">
+		    <div id="side" class="column span-6 last">
 		      <?php 
             $product_id = get_post_meta($post->ID, 'product_id', single);
             if ($product_id) {        
               echo wpsc_display_products_page('product_id='.$product_id);         
             }      
           ?>
-		    </div>
-		  </div>
-			
-			<div class="block">
-			  <div id="info" class="column span-17">
-			    <?php the_content(); ?>
-			    <?php comments_template(); ?>
-			  </div>		   
-			  <div id="meta" class="column span-6 last">
-			    <ul class="postmeta">
+                    
+          <ul class="postmeta">
 			      <li><?php _e('Published on:') . the_time('l, j F, Y'); ?></li>
 			      <li><?php the_tags(__('Tags') . ': ', ', ', ''); ?></li>   
 			      <li><?php _e("Categories") . ': ' . the_category(', ') ?></li>
@@ -48,31 +45,29 @@ get_header();
 			    </ul>
 		      
           <div id="recommended">    
-          <?php
-              $related_posts = MRP_get_related_posts($post->ID, true);
-              if ($related_posts) { ?>        
-                <h3>Produse similare</h3>
-                <?php foreach ($related_posts as $post) {
-                  setup_postdata($post); ?>
-                  <div id="product" class="thumb">            
-                    <?php include "product-single.php"; ?>
-                  </div>
-                <?php }
-              } 
-          ?>
+            <?php
+                $related_posts = MRP_get_related_posts($post->ID, true);
+                if ($related_posts) { ?>        
+                  <h3 class="title">Produse similare</h3>
+                  <?php foreach ($related_posts as $post) {
+                    setup_postdata($post); ?>
+                    <div id="product" class="thumb">            
+                      <?php include "product-single.php"; ?>
+                    </div>
+                  <?php }
+                } 
+            ?>
           </div>
-          <div class='clearfix'></div>				
-			  </div>   
-			</div>				  
-		  
+		    </div>
+		  </div>			
 		</div>
+		
+		    
+	<?php endwhile; else:
 
-    
-	<?php endwhile; else: ?>
+      include "not-found.php";		
 
-		<p>Sorry, no posts matched your criteria.</p>
-
-<?php endif; ?>
+  endif; ?>
 
 	</div>
 

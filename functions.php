@@ -192,7 +192,7 @@ function styled_comments($comment, $args, $depth){
       <div class="comment-author vcard column span-4 last">
          <?php echo get_avatar($comment, $size='96',$default='<path_to_url>' ); ?>
          <br/>
-         <?php printf(__('<cite class="fn">%s</cite>'), get_comment_author_link()) ?>
+         <?php printf(__('<p class="fn">%s</p>'), get_comment_author_link()) ?>
       </div>
       <div class="column last">
         <?php if ($comment->comment_approved == '0') : ?>

@@ -1,5 +1,4 @@
 
-
 /* Colors
 
 logo red = #DE0015
@@ -91,21 +90,31 @@ hr {
   font-family: 'Trebuchet MS', Verdana, Sans-Serif;
 }
 
-.single #shopping, .single #recommended {
+.single #thecomments, .single #thecontent  {
   background: #EADDB6;
   border: 1px solid #E7D7A9;
 }
-.single #meta ul.postmeta {
+.single #side .wpsc_container {
+  background: #BDB294;
+  border: 1px solid #CABE9E;
+}
+.single #side #recommended .wpsc_container {
+  border: none;
+  padding: 0;
+  margin-bottom: 0;
+  background: none;
+}
+.single #side ul.postmeta {
   list-style-type: none;
 }
-.single #meta ul.postmeta li {
+.single #side ul.postmeta li {
   border-bottom: 1px solid #e7d7a9;
   color: #7C7356;
 }
-.single #meta ul.postmeta li a, .single #meta ul.postmeta li a:visited {
+.single #side ul.postmeta li a, .single #side ul.postmeta li a:visited {
   color: #7C7356;
 }
-.single #meta ul.postmeta li a:hover {
+.single #side ul.postmeta li a:hover {
   text-decoration: underline;
 }
 #sidebar {
@@ -286,30 +295,49 @@ body {
 #content.single .navigation {
   padding: .5em;
 }
-#content.single #shopping .imagecol {
+#content.single #thecomments {
+  margin-top: 2em;
+  padding: 1em;
+}
+#content.single #thecontent {
+  padding: 1em;
+}
+#content.single #thecomments h4 {
+  font-size: large;
+}
+#content.single #thecomments ol {
+  list-style-type: none;
+}
+#content.single #thecomments .fn {
+  text-align: center;
+  margin-left: -2em;
+}
+#content.single #side .wpsc_container .imagecol {
   display: none;
 }
-#content.single #shopping table {
+#content.single #side .wpsc_container div.single_product_display div.textcol  {
+  margin-left: 1em !important;
+}
+#content.single #side .wpsc_container table {
   width: 180px;
 }
-.single #shopping, .single #recommended {
+.single #side .wpsc_container, .single #side #recommended {
   margin-bottom: 2em;
-}
-.single #recommended {
   margin-right: 0;
 }
-.single #meta ul.postmeta {
+.single #side ul.postmeta {
   margin: 0 0 2em 0;
 }
-.single #meta ul.postmeta li {
+.single #side ul.postmeta li {
   margin-bottom: 1em;
   padding-left: .7em;
 }
-.single #shopping .wpsc_container, .single #meta #recommended {
-  padding: 1em;
+.single #side .wpsc_container, .single #side #recommended {
+  padding: 1em 0;
 }
-.single #meta #recommended h3 {
-  margin-bottom: 2em;
+.single #side #recommended h3.title {
+  margin: .5em 0 2em .5em;
+  text-transform: uppercase;
 }
 #respond {
   margin-left: 1em;
@@ -442,3 +470,4 @@ ul.inline-list li {
 .clearfix {
   clear: both;
 }
+
