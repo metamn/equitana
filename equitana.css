@@ -90,7 +90,7 @@ hr {
   font-family: 'Trebuchet MS', Verdana, Sans-Serif;
 }
 
-.single #thecomments, .single #thecontent  {
+.single #thecomments, .single #thecontent, .blog #side  {
   background: #EADDB6;
   border: 1px solid #E7D7A9;
 }
@@ -107,7 +107,7 @@ hr {
 .single #side ul.postmeta {
   list-style-type: none;
 }
-.single #side ul.postmeta li {
+.single #side ul.postmeta li, #content.blog #side ul li {
   border-bottom: 1px solid #e7d7a9;
   color: #7C7356;
 }
@@ -117,6 +117,12 @@ hr {
 .single #side ul.postmeta li a:hover {
   text-decoration: underline;
 }
+.blog h1 small {
+  background: #EADDB6;
+  padding: .1em;
+  font-size: .6em;
+}
+
 #sidebar {
   background: #70674D;
   color: #FFF7E1;
@@ -143,7 +149,6 @@ hr {
   color: #FFF7E1;
   padding: .5em;
 }
-
 
 
 
@@ -339,9 +344,10 @@ body {
   margin: .5em 0 2em .5em;
   text-transform: uppercase;
 }
-#respond {
+.single #respond {
   margin-left: 1em;
 }
+
 
 
 /* Product thumbs for Meta, Recommended, ...
@@ -375,6 +381,33 @@ body {
 }
 #product.thumb table {
   width: 66%;
+}
+
+
+
+/* Blog 
+*/
+
+#content.blog .navigation {
+  padding: 1em;
+}
+#content.blog .post {
+  margin: 0 0 5em !important;
+}
+#content.blog #side ul, #content.blog #side h3 {
+  padding: 1em;
+}
+#content.blog #side h3.title {
+  text-transform: uppercase;
+}
+#content.blog #side ul {
+  list-style-type: none;
+}
+#content.blog #side ul li a, #content.blog #side ul li a:visited {
+  text-decoration: none;
+}
+#content.blog .post .entry p {
+  margin: 1em;
 }
 
 
