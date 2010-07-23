@@ -11,6 +11,7 @@ define("PROMO", 5);
 define("NOUTATI", 8);
 define("STIRI", 6);
 define("BRANDURI", 24);
+define("INFORMATII", 161);
 
 
 
@@ -106,7 +107,14 @@ function wpml_id($id) {
     return $id;
   }
 }
-
+function wpml_page_id($id) {
+  if (function_exists('icl_object_id')) {
+    return icl_object_id($id, 'page', true);
+  }
+  else {
+    return $id;
+  }
+}
 
 
 // Common wordpress

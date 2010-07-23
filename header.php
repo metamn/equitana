@@ -94,7 +94,7 @@
               <span class="cart-content">(<?php echo wpsc_cart_item_count() ?>)</span>
             </li>          
             <li class="noncat info">
-              <a href="<?php bloginfo('home'); ?>/#info" alt="Informatii" title="Informatii"><span class="ui-icon ui-icon-info"/></span></a> 
+              <a href="<?php bloginfo('home'); ?>/informatii" alt="Informatii" title="Informatii"><span class="ui-icon ui-icon-info"/></span></a> 
             </li>
           </ul>
         </div>	       

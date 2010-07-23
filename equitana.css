@@ -432,6 +432,31 @@ body {
 }
 
 
+/* Pages
+*/
+
+#content.page .entry {
+  margin: 1em 0;
+  padding: 1em;
+  background: #EADDB6;
+}
+#content.page .page, #content.page #respond {
+  padding: 1em;
+}
+#content.page .page ul {
+  margin: 0;
+}
+
+
+/* Footer
+*/
+
+#footer a, #footer a:visited {
+  text-decoration: none;
+}
+#footer #col-2 {
+  text-align: right;
+}
 
 
 /* Sidebar 
