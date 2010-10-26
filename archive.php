@@ -25,14 +25,21 @@ get_header();
         <div id="col-2" class="column span-17 last">
           <?php 
             include "breadcrumb.php";            
-            if (have_posts()) : while (have_posts()) : the_post();
+            
+            if (is_category(get_brand_category_ids())) {
+              echo "barnd subs here";
+            }            
+              
+            
+            if (have_posts()) {              
+              while (have_posts()) : the_post();                
                 include "product-list.php";
 		          endwhile;
 		          include "navigation.php";
 		          include "breadcrumb.php"; 
-		        else :
+		        } else {
               include "not-found.php";
-	          endif;
+	          }
           ?>
         </div>
         
