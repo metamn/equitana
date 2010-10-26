@@ -17,7 +17,7 @@ get_header();
     
     <div id="content" class="archive column span-24-last">  
 	  <?php 
-	    $is_product = is_product_category(is_category());
+	    $is_product = is_product_and_brand_category(is_category());
 	    if ($is_product) { ?>
         <div id="col-1" class="column span-7 last">	          
           <?php get_sidebar(); ?>
@@ -27,7 +27,12 @@ get_header();
             include "breadcrumb.php";            
             
             if (is_category(get_brand_category_ids())) {
-              echo "barnd subs here";
+              $cat_name = single_cat_title('', false);
+              $cats = brand_categories($cat_name);
+              foreach ($cats as $c) {
+                $cat = get_category($c);
+                echo $cat->cat_name . ' ';
+              }
             }            
               
             

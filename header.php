@@ -57,7 +57,7 @@
 	      <div id="items" class="column span-18 last">
 	        <ul class="inline-list">
 	          <?php 	          
-	            if (is_product_category(is_category())) {
+	            if (is_product_and_brand_category(is_category())) {
                 wp_list_categories('current_category=' . PRODUCTS . '&orderby=slug&order=ASC&exclude=' . META . '&include=' . NOUTATI . ',' . PROMO . ',' . TOPSALES . ',' . PRODUCTS . ',' . STIRI . '&title_li='); 	          
 	            } else {
 	              wp_list_categories('orderby=slug&order=ASC&exclude=' . META . '&include=' . NOUTATI . ',' . PROMO . ',' . TOPSALES . ',' . PRODUCTS . ',' . STIRI . '&title_li='); 

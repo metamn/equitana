@@ -58,14 +58,44 @@ function post_attachements($post_id) {
 // ------------------
 
 
+// Returns categories in which a Brand has products
+// - input: the category name of the brand
+// - algorithm:
+//   1. get all posts for the Brand
+//   2. collect all categories of these posts into an array
+//   3. intersect the array with the array of all product categories
+// - returns an array of category ids
+function brand_categories($brand_name) {
+  $brand_products = get_posts("numberposts=-1&category_name=".$brand_name);
+  if ($brand_products) {  
+    
+    // collecting categories
+    $collector = array();
+    foreach ($brand_products as $p) {
+      $id = $p->ID;
+      if (in_category(wpml_id(PRODUCTS), $id)) {
+        $cats = get_the_category($id);
+        foreach ($cats as $c) {
+          $collector[] = $c->cat_ID;
+        }
+      }
+    }
+    
+    // get all product categories
+    $prods = get_product_category_ids();
+    unset($prods[0]); // Remove the Product parent category
+    return array_unique(array_intersect(array_unique($collector), $prods));
+  } 
+}
 
-// checks if the current request is for a product category
+
+// checks if the current request is for a product category or a brand category
 // - $is_category = the value of is_category() fucntion
 // - returns a bool
-function is_product_category($is_category) {
+function is_product_and_brand_category($is_category) {
   $ret = false;
   if ($is_category) {
-    $product_ids = get_product_category_ids();
+    $product_ids = get_product_and_brand_category_ids();
 	  if (is_category($product_ids)) {
       $ret = true;
     }
@@ -75,20 +105,19 @@ function is_product_category($is_category) {
 
 // get category ids for all product categories and subcategories
 // - returns an array
+function get_product_and_brand_category_ids() {
+  $ret = array();  
+  return array_merge(get_product_category_ids(), get_brand_category_ids());
+}
+
+
+// get category ids for all product categories and subcategories
+// - returns an array
 function get_product_category_ids() {
   $ret = array();
   
-  $prod = wpml_id(PRODUCTS);
-  $brands = wpml_id(BRANDURI);
+  $brands = wpml_id(PRODUCTS);
     
-  $ret[] = $prod;
-  $cats = get_categories('child_of='.$prod);
-  if ($cats) {
-    foreach ($cats as $c) {      
-      $ret[] = $c->cat_ID; 
-    }
-  }
-  
   $ret[] = $brands;
   $cats = get_categories('child_of='.$brands);
   if ($cats) {
@@ -100,7 +129,7 @@ function get_product_category_ids() {
 }
 
 
-// get category ids for all product categories and subcategories
+// get category ids for all brand categories and subcategories
 // - returns an array
 function get_brand_category_ids() {
   $ret = array();
@@ -136,6 +165,8 @@ function wpml_page_id($id) {
     return $id;
   }
 }
+
+
 
 
 // Common wordpress
