@@ -1,5 +1,6 @@
 <div id="sidebar">
 
+  
   <?php 
     $cat = wpml_id(PRODUCTS);
     $title = get_cat_name($cat);

@@ -3,6 +3,20 @@
 
 logo red = #DE0015
   .brown/red = #9E000F;
+  
+zold = 958e38
+vilagos zold / barnas = ADA542
+feketes barna = 3D3A30
+
+zold2 = 7c762f
+vzold2 = 958e38
+
+  
+  menu = vilagos zold
+  menu highlight = zold
+  sidebar = zold
+  sidebar highlight = vilagos zold
+  sidebar highlight text = feketes barna
     
 menu brown = #BDB294
   .color = #FFF7E1
@@ -10,9 +24,9 @@ menu brown = #BDB294
   .sidebar = #70674D
   .sidebar title background = #7D7457
 
-content background = #eee3c3 // substract using 0to255.com
-  .breadcrumb, post highlight = #f7edd0
-  .post background = #EADDB6
+content background = #eee3c3 // substract using 0to255.com 
+  .post highlight = #f7edd0
+  .post background, breadcrumb = #EADDB6
   .post border = #e7d7a9  
 
 */
@@ -474,7 +488,7 @@ body {
   border-style: solid;
 	border-width: 3em;
 	position: relative;
-	left: -288px;
+	left: -248px;
 	top: -72px;
 	z-index: -1;	 	
 }

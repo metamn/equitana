@@ -19,10 +19,10 @@ get_header();
 	  <?php 
 	    $is_product = is_product_category(is_category());
 	    if ($is_product) { ?>
-        <div id="col-1" class="column span-8 last">	          
+        <div id="col-1" class="column span-7 last">	          
           <?php get_sidebar(); ?>
         </div>
-        <div id="col-2" class="column span-16 last">
+        <div id="col-2" class="column span-17 last">
           <?php 
             include "breadcrumb.php";            
             if (have_posts()) : while (have_posts()) : the_post();
