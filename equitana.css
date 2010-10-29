@@ -444,6 +444,22 @@ body {
 #content.archive #posts h2, #content.archive #posts .post {
   margin-left: .5em !important;
 }
+#content.archive .brand-subcats {
+
+}
+#content.archive .brand-subcats .item {
+  width: 22%;
+  margin-right: 2%;
+  float: left;
+  margin-bottom: .2em;
+}
+#content.archive .brand-subcats .row-3 {
+  margin-right: 0%;  
+}
+#content.archive .brand-subcats .row-0 {
+  clear: both;  
+}
+
 
 
 /* Pages

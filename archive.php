@@ -7,36 +7,73 @@
 get_header();
 ?>
 
-<?php 
-  
+
+<?php   
   if (is_category(wpml_id(STIRI))) {
     include "stiri.php";
   } elseif (is_category(wpml_id(PROMO)) || is_category(wpml_id(TOPSALES)) || is_category(wpml_id(NOUTATI))) {
     include "meta.php";
-  } else { ?>
+  } else { 
+  
+    $params = str_replace("%5B%5D", "", $_SERVER['QUERY_STRING']);
+    #$subs = explode("&", $params);		  	
+	  #$tmp = explode("=", $subs[0]);  // for apache
+	  #$tmp = explode("=", $subs[1]);
+	  
+	  $tmp = explode("=", $params);
+	  $view = $tmp[1];
+    echo "view= ".$view . "<br/>";
+    if ($view) {
+      $orig = get_query_var('cat');
+      query_posts(array('category__and' => array($orig, $view)));
+      $is_product_with_brand = true;
+    }
+  ?>
     
     <div id="content" class="archive column span-24-last">  
 	  <?php 
 	    $is_product = is_product_and_brand_category(is_category());
-	    if ($is_product) { ?>
+	    if ($is_product || $is_product_with_brand) { ?>
         <div id="col-1" class="column span-7 last">	          
           <?php get_sidebar(); ?>
         </div>
         <div id="col-2" class="column span-17 last">
           <?php 
-            include "breadcrumb.php";            
+            if ($is_product_with_brand) { ?>
+              <div class="breadcrumb">
+              Produse <?php echo get_cat_name($view)?> din categoria <?php echo get_cat_name($orig); ?>
+              <div class="alignright">
+                <span class='ui-icon ui-icon-search'/></span>
+                <a class="advanced-search" href="<?php bloginfo('home'); ?>/cautare-avansata">Cautare avansata</a> 
+              </div>
+            </div>
+            <?php } else {
+              include "breadcrumb.php";            
+            }
             
-            if (is_category(get_brand_category_ids())) {
-              $cat_name = single_cat_title('', false);
-              $cats = brand_categories($cat_name);
-              foreach ($cats as $c) {
-                $cat = get_category($c);
-                echo $cat->cat_name . ' ';
-              }
-            }            
+            
+            if (is_category(get_brand_category_ids())) { ?>            
+              <div class="brand-subcats block">
+                <?php
+                $cat_name = single_cat_title('', false);
+                $cats = brand_categories($cat_name);
+                $i = 0;              
+                foreach ($cats as $c) {
+                  $cat = get_category($c); 
+                  $l = get_bloginfo('home') . "/category/" . $cat->slug; 
+                  $link = $l . "/?view=" . get_query_var('cat');
+                  ?>
+                  <div class="item row-<?php echo ($i%4)?>">
+                    <a href="<?php echo $link ?>"><?php echo $cat->cat_name; ?></a>
+                  </div>
+                <?php 
+                  $i += 1;
+                } ?>
+              </div>
+            <?php } ?>            
               
             
-            if (have_posts()) {              
+            <?php if (have_posts()) {              
               while (have_posts()) : the_post();                
                 include "product-list.php";
 		          endwhile;
