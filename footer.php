@@ -14,11 +14,10 @@
 	</div>
 	<div id="col-2" class="column span-12 last">
 	  <p>
-	    <a href="<?php bloginfo('home'); ?>/informatii/credite">Informatii</a>. 
-	    <a href="<?php bloginfo('home'); ?>/informatii/protectia-consumatorilor">Protectia consumatorilor</a>. 
-	    <a href="<?php bloginfo('home'); ?>/informatii/credite">Credite</a>.
+	    <a href="<?php bloginfo('home'); ?>/informatii/credite"><?php echo t("Informatii")?></a>. 
+	    <a href="<?php bloginfo('home'); ?>/informatii/protectia-consumatorilor"><?php echo t("Protectia consumatorilor")?></a>. 
 	    <br/>	     
-	    Creat de <a href="http://clair.ro">clair.ro</a>
+	    <?php echo t("Creat de")?> <a href="http://clair.ro">clair.ro</a>
 	  </p>
 	</div>
 </div>

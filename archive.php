@@ -22,7 +22,6 @@ get_header();
 	  
 	  $tmp = explode("=", $params);
 	  $view = $tmp[1];
-    echo "view= ".$view . "<br/>";
     if ($view) {
       $orig = get_query_var('cat');
       query_posts(array('category__and' => array($orig, $view)));
@@ -39,18 +38,7 @@ get_header();
         </div>
         <div id="col-2" class="column span-17 last">
           <?php 
-            if ($is_product_with_brand) { ?>
-              <div class="breadcrumb">
-              Produse <?php echo get_cat_name($view)?> din categoria <?php echo get_cat_name($orig); ?>
-              <div class="alignright">
-                <span class='ui-icon ui-icon-search'/></span>
-                <a class="advanced-search" href="<?php bloginfo('home'); ?>/cautare-avansata">Cautare avansata</a> 
-              </div>
-            </div>
-            <?php } else {
-              include "breadcrumb.php";            
-            }
-            
+            include "breadcrumb.php";            
             
             if (is_category(get_brand_category_ids())) { ?>            
               <div class="brand-subcats block">

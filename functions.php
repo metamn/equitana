@@ -25,6 +25,14 @@ function get_cart_info() {
 
 }
 
+function sku($product_id) {
+  if ($product_id) {
+    global $wpdb;
+    $sku = $wpdb->get_var("SELECT `sku` FROM `".$wpdb->prefix."wpsc_product_list` WHERE `id`=".$product_id." LIMIT 1");
+    return $sku;
+  } 
+}
+
 // Get the post ID from the product ID
 function post_id($product_id) {
   $posts = get_posts("posts_per_page=1&meta_key=product_id&meta_value=" . $product_id);
@@ -147,6 +155,70 @@ function get_brand_category_ids() {
 }
 
 
+
+// Multilanguage
+// -------------
+
+// Translate strings
+function t($string) {
+
+  $en = array(
+    "Nu avem imagini" => "Image not available",
+    "Cantitate:" => "Quantity",
+    "Pret vechi:" => "Old price",
+    "Pret:" => "Price",  
+    "Adauga la cos" => "Add to cart",
+    "Cos cumparaturi" => "Checkout",
+    "Actualizare cos..." => "Updating cart...",
+    "Momentan nu este disponibil." => "Currently not available",
+    "Cod produs:" => "SKU:",    
+    "Produse " => "Products ",
+    " din categoria " => " from category ",
+    "Cautare avansata" => "Advanced search",
+    "Protectia consumatorilor" => "Customer protection",
+    "Informatii" => "Informations",
+    "Creat de" => "Created by",
+    "" => "",
+    "" => "",
+    "" => "",
+    "" => "",
+    "" => ""
+  );
+  
+  $hu = array(
+    "Nu avem imagini" => "A kép nem elérhető",
+    "Cantitate:" => "Mennyiség:",
+    "Pret vechi:" => "Régi ár",
+    "Pret:" => "Új ár",  
+    "Adauga la cos" => "Kosárba tesz",
+    "Cos cumparaturi" => "Vásárol",
+    "Actualizare cos..." => "Kosár frissitése...",
+    "Momentan nu este disponibil." => "Jelenleg nem elérhető",
+    "Cod produs:" => "Termékkód",    
+    "Produse " => "Márka: ",
+    " din categoria " => ", kategória: ",
+    "Cautare avansata" => "Összetett keresés",
+    "Protectia consumatorilor" => "Fogyasztóvédelem",
+    "Informatii" => "Információk",
+    "Creat de" => "Készitette a",
+    "" => "",
+    "" => "",
+    "" => "",
+    "" => "",
+    "" => ""
+  );
+
+  switch (ICL_LANGUAGE_CODE) {
+    case 'en':
+      return $en[$string];
+      break;
+    case 'hu':
+      return $hu[$string];
+      break;
+    default:
+      return $string;
+  }
+}
 
 // Getting the ID of an internationalized post, page, category or tag
 function wpml_id($id) {

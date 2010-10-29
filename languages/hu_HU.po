@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: hu_HU\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: Csongor Bartus <cs@clair.ro>\n"
+"Last-Translator: FYGureout <webmester@wordpress2you.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -14291,7 +14291,7 @@ msgstr "%d lekérdezés %s másodperc"
 #: wp-includes/theme-compat/sidebar.php:32
 #, php-format
 msgid "You are currently browsing the archives for the %s category."
-msgstr "A %s kategória bejegyzései"
+msgstr "%s kategória bejegyzései"
 
 #: wp-includes/theme-compat/sidebar.php:35
 #, php-format

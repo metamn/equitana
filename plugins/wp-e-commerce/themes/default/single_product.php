@@ -21,7 +21,7 @@
 						<?php else: ?> 
 							<div class="item_no_image">
 								<a href="<?php echo wpsc_the_product_permalink(); ?>">
-								<span>No Image Available</span>
+								<span><?php echo t('Nu avem imagini') ?></span>
 								</a>
 							</div>
 						<?php endif; ?> 
@@ -31,6 +31,12 @@
 					<div class="producttext">						  
 					    <form class='product_form' enctype="multipart/form-data" action="<?php echo wpsc_this_page_url(); ?>" method="post" name="1" id="product_<?php echo wpsc_the_product_id(); ?>">
 					     <table> 
+					     
+					      <tr class="sku">
+					        <td><label><?php echo t('Cod produs:'); ?></label></td>
+					        <td class="right"><?php echo wpsc_product_sku(wpsc_the_product_id()); ?></td>
+					      </tr>					     
+					     
 					      <?php /** the variation group HTML and loop */?>
 					      <div class="wpsc_variation_forms">
 						      <?php while (wpsc_have_variation_groups()) : wpsc_the_variation_group(); ?>
@@ -54,7 +60,9 @@
 			          <!-- THIS IS THE QUANTITY OPTION MUST BE ENABLED FROM ADMIN SETTINGS -->
 			          <?php if(wpsc_has_multi_adding()): ?>
 				          <tr class='quantity'><td>
-				            <label class='wpsc_quantity_update' for='wpsc_quantity_update[<?php echo wpsc_the_product_id(); ?>]'>Cantitate:</label>
+				            <label class='wpsc_quantity_update' for='wpsc_quantity_update[<?php echo wpsc_the_product_id(); ?>]'>
+				              <?php echo t('Cantitate:'); ?>
+				            </label>
 				          </td><td class='right'>
 				            <input type="text" id='wpsc_quantity_update' name="wpsc_quantity_update[<?php echo wpsc_the_product_id(); ?>]" size="2" value="1"/>
 				            <input type="hidden" name="key" value="<?php echo wpsc_the_cart_item_key(); ?>"/>
@@ -70,13 +78,13 @@
 							    <?php else : ?>
 								    <?php if(wpsc_product_on_special()) : ?>
 								      <tr class='oldprice'><td>
-									      <label><span class='oldprice'>Pret vechi:</span></label> 
+									      <label><span class='oldprice'><?php echo t('Pret vechi:') ?></span></label> 
 									    </td><td class='right'>
 									      <span class='oldprice'><?php echo wpsc_product_normal_price(); ?></span>
 									    </td></tr>
 								    <?php endif; ?>
 								      <tr class='price'><td>
-								        <label>Pret:</label>
+								        <label><?php echo t('Pret:') ?></label>
 								      </td><td class='right'>
 								        <span id="product_price_<?php echo wpsc_the_product_id(); ?>" class="pricedisplay"><?php echo wpsc_the_product_price(); ?></span>
 								      </td></tr>  
@@ -112,23 +120,23 @@
 								      <input class="wpsc_buy_button" type='button' value='<?php echo __('Buy Now', 'wpsc'); ?>' onclick='gotoexternallink("<?php echo $action; ?>")'>
 							      <?php else: ?>
 							        <tr class='submit'><td colspan=2>
-								      <input type="submit" value="Adauga la cos" name="Buy" class="wpsc_buy_button" id="product_<?php echo wpsc_the_product_id(); ?>_submit_button"/>
+								      <input type="submit" value="<?php echo t('Adauga la cos') ?>" name="Buy" class="wpsc_buy_button" id="product_<?php echo wpsc_the_product_id(); ?>_submit_button"/>
 							      <?php endif; ?>							  		
 							      </td><tr>
 							      <tr class='checkout'><td colspan=2>
 							        <FORM>
-                        <INPUT TYPE="BUTTON" class='checkout-button' VALUE="Cos cumparaturi" ONCLICK='gotoexternallink("<?php echo bloginfo(home) ?>/cos-cumparaturi")'>
+                        <INPUT TYPE="BUTTON" class='checkout-button' VALUE="<?php echo t('Cos cumparaturi') ?>" ONCLICK='gotoexternallink("<?php echo bloginfo(home) ?>/cos-cumparaturi")'>
                       </FORM>							        
 							      </td></tr> 
 							      <tr class='animation'><td colspan=2>
 							        <div class='wpsc_loading_animation'>
 								        <img title="Loading" alt="Loading" src="<?php echo WPSC_URL ;?>/images/indicator.gif" class="loadingimage" />
-								          Actualizare cos...
+								          <?php echo t('Actualizare cos...') ?>
 							        </div>
 							       </td></tr>							      
 							      							
 						      <?php else : ?>
-							      <p class='soldout'><?php echo __('This product has sold out.', 'wpsc'); ?></p>
+							      <p class='soldout'><?php echo t('Momentan nu este disponibil.') ?></p>
 						      <?php endif ; ?>
 					      <?php endif ; ?>
 					  </table>
