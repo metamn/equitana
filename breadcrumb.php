@@ -1,7 +1,7 @@
 <div class="breadcrumb">
   <?php 
     if ($view) {
-      echo t("Produse ") . get_cat_name($view) . t(" din categoria ") . get_cat_name($orig);      
+      echo t("Produse ") . "<strong>" . get_cat_name($view) . "</strong>" . t(" din categoria ") . "<strong>" . get_cat_name($orig) . "</strong>";      
     } else {
       if(function_exists('bcn_display')) { bcn_display(); }
     }

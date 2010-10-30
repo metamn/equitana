@@ -27,6 +27,8 @@
 						<?php endif; ?> 
 					</div>
 					<?php endif; ?> 
+					
+					<?php echo product_thumbs(post_id(wpsc_the_product_id())); ?>
 		
 					<div class="producttext">						  
 					    <form class='product_form' enctype="multipart/form-data" action="<?php echo wpsc_this_page_url(); ?>" method="post" name="1" id="product_<?php echo wpsc_the_product_id(); ?>">

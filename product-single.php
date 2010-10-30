@@ -22,6 +22,8 @@
     if ($product_id) {        
       echo wpsc_display_products_page('product_id='.$product_id);         
     }      
+  
   ?>
+  
 </div>
 

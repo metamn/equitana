@@ -20,6 +20,35 @@ define("INFORMATII", 161);
 // Shopping cart
 // -------------
 
+
+// Display product thumbs in thickbox
+// $id: post id
+function product_thumbs($id) {
+  $ret = "";
+  
+  $imgs = post_attachements($id);
+  if (count($imgs) > 0) { 
+    $i = 0;
+    $ret .= "<div id='images' class='block'>"; 
+    foreach ($imgs as $img) {
+      if ($i > 0) {
+        $thumb = wp_get_attachment_image_src($img->ID, 'thumbnail'); 
+        $large = wp_get_attachment_image_src($img->ID, 'large'); 
+        if ($thumb[0]) { 
+          $ret .= "<div class='item'>";
+          $ret .= "<a href='" . $large[0] . "'  class='thickbox' rel='images-". $id . "'>"  ;
+          $ret .= "<img class='noborder' src='". $thumb[0] . "' />";
+          $ret .= "</a></div>";
+        }                
+      }
+      $i += 1;
+    } 
+    $ret .= "</div>";
+  } 
+  return $ret;
+}
+
+
 // Get shopping cart contents 
 function get_cart_info() {
 
@@ -309,10 +338,6 @@ function advanced_search($post, $price, $categories) {
 }
 
 
-
-
-// Common wordpress
-// ----------------
 
 // Styling comments
 // - documentation @ http://codex.wordpress.org/Template_Tags/wp_list_comments
