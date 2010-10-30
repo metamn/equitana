@@ -132,9 +132,10 @@
 							      </td></tr> 
 							      <tr class='animation'><td colspan=2>
 							        <div class='wpsc_loading_animation'>
-								        <img title="Loading" alt="Loading" src="<?php echo WPSC_URL ;?>/images/indicator.gif" class="loadingimage" />
+								        <img title="Loading" alt="Loading" src="<?php echo WPSC_URL ;?>/images/indicator.gif" class="noborder loadingimage" />
 								          <?php echo t('Actualizare cos...') ?>
 							        </div>
+							        
 							       </td></tr>							      
 							      							
 						      <?php else : ?>

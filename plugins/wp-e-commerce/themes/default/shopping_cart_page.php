@@ -10,12 +10,12 @@
 <table class="productcart">
 	<tr class="firstrow">
 		<td class='firstcol'></td>
-		<td><?php echo __('Produs'); ?></td>
-		<td><?php echo __('Cantitate'); ?></td>
+		<td><?php echo t('Produs'); ?></td>
+		<td><?php echo t('Cantitate'); ?></td>
 		<?php if(wpsc_uses_shipping()): ?>
-			<td><?php echo __('Livrare'); ?></td>
+			<td><?php echo t('Livrare'); ?></td>
 		<?php endif; ?>
-		<td><?php echo __('Price'); ?></td>
+		<td><?php echo t('Pret'); ?></td>
 		<td></td>
 	</tr>
 	<?php while (wpsc_have_cart_items()) : wpsc_the_cart_item(); ?>
@@ -39,7 +39,7 @@
 					<input type="text" name="quantity" size="2" value="<?php echo wpsc_cart_item_quantity(); ?>" />
 					<input type="hidden" name="key" value="<?php echo wpsc_the_cart_item_key(); ?>" />
 					<input type="hidden" name="wpsc_update_quantity" value="true" />
-					<input type="submit" value="<?php echo __('Actualizare', 'wpsc'); ?>" name="submit" />
+					<input type="submit" value="<?php echo t('Actualizare'); ?>" name="submit" />
 				</form>
 			</td>
 			<?php if(wpsc_uses_shipping()): ?>
@@ -52,7 +52,7 @@
 					<input type="hidden" name="quantity" value="0" />
 					<input type="hidden" name="key" value="<?php echo wpsc_the_cart_item_key(); ?>" />
 					<input type="hidden" name="wpsc_update_quantity" value="true" />
-					<button class='remove_button' type="submit"><span><?php echo __('Renunta'); ?></span></button>
+					<button class='remove_button' type="submit"><span><?php echo t('Renunta'); ?></span></button>
 				</form>
 			</td>
 		</tr>
@@ -234,15 +234,15 @@
 			 global $current_user;
 			 get_currentuserinfo();	  ?>
 		
-		  <h2>Inca nu aveti cont?</h2>
+		  <h2><?php echo t("Inca nu aveti cont?"); ?></h2>
 		  <p>
-		    Trebuie sa va inregistrati mai intai pentru a cumpara de la noi.
+		    <?php echo t("Trebuie sa va inregistrati mai intai pentru a cumpara de la noi."); ?>
 		    <br/>
-		    Procedura de inregistrare este foarte simpla, aveti nevoie numai de o adresa e-mail.
+		    <?php echo t("Procedura de inregistrare este foarte simpla, aveti nevoie numai de o adresa e-mail."); ?>
 		  </p>		
 		  
 		  <a href="<?php echo wp_login_url(get_option('shopping_cart_url'))?>" alt="Intrare / inregistrare cont" title="Intrare / inregistrare cont">
-		    Intrare in cont / inregistrare cont
+		    <?php echo t("Intrare in cont / inregistrare cont"); ?>
 		  </a>
 
 	    
@@ -254,28 +254,28 @@
 	        if ( !($current_user instanceof WP_User) )
             return; ?>
           
-          <h2>Cont cumparaturi</h2>
+          <h2><?php echo t("Cont cumparaturi"); ?></h2>
           <ul>
-            <li>Nume utilizator: <?php echo $current_user->display_name ?></li>
-            <li>Adresa email: <?php echo $current_user->user_email ?></li>
+            <li><?php echo t("Nume utilizator:"); ?> <?php echo $current_user->display_name ?></li>
+            <li><?php echo t("Adresa email:"); ?> <?php echo $current_user->user_email ?></li>
           </ul>
           <div class='user-profile-links'>
-            <a href="<?php bloginfo('home') ?>/cont-cumparaturi/">Istoric comenzi</a>
+            <a href="<?php bloginfo('home') ?>/cont-cumparaturi/"><?php echo t("Istoric comenzi"); ?></a>
             | 
-            <a href="<?php bloginfo('home') ?>/cont-cumparaturi/?edit_profile=true">Detalii facturare/livrare</a>
+            <a href="<?php bloginfo('home') ?>/cont-cumparaturi/?edit_profile=true"><?php echo t("Detalii facturare/livrare"); ?></a>
             | 
-            <a href="<?php echo wp_logout_url(get_bloginfo('url')); ?>">Iesire din cont</a>
+            <a href="<?php echo wp_logout_url(get_bloginfo('url')); ?>"><?php echo t("Iesire din cont"); ?></a>
             | 
-            <a href="<?php bloginfo('home') ?>/wp-admin/profile.php">Modificare cont utilizator</a> 
+            <a href="<?php bloginfo('home') ?>/wp-admin/profile.php"><?php echo t("Modificare cont utilizator"); ?></a> 
           </div>  
           <br/><br/>   
       <?php } ?>
 	    
-	    <h3>Va rugam verificati daca datele sunt corecte in formularul de mai jos</h3>	
-	    <p>Campurile marcate cu * sunt obligatorii.</p>
+	    <h3><?php echo t("Va rugam verificati daca datele sunt corecte in formularul de mai jos"); ?></h3>	
+	    <p><?php echo t("Campurile marcate cu * sunt obligatorii."); ?></p>
 	    
 	    <p>
-	      <input type='submit' value="Datele sunt corecte, trimit imediat comanda" name='submit' class='make_purchase' />
+	      <input type='submit' value="<?php echo t('Datele sunt corecte, trimit imediat comanda'); ?>" name='submit' class='make_purchase' />
 	    </p>
 	    
 	    <?php
@@ -295,7 +295,7 @@
 						    <td colspan ='2'>
 							    <br/><br/>
 							    <input type='checkbox' value='true' name='shippingSameBilling' id='shippingSameBilling' />
-							    <label for='shippingSameBilling'>Adresa de livrare este acelasi ca adresa de facturare?</label>						
+							    <label for='shippingSameBilling'><?php echo t("Adresa de livrare este acelasi ca adresa de facturare?"); ?></label>						
 							    <br/><br/>
 						    </td>
 					    </tr>
@@ -396,7 +396,7 @@
 				    <?php //exit('<pre>'.print_r($wpsc_gateway->wpsc_gateways[0]['name'], true).'</pre>');
 				     if(count($wpsc_gateway->wpsc_gateways) == 1 && $wpsc_gateway->wpsc_gateways[0]['name'] == 'Noca'){}else{?>
 					    <input type='hidden' value='submit_checkout' name='wpsc_action' />
-					    <input type='submit' value='Trimitere comanda' name='submit' class='make_purchase' />
+					    <input type='submit' value='<?php echo t("Trimitere comanda"); ?>' name='submit' class='make_purchase' />
 				    <?php }/* else: ?>
 				
 				    <br /><strong><?php echo __('Please login or signup above to make your purchase', 'wpsc');?></strong><br />
@@ -413,7 +413,7 @@
 </div>
 <?php
 else:
-  echo '<h4>Cosul Dvs. este gol. Va rugam vizitati sectiunea <a href="' . bloginfo('home') .'/category/produse">Produse</a></h4>';	
+  echo '<h4>'. t('Cosul Dvs. este gol. Va rugam vizitati sectiunea') . '<a href="' . get_bloginfo('home') .'category/produse">' . t('Produse') . '</a></h4>';	
 endif;
 do_action('wpsc_bottom_of_shopping_cart');
 ?>

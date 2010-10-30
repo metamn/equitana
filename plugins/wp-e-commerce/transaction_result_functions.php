@@ -38,7 +38,7 @@ function transaction_results($sessionid, $echo_to_screen = true, $transaction_id
 				}
 				return false;
 			} else if ($purchase_log['processed'] < 2) {  //added by Thomas on 20/6/2007
-        echo '<p>Comanda Dvs. a fost trimis cu succes. In curand veti primi un e-mail de confirmare. </p>';
+        echo '<p>' . t('Comanda Dvs. a fost trimis cu succes. In curand veti primi un e-mail de confirmare.') . '</p>';
 				/*if($purchase_log['gateway'] != 'testmode') {
 					if((get_option('purch_log_email') != null) && ($purchase_log['email_sent'] != 1)) {
 						mail(get_option('purch_log_email'), __('New pending order', 'wpsc'), __('There is a new order awaiting processing:', 'wpsc').$order_url, "From: ".get_option('return_email')."");
@@ -307,6 +307,7 @@ function transaction_results($sessionid, $echo_to_screen = true, $transaction_id
 						$report_user .= "".$userinfo['name'].": ".$userinfo['value']."\n";
 					}elseif(is_numeric($userinfo['value'])){
 							$report_user .= "State: ".wpsc_get_state_by_id($userinfo['value'],'name')."\n";
+
 					}
 				}
 			}

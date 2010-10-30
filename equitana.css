@@ -582,7 +582,12 @@ input.wpsc_buy_button, input.checkout-button {
 table td.right {
   text-align: right;
 }
-
+table.productcart tr.firstrow td {
+  background-color: #BDB294 !important;
+  color: #3D3A30 !important;
+  border-right: 1px solid #CABE9E !important;
+  border-left: none !important;
+}
 
 
 
