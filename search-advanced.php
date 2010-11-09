@@ -1,11 +1,6 @@
 <?php
 /*
-Template Name: Advanced Search Page
-*/
-?>
-
-<?php
-/**
+ * Template Name: Advanced Search Page
  * @package WordPress
  * @subpackage Default_Theme
  */
@@ -14,19 +9,16 @@ get_header();
 ?>
 
 
-<div id="content" class="advanced-search column span-24 last">
-  <div id="col-1" class="column span-8 last">	          
-    <?php get_sidebar(); ?>
-  </div>
-  
-  <div id="col-2" class="column span-16 last">  
-  <h2>Cautare</h2>
-  
-  <div class="block">
+<div id="content" class="advanced-search column span-24 last">   
+  <h2>Cautare avansata</h2>
+  <div id="col-1" class="column span-12 ">
     <form method="get" id="searchform" action="<?php bloginfo('url'); ?>/">         
-      <div id="left" class="column span-6 append-1 last">
+      <div id="left" class="column span-8 last">
         <dl>
-          <dt><label for="term">Expresia cautata:</label></dt>
+          <dt><label for="term">Cod produs:</label></dt>
+          <dd><input type="text" value=" " name="c" id="c" /></dd>
+          
+          <dt><label for="term">Nume produs:</label></dt>
           <dd><input type="text" value=" " name="s" id="s" /></dd>
           
           <dt><label for="price">Cautare dupa pret:</label></dt>
@@ -46,12 +38,16 @@ get_header();
         <input type="submit" id="searchsubmit" value="Cautare" />
       </div>
       
-      <div id="right" class="column span-6 prepend-1 last">                       
+      <div id="right" class="column span-3 last">                       
         <input type="submit" id="searchsubmit" value="Cautare" />            
       </div>
     </form>      
-  </div> 
-  </div>               
+  </div>
+  <div id="col-2" class="column span-12 last">
+    <div class="tags">
+      <?php wp_tag_cloud( $args ); ?>
+    </div>
+  </div>     
 </div>  
   
 <?php get_footer(); ?>

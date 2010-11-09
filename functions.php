@@ -48,6 +48,23 @@ function product_thumbs($id) {
   return $ret;
 }
 
+// Get the wspc product id 
+// Input: post_id - the wp id of the post
+function product_id($post_id) {
+  $id = get_post_meta($post_id, 'product_id', true);
+  return $id;
+}
+
+// Get the product price directly from the post
+function product_price($post_id) {  
+  $product_id = product_id($post_id); 
+  if ($product_id) {
+    global $wpdb;
+    $price = $wpdb->get_var("SELECT `price` FROM `".$wpdb->prefix."wpsc_product_list` WHERE `id`=".$product_id." LIMIT 1");
+    return $price;
+  }  
+}
+
 
 // Get shopping cart contents 
 function get_cart_info() {
@@ -57,10 +74,11 @@ function get_cart_info() {
 function sku($product_id) {
   if ($product_id) {
     global $wpdb;
-    $sku = $wpdb->get_var("SELECT `sku` FROM `".$wpdb->prefix."wpsc_product_list` WHERE `id`=".$product_id." LIMIT 1");
+    $sku = $wpdb->get_var("SELECT `meta_value` FROM `".$wpdb->prefix."wpsc_productmeta` WHERE `product_id`=".$product_id." AND `meta_key`='sku' LIMIT 1");
     return $sku;
   } 
 }
+
 
 // Get the post ID from the product ID
 function post_id($product_id) {
@@ -368,10 +386,13 @@ function create_check_box_for_category($cat_id, $name) {
 }
 
 // Checks if search results fit advanced search parameters
-function advanced_search($post, $price, $categories) {  
-  // Category checking first
-  if ($categories) {
-    if (in_category($categories, $post)) {
+function advanced_search($post, $price, $categories, $sku) {  
+  
+  // SKU checking 
+  if ($sku) {
+    $p = product_id($post->ID);
+    $val = sku($p);
+    if ($val == $sku) {
       $ret = true;
     } else {
       $ret = false;
@@ -379,6 +400,20 @@ function advanced_search($post, $price, $categories) {
   } else {
     $ret = true;
   }
+  
+  if ($ret) {
+    // Category checking 
+    if ($categories) {
+      if (in_category($categories, $post)) {
+        $ret = true;
+      } else {
+        $ret = false;
+      }    
+    } else {
+      $ret = true;
+    }
+  }
+  
   
   // Price checking
   if ($ret) {

@@ -43,7 +43,7 @@
 	        <div class="inner">
 	          
 	          <div id="languages">
-	            <?php do_action('icl_language_selector'); ?>
+	            <!--<?php do_action('icl_language_selector'); ?>-->
 	          </div>
 	          
 	          <div id="search">

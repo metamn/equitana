@@ -413,7 +413,7 @@
 </div>
 <?php
 else:
-  echo '<h4>'. t('Cosul Dvs. este gol. Va rugam vizitati sectiunea') . '<a href="' . get_bloginfo('home') .'category/produse">' . t('Produse') . '</a></h4>';	
+  echo '<h4>'. t('Cosul Dvs. este gol. Va rugam vizitati sectiunea') . ' <a href="' . get_bloginfo('home') .'/category/produse">' . t('Produse') . '</a></h4>';	
 endif;
 do_action('wpsc_bottom_of_shopping_cart');
 ?>
