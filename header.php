@@ -31,6 +31,14 @@
 	</head>
 	<body>
 	  <div class="container"> <!-- closed in footer -->
+	  
+	    <!--[if lte IE 6]>
+      <div id="ie" class="notice">
+        <h4>Acest browser <strong>Internet Explorer 6</strong> nu mai este suportat nici de producatorul Microsoft si la fel de Equitana</h4>  
+        <p>Nu puteti face cumparaturi numai sa vizualizati produsele.</p>
+        <p>Pentru o experienta completa va rugam folositi un browser modern: Internet Explorer 7+, Mozilla Firefox, Google Chrome sau Apple Safari</p>
+      </div>  
+      <![endif]-->
 	    
 	    <div id="header" class="column span-24 last">
 	      <div id="logo" class="column span-18 last">

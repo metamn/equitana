@@ -15,6 +15,7 @@
 
 
 <div id="content" class="startpage column span-24-last">
+  
   <div id="news">
     <?php if ($news->have_posts()) {
       while ($news->have_posts()) : $news->the_post(); update_post_caches($posts); 

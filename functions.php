@@ -134,7 +134,13 @@ function check_profile_info($id) {
   return $ret;
 }
 
-
+// Getting current URL
+// - used by shopping cart 
+// - replaced by a simple call to the checkout page
+function curPageURL() {
+  $pageURL = bloginfo('home') . '/shop/cos-cumparaturi';
+  return $pageURL;
+}
 
 // Product navigation
 // ------------------
