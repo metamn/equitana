@@ -70,7 +70,7 @@
                 $forum = "current-cat";
               }
 	           ?>           
-            <li class="<?php echo $forum; ?>"><a href="<?php bloginfo('home'); ?>/forum" alt="Forumul Equitana" title="Forumul Equitana">Forum</a></li>	        
+            <li class="<?php echo $forum; ?>"><a href="<?php echo get_category_link(wpml_id(MICAPUBLICITATE)); ?>" alt="Mica publicitate pe Equitana" title="Mica publicitate pe Equitana">Mica publicitate</a></li>	        
             <li class="<?php echo $blog; ?>"><a href="<?php bloginfo('home'); ?>/blog" alt="Blogul Equitana" title="Blogul Equitana">Blog</a></li>
           </ul>
         </div>          

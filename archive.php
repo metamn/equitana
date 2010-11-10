@@ -79,7 +79,9 @@ get_header();
           <div id="posts" class="column span-17">      
             <?php if (have_posts()) : 
               if (is_category()) {
-                echo '<h2>' . printf(__("You are currently browsing the archives for the %s category."), single_cat_title()) . '</h2>';
+                echo '<h2>';
+                echo single_cat_title();
+                echo '</h2>';
               } elseif( is_tag() ) {
                 echo '<h2>';
                 single_cat_title();

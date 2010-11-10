@@ -12,6 +12,8 @@ define("NOUTATI", 8);
 define("STIRI", 6);
 define("BRANDURI", 24);
 define("INFORMATII", 161);
+define("STIRISTARTPAGE", 537);
+define("MICAPUBLICITATE", 536);
 
 
 

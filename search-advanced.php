@@ -45,7 +45,7 @@ get_header();
   </div>
   <div id="col-2" class="column span-12 last">
     <div class="tags">
-      <?php wp_tag_cloud( $args ); ?>
+      <?php wp_tag_cloud('number=0'); ?>
     </div>
   </div>     
 </div>  

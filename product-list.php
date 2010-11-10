@@ -15,7 +15,7 @@
         <?php comments_popup_link(__('No Comments'), __('1 Comment'), __('% Comments')); ?>
       </p>    
     </div>
-    <div id='shopping' class='column span-5 last'>
+    <div id='shopping' class='column span-6 last'>
       
       <?php 
         $product_id = get_post_meta($post->ID, 'product_id', single);

@@ -4,8 +4,8 @@ $(document).ready(function() {
   $('#content.startpage #item span.title').click(function() {
     $(this).parent().toggleClass('opacity');
     $(this).toggleClass('bold');
-    $(this).next().slideToggle(200); 
     $(this).next().next().slideToggle(200); 
+    $(this).next().next().next().slideToggle(200); 
   });
   
   

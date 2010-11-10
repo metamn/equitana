@@ -10,7 +10,7 @@
 
 <?php 
   
-  $news = query_posts2('posts_per_page=5&cat='.wpml_id(STIRI));
+  $news = query_posts2('posts_per_page=5&cat='.wpml_id(STIRISTARTPAGE));
 ?>
 
 
@@ -26,6 +26,7 @@
       ?>
         <div id="item" class="opacity <?php echo $klass ?>">
           <span class="title link"><?php the_title(); ?></span>
+          <p class="date"><?php the_time('l, j F, Y'); ?></p>
           <div id="image" class="hidden">
             <?php
               $imgs = post_attachements($id);
