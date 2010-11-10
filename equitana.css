@@ -496,6 +496,7 @@ body {
 }
 
 
+
 /* Search results
 */
 #content.search-results #search-results-header, #content.search-results .not-found {
@@ -625,8 +626,178 @@ table.productcart tr.firstrow td {
 
 
 
+
+/* Shopping cart / wp-e-commerce pages
+*/
+
+table.productcart {
+  margin-bottom: 1em;
+}
+table.productcart tr.firstrow td {
+  background-color: #CABE9E !important;
+  border-left: 1px dotted #eee !important;
+  font-weight: bold;
+}
+table.productcart tr.firstrow td.firstcol {
+  border-left: none;
+}
+table.productcart tr.product_row td {
+  border-bottom: 1px solid #cac1b2;
+}
+table.productcart td.productname {
+  width: 30%;
+}
+table.productcart tr.subtotal td {
+  font-weight: bold;
+  border-top: 1px solid #cac1b2;
+}
+
+table.productcart input.coupon {
+  width: 10em;
+}
+
+table.shipping td {
+  vertical-align: top;
+}
+table.shipping td.c3, table.shipping td.c4, table.shipping td.c5 {
+  border-bottom: 1px solid #cac1b2;
+}
+table.shipping td.c1 {
+  width: 4.5em;
+}
+table.shipping td.c2 {
+  width: 30%;
+}
+table.shipping td.c3 {
+  width: 29.5%;
+}
+table.shipping td.c4 {
+  width: 14%;
+}
+
+table.total {  
+  margin-bottom: 3em; 
+}
+table.total td h4, table.wpsc_checkout_table td h4, #checkout h4 {
+  margin-bottom: 0;
+}
+table.total td.c1 {
+  width: 4.5em;
+}
+table.total td.c2 {
+  width: 60%;
+}
+table.total td.c3 {
+  width: 30%;
+}
+
+.wpsc_checkout_forms #info {  
+  margin: 1.5em 0 2em;  
+}
+.wpsc_checkout_forms #info ul {
+  margin: 0 0 0 9em;
+}
+
+
+#checkout #form {
+  width: 380px;    
+}
+#checkout #login {
+  margin-top: 1.7em;    
+}
+#checkout #login button.make_purchase {
+  width: 99%;  
+  text-align: center;
+}
+#checkout #login #account {
+  margin: 0;
+}
+#checkout #login h4 {
+  margin-bottom: 1.25em;
+}
+#checkout #login ul.loginlist {
+  list-style-type: none;
+}
+#checkout #login ul.info {
+  margin: 0 1.5em 0;
+}
+#checkout #login ul.links {
+  margin: 0 1.5em 1.5em;
+}
+
+table.wpsc_checkout_table textarea, table.wpsc_checkout_table input.text {
+  margin: 0;
+}
+table.wpsc_checkout_table textarea {
+  width: 97% !important;
+  height: 5em;
+}
+table.wpsc_checkout_table input.text {
+  width: 97% !important;
+}
+
+
+#checkout input.green {
+  background: #26BF5A;
+  padding: .2em 1em;
+  border: 1px outset green;
+  color: #eee;
+  font-weight: bold;
+}
+
+.login_error {
+  padding: 1em;
+  margin: 1em 0 !important;
+  background: #A53B08;
+  color: #DFDBD0;
+}
+.termeni {
+  background: #FFFBBA;
+  padding: .5em 1em;
+}
+
+
+#page #subscribe #share p {
+  margin-bottom: 4em;
+}
+#page #subscribe #feedback p {
+  text-align: right;
+}
+
+#page #subscribe #share img, #page #subscribe #share .spacerx {
+  width: 72px;
+  height: 72px;
+  float: left;
+  margin-right: 1em;
+}
+
+#page #subscribe #feedback img {
+  width: 72px;
+  height: 72px;
+  float: right;
+}
+#page.checkout-final .post {
+  margin-bottom: 2em !important;
+}
+#page.checkout-final #comments {
+  margin-top: 2em;
+}
+#page.checkout-final #partner{
+  margin: 2em 0;
+  padding: 2em;
+  background: #DFDBD0; 
+}
+
+
+
+
+
 /* Common
 */
+
+.box {
+  background: #CABE9E;
+}
 
 ul.inline-list {
   display: block;

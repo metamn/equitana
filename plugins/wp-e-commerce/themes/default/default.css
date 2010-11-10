@@ -962,11 +962,7 @@ a.categorylink{
  font-size: 8pt;
  }
 
-span.pricedisplay{
-/*  white-space: nowrap; */
- width: 80px;
- float:right; 
- }
+
  
 td.totals{
  vertical-align: bottom;

@@ -65,6 +65,10 @@ function product_price($post_id) {
   }  
 }
 
+// Get the stock
+function product_stock($product_id) {
+  
+}
 
 // Get shopping cart contents 
 function get_cart_info() {
@@ -105,6 +109,27 @@ function post_attachements($post_id) {
   ); 
   $attachments = get_posts($args);
   return $attachments;
+}
+
+
+// checking if an user has all mandatory fields completed or not
+// - used in checkout
+// - the unserialize format help: http://blog.tanist.co.uk/files/unserialize/index.php
+function check_profile_info($id) {
+  global $wpdb;
+  $query = "SELECT `meta_value` FROM `".$wpdb->prefix."usermeta` WHERE `user_id`=".$id." AND `meta_key`='wpshpcrt_usr_profile' LIMIT 1"; 
+  $info = $wpdb->get_var($query);
+  
+   
+  $ret = false;
+  if ($info) {
+    $i = unserialize($info);
+    if ($i[2] && $i[4] && $i[5] && $i[17] && $i[8]) { 
+      $ret = true; 
+    }
+  } 
+  
+  return $ret;
 }
 
 
@@ -199,6 +224,127 @@ function get_brand_category_ids() {
     }
   }
   return $ret;
+}
+
+
+
+
+// Common wordpress
+// ----------------
+
+
+// Used in advanced search
+function create_radio_button_for_category($cat_id, $name) {
+  $ret = "";
+  $cats = get_categories('child_of='.$cat_id);
+  foreach ($cats as $cat) {
+    $ret .= '<input type="radio" name="' . $name . '" value="' . $cat->cat_ID . '"/>';
+    $ret .= $cat->name;
+    $ret .= '<br/>';
+  }
+  return $ret;
+}
+function create_check_box_for_category($cat_id, $name) {
+  $ret = "";
+  $cats = get_categories('child_of='.$cat_id);
+  foreach ($cats as $cat) {
+    $ret .= '<input type="checkbox" name="' . $name . '" value="' . $cat->cat_ID . '"/>';
+    $ret .= $cat->name;
+    $ret .= '<br/>';
+  }
+  return $ret;
+}
+
+// Checks if search results fit advanced search parameters
+function advanced_search($post, $price, $categories, $sku) {  
+  
+  // SKU checking 
+  if ($sku) {
+    $p = product_id($post->ID);
+    $val = sku($p);
+    if ($val == $sku) {
+      $ret = true;
+    } else {
+      $ret = false;
+    }    
+  } else {
+    $ret = true;
+  }
+  
+  if ($ret) {
+    // Category checking 
+    if ($categories) {
+      if (in_category($categories, $post)) {
+        $ret = true;
+      } else {
+        $ret = false;
+      }    
+    } else {
+      $ret = true;
+    }
+  }
+  
+  
+  // Price checking
+  if ($ret) {
+    if ($price) {
+      $product_price = product_price($post->ID);
+      if ($product_price) {
+        // splitting $price
+        $tmp = explode('-', $price);
+        $lower = (int)$tmp[0];
+        if (!$tmp[1]) {
+          $tmp[1] = 10000;
+        }
+        $higher = (int)$tmp[1];
+         
+        if ($product_price >= $lower && $product_price <= $higher) {
+          $ret = true;
+        } else {
+          $ret = false;
+        }       
+      } else {
+        $ret = false;
+      }      
+    } else {
+      $ret = true;
+    }
+  }  
+  return $ret;
+}
+
+
+
+// Styling comments
+// - documentation @ http://codex.wordpress.org/Template_Tags/wp_list_comments
+function styled_comments($comment, $args, $depth){
+  $GLOBALS['comment'] = $comment; ?>
+  
+  <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
+    <div id="comment-<?php comment_ID(); ?>" class="block">
+      <div class="comment-author vcard column span-4 last">
+         <?php echo get_avatar($comment, $size='96',$default='<path_to_url>' ); ?>
+         <br/>
+         <?php printf(__('<p class="fn">%s</p>'), get_comment_author_link()) ?>
+      </div>
+      <div class="column last">
+        <?php if ($comment->comment_approved == '0') : ?>
+          <em><?php _e('Your comment is awaiting moderation.') ?></em>
+          <br />
+        <?php endif; ?>
+        
+        <div class="comment-body">
+          <?php comment_text() ?>
+        </div>
+        
+        <div class="comment-meta commentmetadata">
+          <a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php printf(__('%1$s la %2$s'), get_comment_date(),  get_comment_time()) ?></a>
+          <?php edit_comment_link(__('(Modificare)'),'  ','') ?>
+          <?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
+        </div>        
+      </div>
+    </div>
+<?php  
 }
 
 
@@ -359,122 +505,6 @@ function wpml_page_id($id) {
 
 
 
-// Common wordpress
-// ----------------
 
-
-// Used in advanced search
-function create_radio_button_for_category($cat_id, $name) {
-  $ret = "";
-  $cats = get_categories('child_of='.$cat_id);
-  foreach ($cats as $cat) {
-    $ret .= '<input type="radio" name="' . $name . '" value="' . $cat->cat_ID . '"/>';
-    $ret .= $cat->name;
-    $ret .= '<br/>';
-  }
-  return $ret;
-}
-function create_check_box_for_category($cat_id, $name) {
-  $ret = "";
-  $cats = get_categories('child_of='.$cat_id);
-  foreach ($cats as $cat) {
-    $ret .= '<input type="checkbox" name="' . $name . '" value="' . $cat->cat_ID . '"/>';
-    $ret .= $cat->name;
-    $ret .= '<br/>';
-  }
-  return $ret;
-}
-
-// Checks if search results fit advanced search parameters
-function advanced_search($post, $price, $categories, $sku) {  
-  
-  // SKU checking 
-  if ($sku) {
-    $p = product_id($post->ID);
-    $val = sku($p);
-    if ($val == $sku) {
-      $ret = true;
-    } else {
-      $ret = false;
-    }    
-  } else {
-    $ret = true;
-  }
-  
-  if ($ret) {
-    // Category checking 
-    if ($categories) {
-      if (in_category($categories, $post)) {
-        $ret = true;
-      } else {
-        $ret = false;
-      }    
-    } else {
-      $ret = true;
-    }
-  }
-  
-  
-  // Price checking
-  if ($ret) {
-    if ($price) {
-      $product_price = product_price($post->ID);
-      if ($product_price) {
-        // splitting $price
-        $tmp = explode('-', $price);
-        $lower = (int)$tmp[0];
-        if (!$tmp[1]) {
-          $tmp[1] = 10000;
-        }
-        $higher = (int)$tmp[1];
-         
-        if ($product_price >= $lower && $product_price <= $higher) {
-          $ret = true;
-        } else {
-          $ret = false;
-        }       
-      } else {
-        $ret = false;
-      }      
-    } else {
-      $ret = true;
-    }
-  }  
-  return $ret;
-}
-
-
-
-// Styling comments
-// - documentation @ http://codex.wordpress.org/Template_Tags/wp_list_comments
-function styled_comments($comment, $args, $depth){
-  $GLOBALS['comment'] = $comment; ?>
-  
-  <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
-    <div id="comment-<?php comment_ID(); ?>" class="block">
-      <div class="comment-author vcard column span-4 last">
-         <?php echo get_avatar($comment, $size='96',$default='<path_to_url>' ); ?>
-         <br/>
-         <?php printf(__('<p class="fn">%s</p>'), get_comment_author_link()) ?>
-      </div>
-      <div class="column last">
-        <?php if ($comment->comment_approved == '0') : ?>
-          <em><?php _e('Your comment is awaiting moderation.') ?></em>
-          <br />
-        <?php endif; ?>
-        
-        <div class="comment-body">
-          <?php comment_text() ?>
-        </div>
-        
-        <div class="comment-meta commentmetadata">
-          <a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php printf(__('%1$s la %2$s'), get_comment_date(),  get_comment_time()) ?></a>
-          <?php edit_comment_link(__('(Modificare)'),'  ','') ?>
-          <?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
-        </div>        
-      </div>
-    </div>
-<?php  
-}
 
 ?>
