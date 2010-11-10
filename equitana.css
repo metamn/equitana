@@ -270,10 +270,33 @@ body {
 
 #content.startpage {
   padding: 0;
+  background: transparent url(img/lovak.jpg) 0 0;
+  height: 750px;
 }
-.startpage img {
-  width: 100%;
+
+#content.startpage #news {
+  width: 30%;
+  float: right;
+  text-align: right;
+  margin-right: 1em;
+  position: relative;
+  top: 5em;
 }
+#content.startpage #news #item {
+  background: white;  
+  padding: 1em;
+  margin-bottom: 2em;
+   -moz-border-radius: 10px;  
+  -webkit-border-radius: 10px;
+  box-shadow: 0.1em .1em #BDB294;
+  -moz-box-shadow: 0.1em .1em #BDB294;
+  -webkit-box-shadow: 0.1em .1em #BDB294;
+}
+#content.startpage #news #item a {
+  text-decoration: none;
+}
+
+
 
 
 /* Product list 
@@ -795,10 +818,31 @@ table.wpsc_checkout_table input.text {
 /* Common
 */
 
+.opacity {
+  opacity: .7;
+  -khtml-opacity: .7;  
+  -moz-opacity: .7; 
+  filter: alpha(opacity=70);
+}
+.hidden {
+  display: none;
+}
 .box {
   background: #CABE9E;
 }
-
+.link {
+  cursor: pointer;
+}
+.bold {
+  font-weight: bolder;
+}
+.important {
+  background: #FFFBBA !important;
+  opacity: .9;
+  -khtml-opacity: .9;  
+  -moz-opacity: .9; 
+  filter: alpha(opacity=90);
+}
 ul.inline-list {
   display: block;
 }

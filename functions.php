@@ -233,6 +233,13 @@ function get_brand_category_ids() {
 // ----------------
 
 
+// Query for multiple posts
+// - the query string has the syntax of the query_posts WP function
+function query_posts2($query_string) {
+  $q = new WP_Query($query_string);
+  return $q;
+}
+
 // Used in advanced search
 function create_radio_button_for_category($cat_id, $name) {
   $ret = "";
