@@ -251,11 +251,10 @@
 	    <table class='wpsc_checkout_table'>
 		    <?php while (wpsc_have_checkout_items()) : wpsc_the_checkout_item(); ?>
 			    <?php if(wpsc_is_shipping_details()) : ?>
-					    
-			    <?php endif; ?>
-
+					 
+			    <?php endif; ?>        
 		      <?php if(wpsc_checkout_form_is_header() == true) : ?>
-		      		
+		      	
 		      <?php else: ?>
 		        <?php if((!wpsc_uses_shipping()) && $wpsc_checkout->checkout_item->unique_name == 'shippingstate'): ?>
 		        <?php else : ?>

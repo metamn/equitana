@@ -143,6 +143,7 @@ hr {
   background: #EADDB6;
   padding: .1em;
   font-size: .6em;
+  line-height: 1.5;
 }
 
 #sidebar {
@@ -369,9 +370,11 @@ body {
 #content.single #thecomments ol {
   list-style-type: none;
 }
-#content.single #thecomments .fn {
-  text-align: center;
-  margin-left: -2em;
+#content.single #thecomments img.avatar {
+  padding: .6em;
+}
+#content.single #thecomments .fn {  
+  margin-left: 1em;
 }
 #content.single #side .wpsc_container .imagecol, #content.single #side .wpsc_container #images, #content.meta #shopping #images {
   display: none;
@@ -412,6 +415,23 @@ body {
 }
 .single #respond {
   margin-left: 1em;
+}
+
+
+ul.wp-polls-ul {
+  margin: 0 2em;
+}
+ul.wp-polls-ul li {
+  margin-bottom: 2em;
+}
+ul.wp-polls-ul li table, ul.wp-polls-ul li td, ul.wp-polls-ul li th {
+  vertical-align: top;
+}
+ul.wp-polls-ul li table td.image {
+  width: 70%;
+}
+ul.wp-polls-ul li table td.text {
+  width: 20%;
 }
 
 

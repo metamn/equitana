@@ -19,11 +19,11 @@ get_header(); ?>
 			      </h1>
 			
 			      <div class="entry">
-				      <?php the_content('Read the rest of this entry &raquo;'); ?>
+				      <?php the_content('Detalii &raquo;'); ?>
 			      </div>
 			      <p class="postmetadata">
 			        <?php the_tags(__('Tags') . ': ', ', ', '<br/>'); ?> 
-			        <?php _e("Categories") . ': ' . the_category(', ') ?> | 
+			        Categorii: <?php the_category(', ') ?> | 
 			        <?php edit_post_link(__('Edit'), '', ' | '); ?>  			        
 			        <?php comments_popup_link(__('No Comments'), __('1 Comment'), __('% Comments')); ?>
 			       </p>

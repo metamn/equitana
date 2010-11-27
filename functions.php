@@ -13,7 +13,7 @@ define("STIRI", 6);
 define("BRANDURI", 24);
 define("INFORMATII", 161);
 define("STIRISTARTPAGE", 537);
-define("MICAPUBLICITATE", 536);
+define("MICAPUBLICITATE", 536); 
 
 
 
@@ -338,7 +338,7 @@ function styled_comments($comment, $args, $depth){
   <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
     <div id="comment-<?php comment_ID(); ?>" class="block">
       <div class="comment-author vcard column span-4 last">
-         <?php echo get_avatar($comment, $size='96',$default='<path_to_url>' ); ?>
+         <?php echo get_avatar($comment, $size='48',$default='<path_to_url>' ); ?>
          <br/>
          <?php printf(__('<p class="fn">%s</p>'), get_comment_author_link()) ?>
       </div>

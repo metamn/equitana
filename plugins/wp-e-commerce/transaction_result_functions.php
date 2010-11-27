@@ -70,6 +70,9 @@ function transaction_results($sessionid, $echo_to_screen = true, $transaction_id
 		
 		if(($cart != null) && ($errorcode == 0)) {
 				foreach($cart as $row) {
+				
+				$product_id = $row['prodid'];
+				
 				$link = "";
 				$product_data = $wpdb->get_row("SELECT * FROM `".WPSC_TABLE_PRODUCT_LIST."` WHERE `id`='{$row['prodid']}' LIMIT 1", ARRAY_A) ;
 				if($purchase_log['email_sent'] != 1) {
@@ -157,8 +160,12 @@ function transaction_results($sessionid, $echo_to_screen = true, $transaction_id
 					//$product_list .= " - ". $product_data['name'] . stripslashes($variation_list) ."  ".$message_price ." ".__('Click to download', 'wpsc').":\n\r $link\n\r".$additional_content;
 					//$product_list_html .= " - ". $product_data['name'] . stripslashes($variation_list) ."  ".$message_price ."&nbsp;&nbsp;<a href='$link'>".__('Click to download', 'wpsc')."</a>\n". $additional_content;
 
-					$product_list .= " - ". $product_data['name'] . stripslashes($variation_list) ."  ".$message_price;
-					$product_list_html .= " - ". $product_data['name'] . stripslashes($variation_list) ."  ".$message_price;
+          
+
+					$product_list .= " - ". $product_data['name'] . stripslashes($variation_list) ."  ".$message_price . "  (Cod produs: ". sku($product_id).")";
+					$product_list_html .= " - ". $product_data['name'] . stripslashes($variation_list) ."  ".$message_price. "  (Cod produs: ". sku($product_id).")";
+
+
 					foreach($link as $single_link){
 						$product_list .= "\n\r ".$single_link["name"].": ".$single_link["url"]."\n\r";
 						$product_list_html .= "<a href='".$single_link["url"]."'>".$single_link["name"]."</a>\n";
@@ -172,12 +179,16 @@ function transaction_results($sessionid, $echo_to_screen = true, $transaction_id
 					if($row['quantity'] > 1) {
 						$plural = "s";
 						}
-					$product_list.= $row['quantity']." - ". $product_data['name'].stripslashes($variation_list )."  ". $message_price ."\n\r";
+					
+					$product_list.= $row['quantity']." - ". $product_data['name'].stripslashes($variation_list )."  ". $message_price . "  (Cod produs: ". sku($product_id).")" ."\n\r";
+
 					if ($shipping > 0) $product_list .= " - ". __('Shipping', 'wpsc').":".$shipping_price ."\n\r";
-					$product_list_html.= $row['quantity']." -  ". $product_data['name'].stripslashes($variation_list )."  ". $message_price ."\n\r";
+					
+					$product_list_html.= $row['quantity']." -  ". $product_data['name'].stripslashes($variation_list )."  ". $message_price . "  (Cod produs: ". sku($product_id).")" ."\n\r";
+					
 					if ($shipping > 0) $product_list_html .= " &nbsp; ". __('Shipping', 'wpsc').":".$shipping_price ."\n\r";
 
-					$report_product_list.= $row['quantity']." - ". $product_data['name'] .stripslashes($variation_list)."  ".$message_price ."\n\r";
+					$report_product_list.= $row['quantity']." - ". $product_data['name'] .stripslashes($variation_list)."  ".$message_price .  "  (Cod produs: ". sku($product_id).")". "\n\r";
 				}
 				$report = get_option('wpsc_email_admin');
 				
@@ -252,13 +263,19 @@ function transaction_results($sessionid, $echo_to_screen = true, $transaction_id
  					add_filter('wp_mail_from', 'wpsc_replace_reply_address', 0);
  					add_filter('wp_mail_from_name', 'wpsc_replace_reply_name', 0);
  					
-					if($purchase_log['processed'] < 2) {
+ 					if($purchase_log['processed'] < 2) {
 						$payment_instructions = strip_tags(get_option('payment_instructions'));
-						$message = __('Thank you, your purchase is pending, you will be sent an email once the order clears.', 'wpsc') . "\n\r" . $payment_instructions ."\n\r". $message;
-						wp_mail($email, __('Order Pending: Payment Required', 'wpsc'), $message);
+						//$message = $payment_instructions ."\n\r". $message;
+						wp_mail($email, 'Procesul de cumparare', $message);
 					} else {
-						wp_mail($email, __('Purchase Receipt', 'wpsc'), $message);
+					  /*
+					  $msg = 'Comanda Dvs. a fost trimisa cu succes! Va multumim ca ati ales magazinul Smuff, va multumim pentru comanda si speram sa va bucurati mult de achizitia facuta!' . "\n\r";
+					  $msg = 'In continuare veti primi un email de confirmare si cineva din echipa Smuff va va contacta si telefonic pentru confirmare, detalii si alte informatii. Daca doriti sa schimbati orice, sa adaugati ceva sau ati dori livrare speciala, este posibil, va stam la dispozitie oricand cu placere! (0740-456.127) ' . "\n\r"; 
+					  $message = $msg . $message;
+						*/
+						wp_mail($email, 'Confirmare comanda', $message);
 					}
+					
 				}
 				remove_filter('wp_mail_from_name', 'wpsc_replace_reply_name');
  				remove_filter('wp_mail_from', 'wpsc_replace_reply_address');

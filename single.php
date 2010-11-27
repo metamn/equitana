@@ -38,7 +38,7 @@ get_header();
           <ul class="postmeta">
 			      <li><?php _e('Published on:') . the_time('l, j F, Y'); ?></li>
 			      <li><?php the_tags(__('Tags') . ': ', ', ', ''); ?></li>   
-			      <li><?php _e("Categories") . ': ' . the_category(', ') ?></li>
+			      Categorii: <li><?php the_category(', ') ?></li>
 			      <li><?php _e("Send trackbacks to:")?> <a href="<?php trackback_url(); ?>" rel="trackback">Trackback URL</a></li>
 			      <li><?php post_comments_feed_link(__('Comments (RSS)')); ?></li>
 			      <li><?php edit_post_link(__('Edit'),'','')?></li>
