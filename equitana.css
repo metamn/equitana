@@ -462,9 +462,7 @@ ul.wp-polls-ul li table td.text {
 #product.thumb #shopping {
   border: none;
 }
-#product.thumb #shopping .imagecol {
-  display: none;
-}
+
 #product.thumb table {
   width: 66%;
 }

@@ -42,7 +42,9 @@
             ?>
           </div>
           <div id="excerpt" class="hidden">
-            <?php the_excerpt(); ?>
+            <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" alt="<?php the_title(); ?>">
+              <?php the_excerpt(); ?>
+            </a>
           </div>
         </div>
       <?php endwhile;

@@ -1,16 +1,4 @@
-<div id="image">
-  <?php 
-    $imgs = post_attachements($post->ID);
-    if (is_array($imgs)) {
-      foreach ($imgs as $img) {
-        $medium = wp_get_attachment_image_src($img->ID, 'thumbnail');          
-      }
-    }      
-  ?>
-  <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">
-    <img src="<?php echo $medium[0]?>" title="<?php the_title_attribute(); ?>" alt="<?php the_title_attribute(); ?>" />
-  </a>
-</div>
+
 <div id="title">
   <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">
     <h3><?php the_title(); ?></h3>

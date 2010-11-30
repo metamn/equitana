@@ -218,14 +218,18 @@ function transaction_results($sessionid, $echo_to_screen = true, $transaction_id
 					$discount_email.= "Reducere"."\n\r: ";
 					$discount_email .=$purchase_log['discount_data'].' : '.nzshpcrt_currency_display($purchase_log['discount_value'], 1, true)."\n\r";
 				}
-				$total_shipping_email.= "Transport".": ".nzshpcrt_currency_display($total_shipping,1,true)."\n\r";
+				
+				//$total_shipping_email.= "Transport".": ".nzshpcrt_currency_display($total_shipping,1,true)."\n\r";
+				
 				$total_price_email.= __('Total', 'wpsc').": ".nzshpcrt_currency_display($total,1,true)."\n\r";
 				$product_list_html.= "Numar comanda: ".$purchase_log['id']."\n\n\r";
 				if($purchase_log['discount_value'] > 0) {
 					$report.= $discount_email."\n\r";
 					$total_shipping_html.= "Reducere".": ".nzshpcrt_currency_display($purchase_log['discount_value'], 1, true)."\n\r";
 				}
-				$total_shipping_html.= "Transport".": ".nzshpcrt_currency_display($total_shipping,1,true)."\n\r";
+				
+				//$total_shipping_html.= "Transport".": ".nzshpcrt_currency_display($total_shipping,1,true)."\n\r";
+				
 				$total_price_html.= __('Total', 'wpsc').": ".nzshpcrt_currency_display($total, 1,true)."\n\r";
 				if(isset($_GET['ti'])) {
 					$message.= "\n\r"."Numar tranzactie".": " . $_GET['ti'];
@@ -366,7 +370,13 @@ $form_sql = "SELECT * FROM `".WPSC_TABLE_SUBMITED_FORM_DATA."` WHERE `log_id` = 
 	
 				if((get_option('purch_log_email') != null) && ($purchase_log['email_sent'] != 1)) {
 				
-					wp_mail(get_option('purch_log_email'), __('Purchase Report', 'wpsc'), $report);
+				  if ($purchase_log['processed'] == 1) {
+			      $subject = "Procesul de cumparare";
+			    } else {
+			      $subject = "Confirmare comanda";
+			    }
+				
+					wp_mail(get_option('purch_log_email'), $subject, $report);
 					
 				}
 
