@@ -64,11 +64,12 @@
 	    <div id="menu" class="column span-24 last">
 	      <div id="items" class="column span-18 last">
 	        <ul class="inline-list">
+	          <li><a href="<?php bloginfo('home'); ?>" title="Acasa">Acasa</a></li>
 	          <?php 	          
 	            if (is_product_and_brand_category(is_category())) {
-                wp_list_categories('current_category=' . PRODUCTS . '&orderby=slug&order=ASC&exclude=' . META . '&include=' . NOUTATI . ',' . PROMO . ',' . TOPSALES . ',' . PRODUCTS . '&title_li='); 	          
+                wp_list_categories('current_category=' . PRODUCTS . '&orderby=slug&order=ASC&exclude=' . META . '&include=' . NOUTATI . ',' . STIRI . ',' . TOPSALES . ',' . PRODUCTS . '&title_li='); 	          
 	            } else {
-	              wp_list_categories('orderby=slug&order=ASC&exclude=' . META . '&include=' . NOUTATI . ',' . PROMO . ',' . TOPSALES . ',' . PRODUCTS . '&title_li='); 
+	              wp_list_categories('orderby=slug&order=ASC&exclude=' . META . '&include=' . NOUTATI . ',' . STIRI . ',' . TOPSALES . ',' . PRODUCTS . '&title_li='); 
               }	      
               
               if (is_home()) {
@@ -78,7 +79,7 @@
                 $forum = "current-cat";
               }
 	           ?>           
-            <li class="<?php echo $forum; ?>"><a href="<?php echo get_category_link(wpml_id(MICAPUBLICITATE)); ?>" alt="Mica publicitate pe Equitana" title="Mica publicitate pe Equitana">Mica publicitate</a></li>	        
+            <li class="<?php echo $forum; ?>"><a href="<?php bloginfo('home'); ?>/informatii/contact" alt="Contact" title="Contact">Contact</a></li>	        
             <li class="<?php echo $blog; ?>"><a href="<?php bloginfo('home'); ?>/blog" alt="Blogul Equitana" title="Blogul Equitana">Blog</a></li>
           </ul>
         </div>          

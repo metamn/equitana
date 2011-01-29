@@ -21,7 +21,16 @@
         $product_id = get_post_meta($post->ID, 'product_id', single);
         if ($product_id) {        
           echo wpsc_display_products_page('product_id='.$product_id);         
-        } 
+        } else { 
+          // get the post image
+          $imgs = post_attachements($id);
+          $img = $imgs[0];
+          $medium = wp_get_attachment_image_src($img->ID, 'medium'); 
+          if ($medium) { ?>
+            <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">
+              <img src="<?php echo $medium[0] ?>" alt="<?php the_title_attribute(); ?>" /></a>
+          <?php }
+        }
       ?>
     </div>    
   </div>

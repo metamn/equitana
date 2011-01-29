@@ -324,6 +324,10 @@ body {
   border: 1px solid #EEE3C3 !important;
   color: #222 !important;
 }
+.post #shopping img {
+  width: 90%;
+  height: auto;
+}
 
 
 /* Post
@@ -845,6 +849,20 @@ table.wpsc_checkout_table input.text {
 }
 
 
+
+.entry table {
+  margin-bottom: 2em;
+  vertical-align: top;
+}
+.entry table tr.header {
+  font-size: larger;
+}
+.entry table td {
+  padding-bottom: .5em;
+  margin-bottom: .5em;
+  border-bottom: 1px solid #e7d7a9;
+  width: 33%;
+}
 
 
 
