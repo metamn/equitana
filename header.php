@@ -67,9 +67,9 @@
 	          <li><a href="<?php bloginfo('home'); ?>" title="Acasa">Acasa</a></li>
 	          <?php 	          
 	            if (is_product_and_brand_category(is_category())) {
-                wp_list_categories('current_category=' . PRODUCTS . '&orderby=slug&order=ASC&exclude=' . META . '&include=' . NOUTATI . ',' . STIRI . ',' . TOPSALES . ',' . PRODUCTS . '&title_li='); 	          
+                wp_list_categories('current_category=' . PRODUCTS . '&orderby=slug&order=ASC&exclude=' . META . '&include=' . NOUTATI . ',' . STIRI . ',' . PROMO . ',' . PRODUCTS . '&title_li='); 	          
 	            } else {
-	              wp_list_categories('orderby=slug&order=ASC&exclude=' . META . '&include=' . NOUTATI . ',' . STIRI . ',' . TOPSALES . ',' . PRODUCTS . '&title_li='); 
+	              wp_list_categories('orderby=slug&order=ASC&exclude=' . META . '&include=' . NOUTATI . ',' . STIRI . ',' . PROMO . ',' . PRODUCTS . '&title_li='); 
               }	      
               
               if (is_home()) {
