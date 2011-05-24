@@ -86,8 +86,12 @@ a:hover {
   padding: 1.6em;
   -moz-box-shadow: 0px 0px 8px #7C7356;
   -khtml-box-shadow: 0px 0px 8px #7C7356;
-  -webkit-box-shadow: 0px 0px 8px #7C7356;
+  -webkit-box-shadow: 0px 0px 8px #7C7356;  
   max-width: 600px;
+  height: auto;
+}
+.archive #posts .post img {
+  max-width: 150px;
   height: auto;
 }
 img.noborder {
