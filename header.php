@@ -7,6 +7,8 @@
 		  <?php bloginfo('name') ?> &mdash; <?php bloginfo('description') ?>		  
 		</title>
 		
+		<?php include "facebook-meta.php" ?>
+		
 		
     <!-- Blueprint -->
 		<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/blueprint/print.css" type="text/css" media="print">	

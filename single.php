@@ -34,6 +34,7 @@ get_header();
               echo wpsc_display_products_page('product_id='.$product_id);         
             }      
           ?>
+                   
                     
           <ul class="postmeta">
 			      <li><?php _e('Published on:') . the_time('l, j F, Y'); ?></li>
@@ -43,6 +44,17 @@ get_header();
 			      <li><?php post_comments_feed_link(__('Comments (RSS)')); ?></li>
 			      <li><?php edit_post_link(__('Edit'),'','')?></li>
 			    </ul>
+		      
+		      
+		      <table>
+            <tr>
+              <td><?php include "share-twitter.php" ?></td>
+              <td><?php include "share-facebook.php" ?></td>
+              <td><?php include "share-facebook-like.php" ?></td>
+              <td><g:plusone size="medium"></g:plusone></td>
+            <tr>
+          </table>
+		      
 		      
           <div id="recommended">    
             <?php

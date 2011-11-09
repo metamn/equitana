@@ -306,6 +306,18 @@ body {
 }
 
 
+#share {
+  margin: 2.5em 0;
+  background: #F6F6F6;
+  padding: 1em;
+}
+#share #col-1 .tf-info {
+  display: none;
+}
+#share #col-1 h4 img {
+  vertical-align: bottom;
+}
+
 
 /* Product list 
 */
