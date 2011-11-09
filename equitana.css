@@ -308,7 +308,7 @@ body {
 
 #share {
   margin: 0 0 1em 0;
-  background: #CAC694;
+  background: #BDB294;
 }
 #share > div {
   padding: 1em;
@@ -478,6 +478,14 @@ ul.share #fb_share_1 {
   float: left !important;
   margin-left: 0 !important;
   margin-right: 5px;
+}
+
+#post-sponsor img {
+  width: 80%;
+  margin: 2%;
+}
+#category-sponsor  {
+  margin: 5% 0;
 }
 
 

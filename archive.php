@@ -56,8 +56,27 @@ get_header();
                   $i += 1;
                 } ?>
               </div>
-            <?php } ?>            
+            <?php } else { 
               
+              $main_cat = page_name(true, false, 0);
+              $sponsor = sponsor_post($main_cat);
+              if ($sponsor) {
+                $link = get_post_meta($sponsor->ID, 'Link', true);
+                $imgs = post_attachements($sponsor->ID);
+                $img = $imgs[0];
+                $medium = wp_get_attachment_image_src($img->ID, 'medium'); ?>
+                
+                <div id="category-sponsor" class="block"> 
+                  <span class="text">In parteneriat cu</span>
+                  <br/>             
+                  <a target="_blank" href="<?php echo $link ?>" title="<?php echo $sponsor->post_title ?>" alt="<?php $sponsor->post_title ?>">
+                    <img class="half-banner" src="<?php echo $medium[0] ?>" title="<?php $sponsor->post_title ?>" alt="<?php $sponsor->post_title ?>"/>
+                  </a>
+                </div>
+              <?php } ?>                            
+              
+            <?php } ?>            
+            
             
             <?php if (have_posts()) {              
               while (have_posts()) : the_post();                
