@@ -307,10 +307,14 @@ body {
 
 
 #share {
-  margin: 2.5em 0;
-  background: #F6F6F6;
+  margin: 0 0 1em 0;
+  background: #CAC694;
+}
+#share > div {
   padding: 1em;
-  display: none;
+}
+#share h4 {
+  font-variant: small-caps;
 }
 #share #col-1 .tf-info {
   display: none;
@@ -318,6 +322,15 @@ body {
 #share #col-1 h4 img {
   vertical-align: bottom;
 }
+#share #col-3 {
+  float: right;
+}
+#share input.text {
+  font-size: 100%;
+  color: #bbb;
+  width: 90%;
+  margin-top: 0;
+} 
 
 
 
