@@ -46,14 +46,21 @@ get_header();
 			    </ul>
 		      
 		      
-		      <table>
-            <tr>
-              <td><?php include "share-twitter.php" ?></td>
-              <td><?php include "share-facebook.php" ?></td>
-              <td><?php include "share-facebook-like.php" ?></td>
-              <td><g:plusone size="medium"></g:plusone></td>
-            <tr>
-          </table>
+		      <ul class="share">
+            <li><?php include "share-twitter.php" ?></li>
+            <li><?php include "share-facebook.php" ?> <?php include "share-facebook-like.php" ?></li>
+            <li><g:plusone size="medium"></g:plusone></li>
+          </ul>          
+          <script type="text/javascript">
+            window.___gcfg = {lang: 'ro'};
+
+            (function() {
+              var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+              po.src = 'https://apis.google.com/js/plusone.js';
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+            })();
+          </script>
+          
 		      
 		      
           <div id="recommended">    

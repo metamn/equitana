@@ -310,6 +310,7 @@ body {
   margin: 2.5em 0;
   background: #F6F6F6;
   padding: 1em;
+  display: none;
 }
 #share #col-1 .tf-info {
   display: none;
@@ -317,6 +318,8 @@ body {
 #share #col-1 h4 img {
   vertical-align: bottom;
 }
+
+
 
 
 /* Product list 
@@ -453,6 +456,14 @@ ul.wp-polls-ul li table td.text {
   width: 20%;
 }
 
+
+ul.share li {
+  margin-bottom: 1em;
+}
+ul.share #fb_share_1 {
+  float: none !important;
+  margin-left: 0 !important;
+}
 
 
 /* Product thumbs for Meta, Recommended, ...
