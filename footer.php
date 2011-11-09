@@ -14,7 +14,7 @@
 	</div>
 	<div id="col-2" class="column span-12 last">
 	  <p>
-	    <a href="<?php bloginfo('home'); ?>/informatii/credite"><?php echo t("Informatii")?></a>. 
+	    <a href="<?php bloginfo('home'); ?>/informatii"><?php echo t("Informatii")?></a>. 
 	    <a href="<?php bloginfo('home'); ?>/informatii/protectia-consumatorilor"><?php echo t("Protectia consumatorilor")?></a>. 
 	    <br/>	     
 	    <?php echo t("Creat de")?> <a href="http://clair.ro">clair.ro</a>

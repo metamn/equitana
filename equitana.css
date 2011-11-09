@@ -459,10 +459,12 @@ ul.wp-polls-ul li table td.text {
 
 ul.share li {
   margin-bottom: 1em;
+  border-bottom: 1px solid #E7D7A9;
 }
 ul.share #fb_share_1 {
-  float: none !important;
+  float: left !important;
   margin-left: 0 !important;
+  margin-right: 5px;
 }
 
 
