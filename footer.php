@@ -9,7 +9,7 @@
 <div id="footer" class="column span-24 last">
   <div id="col-1" class="column span-12 last">
 	  <p>
-		  Copyright 2010 <?php bloginfo('name'); ?>.		   		  
+		  &copy; <?php bloginfo('name'); ?>.		   		  
 	  </p>
 	</div>
 	<div id="col-2" class="column span-12 last">
@@ -22,6 +22,7 @@
 	</div>
 </div>
 
+<!--
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -38,7 +39,22 @@ s.parentNode.insertBefore(ga, s);
   })();
 
 </script>
+-->
 
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1587157-16']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 
 
 

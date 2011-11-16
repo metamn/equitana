@@ -88,7 +88,7 @@
   
   <div id="col-3" class="column span-7 last">
     <form action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=Equitana', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
-    <input type="text" autocomplete="off" value="Adresa dvs. de e-mail" name="email" class="text">
+    <input type="text" autocomplete="off" value="Adresa dvs. de e-mail" name="email" class="text" onfocus="if(this.value == 'Adresa dvs. de e-mail') { this.value = ''; }">
     <input type="hidden" value="Equitana" name="uri"/>
     <input type="hidden" name="loc" value="en_US"/>
     <input type="submit" value="Inscriere la newsletter" />

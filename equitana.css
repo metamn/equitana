@@ -304,6 +304,9 @@ body {
   font-style: italic;
   font-size: smaller;
 }
+#content.startpage #news #item .title {
+  font-weight: bold;
+}
 
 
 #share {
@@ -331,6 +334,9 @@ body {
   width: 90%;
   margin-top: 0;
 } 
+#share input.text:focus {
+  color: #000;
+}
 
 
 
@@ -547,6 +553,12 @@ ul.share #fb_share_1 {
   margin: 1em;
 }
 
+#content.startpage #news #item p.date {
+  margin: 1em 0 .5em;
+  font-style: italic;
+  font-size: smaller;
+}
+
 
 /* Archives 
 */
@@ -634,6 +646,10 @@ ul.share #fb_share_1 {
 }
 #content.page .page ul {
   margin: 0;
+}
+
+#blogroll ul {
+  list-style: none;
 }
 
 

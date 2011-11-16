@@ -11,6 +11,7 @@
 </ul>
 
 <h3 class="title"><?php echo t("Prieteni"); ?></h3>
-<?php wp_list_bookmarks(); ?>  
-        
+<ul>
+<?php wp_list_bookmarks('title_li=&categorize=0'); ?>  
+</ul>        
         

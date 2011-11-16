@@ -270,10 +270,11 @@ function transaction_results($sessionid, $echo_to_screen = true, $transaction_id
         $ga_transactions .= ' '.$ga_items;
         
 ?>
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1587157-1']);
+  _gaq.push(['_setAccount', 'UA-1587157-16']);
   _gaq.push(['_trackPageview']);
 
   <?php echo $ga_transactions ?>
@@ -287,6 +288,7 @@ function transaction_results($sessionid, $echo_to_screen = true, $transaction_id
   })();
 </script>
 
+<?php
 
         
 				//echo "<pre>".print_r($purchase_log,true)."</pre>";
