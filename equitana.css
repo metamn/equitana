@@ -651,6 +651,10 @@ ul.share #fb_share_1 {
 #blogroll ul {
   list-style: none;
 }
+#blogroll li {
+  margin: 1em 2em 2em 0;
+  display: inline-block;
+}
 
 
 /* Footer
